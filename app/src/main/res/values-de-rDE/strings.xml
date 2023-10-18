@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">IWMB02_IU_Betreuer_App</string>
+    <string name="logout">Abmelden</string>
+    <string name="logout_content_description">aktuellen User abmelden</string>
+    <string name="hello">Hallo</string>
+    <string name="logged_in_as">Angemeldet als</string>
+    <string name="logged_out">Abgemeldet</string>
+</resources>

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "645470730547",
+    "project_id": "iwmb02-iu-betreuer-app-83ea3",
+    "storage_bucket": "iwmb02-iu-betreuer-app-83ea3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:645470730547:android:79f4a5adaf3bed073a2646",
+        "android_client_info": {
+          "package_name": "de.iu.iwmb02_iu_betreuer_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDig7D6fmYFIXhjqBLbodCmdRzkSWQ4Yls"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

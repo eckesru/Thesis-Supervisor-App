@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">IWMB02_IU_Betreuer_App</string>
+    <string name="login" translatable="false">Login</string>
+    <string name="logout">Log out</string>
+    <string name="logout_content_description">Log out as current user</string>
+    <string name="hello">Hello</string>
+    <string name="logged_in_as">Logged in as</string>
+    <string name="logged_out">Logged out</string>
 </resources>

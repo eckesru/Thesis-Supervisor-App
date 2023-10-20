@@ -49,7 +49,7 @@ public class FirestoreDao implements StudentDao, SupervisorDao, ThesisDao{
     }
 
     @Override
-    public void saveStudent(Student student) {
+    public void saveNewStudent(Student student) {
        studentsCollection.add(student).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
            @Override
            public void onSuccess(DocumentReference documentReference) {
@@ -83,7 +83,7 @@ public class FirestoreDao implements StudentDao, SupervisorDao, ThesisDao{
     }
 
     @Override
-    public void saveSupervisor(Supervisor supervisor) {
+    public void saveNewSupervisor(Supervisor supervisor) {
         supervisorsCollection.add(supervisor).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
             @Override
             public void onSuccess(DocumentReference documentReference) {
@@ -133,7 +133,7 @@ public class FirestoreDao implements StudentDao, SupervisorDao, ThesisDao{
     }
 
     @Override
-    public void saveThesis(Thesis thesis) {
+    public void saveNewThesis(Thesis thesis) {
         thesesCollection.add(thesis).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
             @Override
             public void onSuccess(DocumentReference documentReference) {

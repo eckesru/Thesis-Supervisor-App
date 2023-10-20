@@ -31,15 +31,17 @@
 
     <TextView
         android:id="@+id/iuTitleTextView"
-        android:layout_width="250dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
+        android:layout_marginEnd="70dp"
         android:fontFamily="@font/opensans_regular"
         android:text="@string/iu_name"
         android:textAllCaps="true"
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/iuToolbar"
         app:layout_constraintStart_toEndOf="@+id/iuLogoImageView"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -47,7 +49,7 @@
         android:id="@+id/menuItem_logout"
         android:layout_width="35dp"
         android:layout_height="35dp"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="30dp"
         android:layout_marginEnd="10dp"
         android:contentDescription="@string/logout_content_description"
         android:scaleType="centerCrop"

@@ -10,4 +10,9 @@
     <string name="iu_name">Internationale Hochschule</string>
     <string name="welcome_message">Willkommen bei der \n IU Betreuer-App!</string>
     <string name="welcome_message_login">Bitte melde dich an, um fortzufahren</string>
+    <string name="supervisors_list">Betreuer:innen-Board</string>
+    <string name="filter">Filter</string>
+    <string name="hi_user_label">Hi, %s!</string>
+    <string name="string_placeholder">%s</string>
+    <string name="to_topic_board">Zum Themen-Board →</string>
 </resources>

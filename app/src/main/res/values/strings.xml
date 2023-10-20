@@ -9,4 +9,9 @@
     <string name="iu_name">International University of Applied Sciences</string>
     <string name="welcome_message">Welcome to \n IU Supervisor-App</string>
     <string name="welcome_message_login">Please sign in to proceed</string>
+    <string name="supervisors_list">Supervisor-Board</string>
+    <string name="filter">Filter</string>
+    <string name="hi_user_label">Hi, %s!</string>
+    <string name="string_placeholder">%s</string>
+    <string name="to_topic_board">Go to Topic-Board →</string>
 </resources>

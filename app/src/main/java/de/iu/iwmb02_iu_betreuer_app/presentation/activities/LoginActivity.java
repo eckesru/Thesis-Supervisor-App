@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
 
         ImageView toolbarImageView = findViewById(R.id.menuItem_logout);
         if (toolbarImageView != null) {
-            toolbarImageView.setVisibility(View.GONE);
+            toolbarImageView.setVisibility(View.INVISIBLE);
         } else {
             Log.d("Debug", "ImageView nicht gefunden");
         }

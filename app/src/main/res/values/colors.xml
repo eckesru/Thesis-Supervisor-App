@@ -5,4 +5,7 @@
     <color name="light_grey">#F1F2F6</color>
     <color name="black_selected">#2C2C2C</color>
     <color name="grey">#D4D4D4</color>
+    <color name="iu_main_grey">#F3F3F7</color>
+    <color name="iu_button_black">#101019</color>
+
 </resources>

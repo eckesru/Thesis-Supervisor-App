@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="MainTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:fontFamily">@font/sourcesanspro_bold</item>
+        <item name="android:fontFamily">@font/inter_regular</item>
         <item name="android:textSize">18sp</item>
-        <item name="android:textColor">@color/black</item>
-        <item name="android:windowBackground">@color/light_grey</item>
-        <item name="colorPrimary">@color/black</item>
-        <item name="colorPrimaryDark">@color/black</item>
-        <item name="colorAccent">@color/black</item>
+        <item name="android:textColor">@color/iu_button_black</item>
+        <item name="android:windowBackground">@color/white</item>
+        <item name="colorPrimary">@color/iu_button_black</item>
+        <item name="colorPrimaryDark">@color/iu_button_black</item>
+        <item name="colorAccent">@color/iu_button_black</item>
 
         <item name="android:windowActivityTransitions">true</item>
         <item name="android:windowEnterTransition">@android:transition/slide_right</item>
@@ -24,7 +24,7 @@
     </style>
 
     <style name="TextAppearance.AppCompat.Widget.ActionBar.Title" parent="LoginStyle">
-        <item name="android:fontFamily">@font/sourcesanspro_bold</item>
+        <item name="android:fontFamily">@font/inter_regular</item>
         <item name="android:textSize">28sp</item>
         <item name="textAllCaps">true</item>
     </style>
@@ -34,15 +34,15 @@
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">20sp</item>
         <item name="android:padding">8dp</item>
-        <item name="android:fontFamily">@font/sourcesanspro_bold</item>
+        <item name="android:fontFamily">@font/inter_regular</item>
         <item name="tint">@color/white</item>
     </style>
 
     <style name="StandardItem" >
-        <item name="android:background">@color/black</item>
+        <item name="android:background">@color/iu_button_black</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">12sp</item>
-        <item name="android:fontFamily">@font/opensans_regular</item>
+        <item name="android:fontFamily">@font/inter_regular</item>
     </style>
 
 </resources>

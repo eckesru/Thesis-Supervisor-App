@@ -5,9 +5,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract;
@@ -40,6 +42,13 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         context = LoginActivity.this;
+
+        ImageView toolbarImageView = findViewById(R.id.menuItem_logout);
+        if (toolbarImageView != null) {
+            toolbarImageView.setVisibility(View.GONE);
+        } else {
+            Log.d("Debug", "ImageView nicht gefunden");
+        }
     }
 
     public void onClick(View view){
@@ -72,9 +81,9 @@ public class LoginActivity extends AppCompatActivity {
         Intent signInIntent = AuthUI.getInstance()
                 .createSignInIntentBuilder()
                 .setAvailableProviders(providers)
-                .setTheme(R.style.Base_Theme_IWMB02_IU_Betreuer_App)
+                .setTheme(R.style.LoginStyle)
                 .setIsSmartLockEnabled(false)
-                //.setLogo(R.drawable.logo)
+                .setLogo(R.drawable.iu_logo)
                 .build();
         signInLauncher.launch(signInIntent);
     }

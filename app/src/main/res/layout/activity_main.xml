@@ -7,12 +7,10 @@
     tools:context=".presentation.activities.MainActivity">
 
     <include
-        android:id="@+id/topAppBar_main"
+        android:id="@+id/toolbarInclude"
         layout="@layout/toolbar_layout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="-202dp"
-        app:menu="@menu/top_bar"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

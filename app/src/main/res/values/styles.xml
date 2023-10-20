@@ -25,7 +25,8 @@
 
     <style name="TextAppearance.AppCompat.Widget.ActionBar.Title" parent="LoginStyle">
         <item name="android:fontFamily">@font/sourcesanspro_bold</item>
-        <item name="android:textSize">32sp</item>
+        <item name="android:textSize">28sp</item>
+        <item name="textAllCaps">true</item>
     </style>
 
     <style name="StandardButton" parent="Widget.AppCompat.Button">

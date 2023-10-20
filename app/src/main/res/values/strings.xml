@@ -1,10 +1,12 @@
 <resources>
     <string name="app_name">IWMB02_IU_Betreuer_App</string>
-    <string name="login" translatable="false">Login</string>
-    <string name="logout">Log out</string>
-    <string name="logout_content_description">Log out as current user</string>
+    <string name="login">Sign in</string>
+    <string name="logout">Sing out</string>
+    <string name="logout_content_description">Sing out as current user</string>
     <string name="hello">Hello</string>
-    <string name="logged_in_as">Logged in as</string>
-    <string name="logged_out">Logged out</string>
+    <string name="logged_in_as">Signed in as</string>
+    <string name="logged_out">Signed out</string>
     <string name="iu_name">International University of Applied Sciences</string>
+    <string name="welcome_message">Welcome to \n IU Supervisor-App</string>
+    <string name="welcome_message_login">Please sign in to proceed</string>
 </resources>

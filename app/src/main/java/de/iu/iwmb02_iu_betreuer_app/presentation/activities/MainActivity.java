@@ -5,9 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Context;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
@@ -30,22 +33,19 @@ public class MainActivity extends AppCompatActivity implements FirebaseAuth.Auth
         context = MainActivity.this;
         auth = FirebaseAuth.getInstance();
 
-        MaterialToolbar toolbar = findViewById(R.id.topAppBar_main);
-        setItemClickListener(toolbar);
+        ImageView logoutImageView = findViewById(R.id.menuItem_logout);
+        setItemClickListener(logoutImageView);
     }
 
 
-    private void setItemClickListener(MaterialToolbar toolbar) {
-        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+    private void setItemClickListener(ImageView logoutImageView) {
+        logoutImageView.setOnClickListener(new ImageView.OnClickListener() {
             @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                int id = item.getItemId();
+            public void onClick(View view) {
+                int id = view.getId();
                 if (id == R.id.menuItem_logout) {
                     logOutUser();
-                    return true;
                 }
-                // TODO: implement other menu items
-                return false;
             }
         });
     }

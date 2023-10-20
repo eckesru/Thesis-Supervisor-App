@@ -6,4 +6,5 @@
     <string name="hello">Hallo</string>
     <string name="logged_in_as">Angemeldet als</string>
     <string name="logged_out">Abgemeldet</string>
+    <string name="iu_name">Internationale Hochschule</string>
 </resources>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">IWMB02_IU_Betreuer_App</string>
+    <string name="app_name">IU Betreuer-App</string>
     <string name="login">Anmelden</string>
     <string name="logout">Abmelden</string>
     <string name="logout_content_description">aktuellen User abmelden</string>
@@ -12,11 +12,22 @@
     <string name="welcome_message_login">Bitte melde dich an, um fortzufahren</string>
     <string name="supervisors_list">Betreuer:innen-Board</string>
     <string name="filter">Filter</string>
-    <string name="hi_user_label">Hi, %s!</string>
+    <string name="hi_user_label">Hi, </string>
+    <string name="hi_user_string_placeholder">%s</string>
     <string name="string_placeholder">%s</string>
     <string name="to_topic_board">Zum Themen-Board →</string>
     <string name="thesis_request_button_text">Betreuungsanfrage erstellen</string>
     <string name="back_button">Zurück</string>
     <string name="email_string_placeholder">E-Mail: %s</string>
     <string name="subject_areas_label">Themengebiete</string>
+    <string name="thesis_request_submit_button_text">Betreuungsanfrage einreichen</string>
+    <string name="student_name_string_placeholder">Student: %s</string>
+    <string name="supervisor_name_string_placeholder">Betreuer: %s</string>
+    <string name="student_study_program_string_placeholder">Studiengang: %s</string>
+    <string name="expose_filepath_placeholder">Datei: %s</string>
+    <string name="thesis_submit_form_title">Betreuungsanfrage-Formular</string>
+    <string name="expose_label">Exposé</string>
+    <string name="thesis_topic_label">Thema der Abschlussarbeit</string>
+    <string name="supervisor_description_string_placeholder">Beschreibung: %s</string>
+    <string name="supervisor_image">Bild des Betreuuers</string>
 </resources>

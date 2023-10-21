@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">IWMB02_IU_Betreuer_App</string>
+    <string name="app_name">IU Supervisor-App</string>
     <string name="login">Sign in</string>
     <string name="logout">Sing out</string>
     <string name="logout_content_description">Sing out as current user</string>
@@ -11,11 +11,22 @@
     <string name="welcome_message_login">Please sign in to proceed</string>
     <string name="supervisors_list">Supervisor-Board</string>
     <string name="filter">Filter</string>
-    <string name="hi_user_label">Hi, %s!</string>
+    <string name="hi_user_label">Hi, </string>
+    <string name="hi_user_string_placeholder">%s</string>
     <string name="string_placeholder">%s</string>
     <string name="to_topic_board">Go to Topic-Board →</string>
     <string name="thesis_request_button_text">Start thesis request</string>
     <string name="back_button">Go back</string>
     <string name="email_string_placeholder">E-Mail: %s</string>
     <string name="subject_areas_label">Subject areas</string>
+    <string name="thesis_request_submit_button_text">Submit thesis request</string>
+    <string name="student_name_string_placeholder">Student: %s</string>
+    <string name="supervisor_name_string_placeholder">Supervisor: %s</string>
+    <string name="student_study_program_string_placeholder">Study program: %s</string>
+    <string name="expose_filepath_placeholder">File: %s</string>
+    <string name="thesis_submit_form_title">Thesis request form</string>
+    <string name="expose_label">Exposé</string>
+    <string name="thesis_topic_label">Thesis topic</string>
+    <string name="supervisor_description_string_placeholder">Description: %s</string>
+    <string name="supervisor_image">Supervisor image</string>
 </resources>

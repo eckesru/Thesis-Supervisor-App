@@ -9,17 +9,17 @@
     android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/EditNewProfileConstraintLayout"
+        android:id="@+id/supervisorDetailsConstraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:scrollbars="vertical"
         tools:context=".ui.NewEditProfile">
 
         <TextView
-            android:id="@+id/subjectAreasListTextView"
+            android:id="@+id/studentStudyProgramTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="5dp"
             android:maxLines="3"
             android:minLines="1"
@@ -28,17 +28,17 @@
             app:layout_constraintTop_toBottomOf="@+id/subjectAreasTextView" />
 
         <TextView
-            android:id="@+id/supervisorDescriptionTextView"
+            android:id="@+id/studentNameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
             android:maxLines="5"
             android:minLines="1"
-            android:text="@string/string_placeholder"
+            android:text="@string/supervisor_description_string_placeholder"
             android:textAlignment="textStart"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/supervisorMailTextView" />
+            app:layout_constraintTop_toBottomOf="@+id/supervisorNameTextView" />
 
         <ImageView
             android:id="@+id/supervisorImageView"
@@ -47,17 +47,16 @@
             android:layout_marginStart="80dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="80dp"
-            android:layout_marginBottom="5dp"
+            android:contentDescription="@string/supervisor_image"
             android:minWidth="180dp"
             android:minHeight="180dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbarInclude"
-            app:layout_constraintVertical_bias="1.0"
             app:srcCompat="@drawable/fui_ic_anonymous_white_24dp" />
 
         <ImageButton
-            android:id="@+id/newEditProfileBackButton"
+            android:id="@+id/supervisorDetailsBackButton"
             style="@style/StandardButton"
             android:layout_width="55dp"
             android:layout_height="55dp"
@@ -77,7 +76,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/supervisorNameTextView"
+            android:id="@+id/thesisRequestTitleTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -90,38 +89,38 @@
             app:layout_constraintTop_toBottomOf="@+id/supervisorImageView" />
 
         <TextView
-            android:id="@+id/supervisorMailTextView"
+            android:id="@+id/supervisorNameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
             android:text="@string/email_string_placeholder"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/supervisorNameTextView" />
+            app:layout_constraintTop_toBottomOf="@+id/thesisRequestTitleTextView" />
 
         <TextView
             android:id="@+id/subjectAreasTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/inter_semibold"
             android:text="@string/subject_areas_label"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/supervisorDescriptionTextView" />
+            app:layout_constraintTop_toBottomOf="@+id/studentNameTextView" />
 
         <Button
             android:id="@+id/startThesisRequestButton"
             style="@style/StandardButton"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="50dp"
             android:layout_marginEnd="20dp"
             android:text="@string/thesis_request_button_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/subjectAreasListTextView" />
+            app:layout_constraintTop_toBottomOf="@+id/studentStudyProgramTextView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

@@ -14,6 +14,8 @@
         <item name="android:windowExitTransition">@android:transition/slide_left</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">1</item>
     </style>
 
     <style name="LoginStyle" parent="MainTheme">

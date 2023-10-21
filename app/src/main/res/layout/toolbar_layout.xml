@@ -27,7 +27,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/iuToolbar"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/iu_logo" />
+        app:srcCompat="@drawable/iu_logo"
+        android:importantForAccessibility="no" />
 
     <TextView
         android:id="@+id/iuTitleTextView"
@@ -35,6 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="8dp"
+        android:ellipsize="none"
         android:fontFamily="@font/inter_light"
         android:maxLines="2"
         android:minLines="1"
@@ -53,7 +55,7 @@
         android:id="@+id/menuItem_logout"
         android:layout_width="35dp"
         android:layout_height="35dp"
-        android:layout_marginEnd="5dp"
+        android:layout_marginEnd="10dp"
         android:contentDescription="@string/logout_content_description"
         android:scaleType="centerCrop"
         android:title="@string/logout"

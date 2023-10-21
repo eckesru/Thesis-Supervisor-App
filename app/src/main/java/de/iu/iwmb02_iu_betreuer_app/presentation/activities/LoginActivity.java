@@ -9,7 +9,6 @@ import android.widget.ImageView;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract;
@@ -25,7 +24,7 @@ import de.iu.iwmb02_iu_betreuer_app.R;
 
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
-    private Context context;
+    private final Context context = LoginActivity.this;
     private final ActivityResultLauncher<Intent> signInLauncher = registerForActivityResult(
             new FirebaseAuthUIActivityResultContract(),
             this::onSignInResult
@@ -40,8 +39,6 @@ public class LoginActivity extends AppCompatActivity {
         }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-        context = LoginActivity.this;
 
         ImageView toolbarImageView = findViewById(R.id.menuItem_logout);
         if (toolbarImageView != null) {

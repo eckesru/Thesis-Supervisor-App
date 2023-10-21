@@ -14,4 +14,9 @@ public class ActivityStarter {
         Intent intent = new Intent(context, LoginActivity.class);
         context.startActivity(intent);
     }
+
+    public static void startSupervisorBoardActivity(Context context){
+        Intent intent = new Intent(context, SupervisorBoardActivity.class);
+        context.startActivity(intent);
+    }
 }

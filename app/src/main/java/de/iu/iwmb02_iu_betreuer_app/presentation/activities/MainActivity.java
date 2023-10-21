@@ -2,19 +2,15 @@ package de.iu.iwmb02_iu_betreuer_app.presentation.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import android.content.Context;
-import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
-import com.google.android.material.appbar.MaterialToolbar;
 import com.google.firebase.auth.FirebaseAuth;
 
 import de.iu.iwmb02_iu_betreuer_app.R;
@@ -22,19 +18,20 @@ import de.iu.iwmb02_iu_betreuer_app.R;
 public class MainActivity extends AppCompatActivity implements FirebaseAuth.AuthStateListener{
 
     private static final String TAG = "MainActivity";
-    private Context context;
+    private final Context context = MainActivity.this;
     private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        context = MainActivity.this;
         auth = FirebaseAuth.getInstance();
 
         ImageView logoutImageView = findViewById(R.id.menuItem_logout);
         setItemClickListener(logoutImageView);
+
+        //TODO: Just for testing
+        ActivityStarter.startSupervisorBoardActivity(context);
     }
 
 

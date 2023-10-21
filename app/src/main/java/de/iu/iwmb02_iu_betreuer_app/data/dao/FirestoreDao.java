@@ -14,6 +14,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import de.iu.iwmb02_iu_betreuer_app.model.Student;
 import de.iu.iwmb02_iu_betreuer_app.model.Supervisor;
 import de.iu.iwmb02_iu_betreuer_app.model.Thesis;
+import de.iu.iwmb02_iu_betreuer_app.util.Callback;
 
 public class FirestoreDao implements StudentDao, SupervisorDao, ThesisDao{
     private static final String TAG = "FirestoreDao";
@@ -30,12 +31,14 @@ public class FirestoreDao implements StudentDao, SupervisorDao, ThesisDao{
     }
 
     @Override
-    public void getStudent(String studentId) {
+    public void getStudent(String studentId, Callback<Student> callback) {
         studentsCollection.document(studentId).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 if(documentSnapshot.exists()){
                     Log.d(TAG, "Student data: "+documentSnapshot.getData());
+                    Student student = documentSnapshot.toObject(Student.class)  ;
+                    callback.onCallback(student);
                 }else{
                     Log.d(TAG, "No student found with ID: " + studentId);
                 }
@@ -64,12 +67,14 @@ public class FirestoreDao implements StudentDao, SupervisorDao, ThesisDao{
     }
 
     @Override
-    public void getSupervisor(String supervisorId) {
+    public void getSupervisor(String supervisorId, Callback<Supervisor> callback) {
         supervisorsCollection.document(supervisorId).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 if(documentSnapshot.exists()){
                     Log.d(TAG, "Supervisor data: "+documentSnapshot.getData());
+                    Supervisor supervisor = documentSnapshot.toObject(Supervisor.class)  ;
+                    callback.onCallback(supervisor);
                 }else{
                     Log.d(TAG, "No supervisor found with ID: " + supervisorId);
                 }
@@ -113,12 +118,14 @@ public class FirestoreDao implements StudentDao, SupervisorDao, ThesisDao{
     }
 
     @Override
-    public void getThesis(String thesisId) {
+    public void getThesis(String thesisId, Callback<Thesis> callback) {
         thesesCollection.document(thesisId).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 if(documentSnapshot.exists()){
                     Log.d(TAG, "Thesis data: "+documentSnapshot.getData());
+                    Thesis thesis= documentSnapshot.toObject(Thesis.class)  ;
+                    callback.onCallback(thesis);
                 }else{
                     Log.d(TAG, "No thesis found with ID: " + thesisId);
                 }

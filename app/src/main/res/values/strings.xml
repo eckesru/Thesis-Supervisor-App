@@ -14,4 +14,8 @@
     <string name="hi_user_label">Hi, %s!</string>
     <string name="string_placeholder">%s</string>
     <string name="to_topic_board">Go to Topic-Board →</string>
+    <string name="thesis_request_button_text">Start thesis request</string>
+    <string name="back_button">Go back</string>
+    <string name="email_string_placeholder">E-Mail: %s</string>
+    <string name="subject_areas_label">Subject areas</string>
 </resources>

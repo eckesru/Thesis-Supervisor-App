@@ -15,4 +15,8 @@
     <string name="hi_user_label">Hi, %s!</string>
     <string name="string_placeholder">%s</string>
     <string name="to_topic_board">Zum Themen-Board →</string>
+    <string name="thesis_request_button_text">Betreuungsanfrage erstellen</string>
+    <string name="back_button">Zurück</string>
+    <string name="email_string_placeholder">E-Mail: %s</string>
+    <string name="subject_areas_label">Themengebiete</string>
 </resources>

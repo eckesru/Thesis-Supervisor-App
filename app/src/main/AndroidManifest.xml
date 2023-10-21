@@ -13,6 +13,9 @@
         android:theme="@style/Theme.IWMB02_IU_Betreuer_App"
         tools:targetApi="31">
         <activity
+            android:name=".presentation.activities.SupervisorDetailsActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.activities.SupervisorBoardActivity"
             android:exported="false" />
         <activity

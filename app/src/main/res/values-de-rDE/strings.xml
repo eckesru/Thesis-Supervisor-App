@@ -10,7 +10,7 @@
     <string name="iu_name">Internationale Hochschule</string>
     <string name="welcome_message">Willkommen bei der \n IU Betreuer-App!</string>
     <string name="welcome_message_login">Bitte melde dich an, um fortzufahren</string>
-    <string name="supervisors_list">Betreuer:innen-Board</string>
+    <string name="supervisor_board_title">Betreuer:innen-Board</string>
     <string name="filter">Filter</string>
     <string name="hi_user_label">Hi, </string>
     <string name="hi_user_string_placeholder">%s</string>
@@ -19,15 +19,16 @@
     <string name="thesis_request_button_text">Betreuungsanfrage erstellen</string>
     <string name="back_button">Zurück</string>
     <string name="email_string_placeholder">E-Mail: %s</string>
-    <string name="subject_areas_label">Themengebiete</string>
+    <string name="topic_categories_label">Themengebiete</string>
     <string name="thesis_request_submit_button_text">Betreuungsanfrage einreichen</string>
-    <string name="student_name_string_placeholder">Student: %s</string>
-    <string name="supervisor_name_string_placeholder">Betreuer: %s</string>
+    <string name="student_name_string_placeholder">Student:in: %s</string>
+    <string name="supervisor_name_string_placeholder">Betreuer:in: %s</string>
     <string name="student_study_program_string_placeholder">Studiengang: %s</string>
     <string name="expose_filepath_placeholder">Datei: %s</string>
     <string name="thesis_submit_form_title">Betreuungsanfrage-Formular</string>
     <string name="expose_label">Exposé</string>
     <string name="thesis_topic_label">Thema der Abschlussarbeit</string>
     <string name="supervisor_description_string_placeholder">Beschreibung: %s</string>
-    <string name="supervisor_image">Bild des Betreuuers</string>
+    <string name="topic_string_placeholder">Thema: %s</string>
+    <string name="topic_board_title">Themen-Board</string>
 </resources>

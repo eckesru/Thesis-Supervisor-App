@@ -2,38 +2,23 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/supervisorBoardConstraintLayout"
+    android:id="@+id/topicBoardConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presentation.activities.SupervisorBoardActivity">
 
-    <TextView
-        android:id="@+id/hiUserTextView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:ellipsize="end"
-        android:text="@string/hi_user_label"
-        android:textSize="30sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarInclude" />
-
-    <TextView
-        android:id="@+id/hiUserNameTextView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+    <ImageButton
+        android:id="@+id/topicBoardBackButton"
+        style="@style/StandardButton"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
-        android:ellipsize="end"
-        android:fontFamily="@font/inter_semibold"
-        android:maxLines="1"
-        android:text="@string/hi_user_string_placeholder"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/hiUserTextView"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarInclude" />
+        android:contentDescription="@string/back_button"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarInclude"
+        app:srcCompat="?attr/homeAsUpIndicator" />
 
     <include
         android:id="@+id/toolbarInclude"
@@ -43,7 +28,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/filterSupervisorItemImageButton"
+        android:id="@+id/filterTopicCategoriesImageButton"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginTop="10dp"
@@ -56,14 +41,14 @@
         android:scaleType="centerCrop"
         app:backgroundTint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hiUserTextView"
+        app:layout_constraintTop_toBottomOf="@+id/topicBoardBackButton"
         app:maxImageSize="30dp"
         app:srcCompat="@drawable/filter"
         app:tint="@color/white"
         tools:ignore="TouchTargetSizeCheck" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/supervisorBoardBottomConstraintLayout"
+        android:id="@+id/topicBoardBottomConstraintLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="5dp"
@@ -75,14 +60,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/supervisorBoardTextView">
+        app:layout_constraintTop_toBottomOf="@+id/topicBoardTitleTextView">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/supervisorBoardRecyclerView"
+            android:id="@+id/topicBoardRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/standard_background"
@@ -94,42 +79,26 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/topicBoardButton"
-            app:layout_constraintVertical_bias="0.0"
-            app:spanCount="2"
-            tools:listitem="@layout/item_supervisor" />
-
-        <Button
-            android:id="@+id/topicBoardButton"
-            style="@style/StandardButton"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="15dp"
-            android:duplicateParentState="false"
-            android:text="@string/to_topic_board"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="VisualLintButtonSize" />
+            app:spanCount="1"
+            tools:listitem="@layout/item_topic" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
-        android:id="@+id/supervisorBoardTextView"
+        android:id="@+id/topicBoardTitleTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="10dp"
         android:ellipsize="end"
         android:fontFamily="@font/inter_semibold"
         android:maxLines="1"
-        android:text="@string/supervisor_board_title"
+        android:text="@string/topic_board_title"
         android:textSize="30sp"
-        app:layout_constraintEnd_toStartOf="@+id/filterSupervisorItemImageButton"
+        app:layout_constraintEnd_toStartOf="@+id/filterTopicCategoriesImageButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hiUserTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/topicBoardBackButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

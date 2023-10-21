@@ -9,7 +9,7 @@
     <string name="iu_name">International University \n of Applied Sciences</string>
     <string name="welcome_message">Welcome to \n IU Supervisor-App</string>
     <string name="welcome_message_login">Please sign in to proceed</string>
-    <string name="supervisors_list">Supervisor-Board</string>
+    <string name="supervisor_board_title">Supervisor-Board</string>
     <string name="filter">Filter</string>
     <string name="hi_user_label">Hi, </string>
     <string name="hi_user_string_placeholder">%s</string>
@@ -18,7 +18,7 @@
     <string name="thesis_request_button_text">Start thesis request</string>
     <string name="back_button">Go back</string>
     <string name="email_string_placeholder">E-Mail: %s</string>
-    <string name="subject_areas_label">Subject areas</string>
+    <string name="topic_categories_label">Topic categories</string>
     <string name="thesis_request_submit_button_text">Submit thesis request</string>
     <string name="student_name_string_placeholder">Student: %s</string>
     <string name="supervisor_name_string_placeholder">Supervisor: %s</string>
@@ -28,5 +28,6 @@
     <string name="expose_label">Exposé</string>
     <string name="thesis_topic_label">Thesis topic</string>
     <string name="supervisor_description_string_placeholder">Description: %s</string>
-    <string name="supervisor_image">Supervisor image</string>
+    <string name="topic_string_placeholder">Topic: %s</string>
+    <string name="topic_board_title">Topic-Board</string>
 </resources>

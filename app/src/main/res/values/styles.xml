@@ -8,7 +8,6 @@
         <item name="colorPrimary">@color/iu_button_black</item>
         <item name="colorPrimaryDark">@color/iu_button_black</item>
         <item name="colorAccent">@color/iu_button_black</item>
-
         <item name="android:windowActivityTransitions">true</item>
         <item name="android:windowEnterTransition">@android:transition/slide_right</item>
         <item name="android:windowExitTransition">@android:transition/slide_left</item>

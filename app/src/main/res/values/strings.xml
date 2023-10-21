@@ -30,4 +30,5 @@
     <string name="supervisor_description_string_placeholder">Description: %s</string>
     <string name="topic_string_placeholder">Topic: %s</string>
     <string name="topic_board_title">Topic-Board</string>
+    <string name="supervisor_image">Supervisor-Image</string>
 </resources>

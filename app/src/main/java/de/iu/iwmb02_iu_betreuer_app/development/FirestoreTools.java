@@ -28,7 +28,7 @@ public class FirestoreTools implements DatabaseTools {
         studentsCollection = firestore.collection("students");
         supervisorsCollection = firestore.collection("supervisors");
         thesesCollection = firestore.collection("theses");
-        firestoreDao = new FirestoreDao();
+        firestoreDao = FirestoreDao.getInstance();
         sampleDataGenerator = new SampleDataGenerator();
     }
 

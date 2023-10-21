@@ -17,13 +17,21 @@ import de.iu.iwmb02_iu_betreuer_app.model.Thesis;
 import de.iu.iwmb02_iu_betreuer_app.util.Callback;
 
 public class FirestoreDao implements StudentDao, SupervisorDao, ThesisDao{
+    private static FirestoreDao instance;
     private static final String TAG = "FirestoreDao";
 
     private final CollectionReference studentsCollection;
     private final CollectionReference supervisorsCollection;
     private final CollectionReference thesesCollection;
 
-    public FirestoreDao() {
+    public static FirestoreDao getInstance() {
+        if (instance == null) {
+            instance = new FirestoreDao();
+        }
+        return instance;
+    }
+
+    private FirestoreDao() {
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
         studentsCollection = firestore.collection("students");
         supervisorsCollection = firestore.collection("supervisors");
@@ -167,5 +175,17 @@ public class FirestoreDao implements StudentDao, SupervisorDao, ThesisDao{
                 Log.e(TAG, "Error updating supervisor", e);
             }
         });
+    }
+
+    public CollectionReference getStudentsCollection() {
+        return studentsCollection;
+    }
+
+    public CollectionReference getSupervisorsCollection() {
+        return supervisorsCollection;
+    }
+
+    public CollectionReference getThesesCollection() {
+        return thesesCollection;
     }
 }

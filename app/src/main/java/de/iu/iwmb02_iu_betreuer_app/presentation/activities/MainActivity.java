@@ -14,6 +14,7 @@ import com.firebase.ui.auth.AuthUI;
 import com.google.firebase.auth.FirebaseAuth;
 
 import de.iu.iwmb02_iu_betreuer_app.R;
+import de.iu.iwmb02_iu_betreuer_app.development.FirestoreTools;
 
 public class MainActivity extends AppCompatActivity implements FirebaseAuth.AuthStateListener{
 
@@ -31,6 +32,9 @@ public class MainActivity extends AppCompatActivity implements FirebaseAuth.Auth
         setItemClickListener(logoutImageView);
 
         //TODO: Just for testing
+        FirestoreTools tools = new FirestoreTools();
+        //tools.deleteAllDBs();
+        //tools.populateDatabasesWithSampleData();
         ActivityStarter.startSupervisorBoardActivity(context);
     }
 

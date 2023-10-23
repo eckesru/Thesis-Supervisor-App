@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class Supervisor extends User{
     private ArrayList<String> studyFields;
+    private String profilePictureUrl;
     private String profileDescription;
     private ArrayList<String> languages;
 
@@ -13,9 +14,10 @@ public class Supervisor extends User{
         // needed for Firebase Firestore
     }
 
-    public Supervisor(String nameFirst, String nameLast, String nameTitle, String email, ArrayList<String> studyFields, String profileDescription, ArrayList<String> languages) {
+    public Supervisor(String nameFirst, String nameLast, String nameTitle, String email, ArrayList<String> studyFields,String profilePictureUrl, String profileDescription, ArrayList<String> languages) {
         super(nameFirst, nameLast, nameTitle, email);
         this.studyFields = studyFields;
+        this.profilePictureUrl = profilePictureUrl;
         this.profileDescription = profileDescription;
         this.languages = languages;
     }
@@ -26,6 +28,14 @@ public class Supervisor extends User{
 
     public void setStudyFields(ArrayList<String> studyFields) {
         this.studyFields = studyFields;
+    }
+
+    public String getProfilePictureUrl() {
+        return profilePictureUrl;
+    }
+
+    public void setProfilePictureUrl(String profilePictureUrl) {
+        this.profilePictureUrl = profilePictureUrl;
     }
 
     public String getProfileDescription() {

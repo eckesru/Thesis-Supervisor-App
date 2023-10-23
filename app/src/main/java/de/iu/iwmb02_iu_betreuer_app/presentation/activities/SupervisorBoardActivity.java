@@ -27,8 +27,8 @@ public class SupervisorBoardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_supervisor_board);
 
         firebaseFirestoreDao = FirebaseFirestoreDao.getInstance();
-        supervisorBoardRecyclerView = findViewById(R.id.supervisorBoardRecyclerView);
 
+        supervisorBoardRecyclerView = findViewById(R.id.supervisorBoardRecyclerView);
         supervisorRecyclerAdapter = getSupervisorRecyclerAdapter("");
         supervisorBoardRecyclerView.setAdapter(supervisorRecyclerAdapter);
     }

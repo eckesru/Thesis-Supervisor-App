@@ -26,11 +26,22 @@ public class SampleDataGenerator {
         supervisors.add(new Supervisor(
                 "David",
                 "Müller",
-                "Prof. Dr.",
+                "Prof.",
                 "d.müller@mail.com",
                 new ArrayList<String>(Arrays.asList("Data Science & Articifial Intelligence","Design & Medien")),
+                "profilepictures/supervisor_m2.jpg",
                 "Dies ist eine Profilbeschreibung.",
                 new ArrayList<String>(Arrays.asList("Deutsch","Englisch"))));
+
+        supervisors.add(new Supervisor(
+                "Michael",
+                "Hindley",
+                "Prof. Dr.",
+                "m.hindley@mail.com",
+                new ArrayList<String>(Arrays.asList("Betriebswirtschaft & Management","Personal & Recht")),
+                "profilepictures/supervisor_m1.jpg",
+                "Dies ist eine Profilbeschreibung.",
+                new ArrayList<String>(Arrays.asList("Englisch"))));
 
         supervisors.add(new Supervisor(
                 "Magdalena",
@@ -38,6 +49,7 @@ public class SampleDataGenerator {
                 "Prof. Dr.",
                 "m.schulz@mail.com",
                 new ArrayList<String>(Arrays.asList("Ingenieurswissenschaften","Planung & Controlling")),
+                "profilepictures/supervisor_f1.jpg",
                 "Dies ist eine Profilbeschreibung.",
                 new ArrayList<String>(Arrays.asList("Deutsch","Englisch"))));
     }

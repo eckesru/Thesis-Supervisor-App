@@ -2,7 +2,9 @@ package de.iu.iwmb02_iu_betreuer_app.model;
 
 import com.google.firebase.firestore.DocumentId;
 
-public abstract class User {
+import java.io.Serializable;
+
+public abstract class User implements Serializable {
     @DocumentId
     private String userId;
     private String nameFirst;

@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.Query;
@@ -12,6 +13,7 @@ import com.google.firebase.firestore.Query;
 import de.iu.iwmb02_iu_betreuer_app.R;
 import de.iu.iwmb02_iu_betreuer_app.data.dao.FirebaseFirestoreDao;
 import de.iu.iwmb02_iu_betreuer_app.model.Supervisor;
+import de.iu.iwmb02_iu_betreuer_app.model.User;
 import de.iu.iwmb02_iu_betreuer_app.presentation.adapters.SupervisorRecyclerAdapter;
 
 public class SupervisorBoardActivity extends AppCompatActivity {
@@ -20,6 +22,8 @@ public class SupervisorBoardActivity extends AppCompatActivity {
     private FirebaseFirestoreDao firebaseFirestoreDao;
     private RecyclerView supervisorBoardRecyclerView;
     private SupervisorRecyclerAdapter supervisorRecyclerAdapter;
+    private TextView txtHiUser;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +35,13 @@ public class SupervisorBoardActivity extends AppCompatActivity {
         supervisorBoardRecyclerView = findViewById(R.id.supervisorBoardRecyclerView);
         supervisorRecyclerAdapter = getSupervisorRecyclerAdapter("");
         supervisorBoardRecyclerView.setAdapter(supervisorRecyclerAdapter);
+
+        txtHiUser = findViewById(R.id.hiUserNameTextView);
+        user = (User) getIntent().getSerializableExtra("user");
+        if(user != null){
+            txtHiUser.setText(user.getNameFirst());
+        }
+
     }
 
     @Override

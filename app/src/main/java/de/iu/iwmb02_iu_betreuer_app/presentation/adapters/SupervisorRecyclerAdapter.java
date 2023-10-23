@@ -36,7 +36,6 @@ public class SupervisorRecyclerAdapter extends FirestoreRecyclerAdapter<Supervis
     @Override
     protected void onBindViewHolder(@NonNull SupervisorViewHolder holder, int position, @NonNull Supervisor supervisor) {
         holder.txtSupervisorName.setText(supervisor.getFullName());
-        System.out.println(supervisor.getProfilePictureUrl());
 
         firebaseStorageDao.downloadImage(supervisor.getProfilePictureUrl(), new Callback<Bitmap>() {
             @Override

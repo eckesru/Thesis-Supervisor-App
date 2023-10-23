@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements FirebaseAuth.Auth
                 public void onCallback(User user) {
                     if (user instanceof Student) {
                         Log.d(TAG, "Logged in User is a student");
-                        ActivityStarter.startSupervisorBoardActivity(context);
+                        ActivityStarter.startSupervisorBoardActivity(context, user);
                     } else if (user instanceof Supervisor) {
                         Log.d(TAG, "Logged in user is a supervisor");
                         //TODO: implement thesis overview activity

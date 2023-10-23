@@ -16,31 +16,33 @@ import de.iu.iwmb02_iu_betreuer_app.model.Supervisor;
 import de.iu.iwmb02_iu_betreuer_app.model.Thesis;
 import de.iu.iwmb02_iu_betreuer_app.util.Callback;
 
-public class FirestoreDao implements StudentDao, SupervisorDao, ThesisDao{
-    private static FirestoreDao instance;
-    private static final String TAG = "FirestoreDao";
+public class FirebaseFirestoreDao implements StudentDao, SupervisorDao, ThesisDao{
+    private static FirebaseFirestoreDao instance;
+    private static final String TAG = "FirebaseFirestoreDao";
 
-    private final CollectionReference studentsCollection;
-    private final CollectionReference supervisorsCollection;
-    private final CollectionReference thesesCollection;
+    private final CollectionReference studentsCollectionRef;
+    private final CollectionReference supervisorsCollectionRef;
+    private final CollectionReference thesesCollectionRef;
 
-    public static FirestoreDao getInstance() {
+
+    public static FirebaseFirestoreDao getInstance() {
         if (instance == null) {
-            instance = new FirestoreDao();
+            instance = new FirebaseFirestoreDao();
         }
         return instance;
     }
 
-    private FirestoreDao() {
+    private FirebaseFirestoreDao() {
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
-        studentsCollection = firestore.collection("students");
-        supervisorsCollection = firestore.collection("supervisors");
-        thesesCollection = firestore.collection("theses");
+
+        studentsCollectionRef = firestore.collection("students");
+        supervisorsCollectionRef = firestore.collection("supervisors");
+        thesesCollectionRef = firestore.collection("theses");
     }
 
     @Override
     public void getStudent(String studentId, Callback<Student> callback) {
-        studentsCollection.document(studentId).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+        studentsCollectionRef.document(studentId).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 if(documentSnapshot.exists()){
@@ -61,7 +63,7 @@ public class FirestoreDao implements StudentDao, SupervisorDao, ThesisDao{
 
     @Override
     public void saveNewStudent(Student student) {
-       studentsCollection.add(student).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+       studentsCollectionRef.add(student).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
            @Override
            public void onSuccess(DocumentReference documentReference) {
                Log.d(TAG, "Student added with ID: "+ documentReference.getId());
@@ -76,7 +78,7 @@ public class FirestoreDao implements StudentDao, SupervisorDao, ThesisDao{
 
     @Override
     public void getSupervisor(String supervisorId, Callback<Supervisor> callback) {
-        supervisorsCollection.document(supervisorId).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+        supervisorsCollectionRef.document(supervisorId).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 if(documentSnapshot.exists()){
@@ -97,7 +99,7 @@ public class FirestoreDao implements StudentDao, SupervisorDao, ThesisDao{
 
     @Override
     public void saveNewSupervisor(Supervisor supervisor) {
-        supervisorsCollection.add(supervisor).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+        supervisorsCollectionRef.add(supervisor).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
             @Override
             public void onSuccess(DocumentReference documentReference) {
                 Log.d(TAG, "Supervisor added with ID: "+ documentReference.getId());
@@ -112,7 +114,7 @@ public class FirestoreDao implements StudentDao, SupervisorDao, ThesisDao{
 
     @Override
     public void updateSupervisor(String supervisorId, Supervisor supervisor) {
-        supervisorsCollection.document(supervisorId).set(supervisor).addOnSuccessListener(new OnSuccessListener<Void>() {
+        supervisorsCollectionRef.document(supervisorId).set(supervisor).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
                 Log.d(TAG, "Thesis "+supervisorId+" successfully updated");
@@ -127,7 +129,7 @@ public class FirestoreDao implements StudentDao, SupervisorDao, ThesisDao{
 
     @Override
     public void getThesis(String thesisId, Callback<Thesis> callback) {
-        thesesCollection.document(thesisId).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+        thesesCollectionRef.document(thesisId).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 if(documentSnapshot.exists()){
@@ -149,7 +151,7 @@ public class FirestoreDao implements StudentDao, SupervisorDao, ThesisDao{
 
     @Override
     public void saveNewThesis(Thesis thesis) {
-        thesesCollection.add(thesis).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+        thesesCollectionRef.add(thesis).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
             @Override
             public void onSuccess(DocumentReference documentReference) {
                 Log.d(TAG, "Thesis added with ID: "+ documentReference.getId());
@@ -164,7 +166,7 @@ public class FirestoreDao implements StudentDao, SupervisorDao, ThesisDao{
 
     @Override
     public void updateThesis(String thesisId, Thesis thesis) {
-        thesesCollection.document(thesisId).set(thesis).addOnSuccessListener(new OnSuccessListener<Void>() {
+        thesesCollectionRef.document(thesisId).set(thesis).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
                 Log.d(TAG, "Thesis "+thesisId+" successfully updated");
@@ -177,15 +179,15 @@ public class FirestoreDao implements StudentDao, SupervisorDao, ThesisDao{
         });
     }
 
-    public CollectionReference getStudentsCollection() {
-        return studentsCollection;
+    public CollectionReference getStudentsCollectionRef() {
+        return studentsCollectionRef;
     }
 
-    public CollectionReference getSupervisorsCollection() {
-        return supervisorsCollection;
+    public CollectionReference getSupervisorsCollectionRef() {
+        return supervisorsCollectionRef;
     }
 
-    public CollectionReference getThesesCollection() {
-        return thesesCollection;
+    public CollectionReference getThesesCollectionRef() {
+        return thesesCollectionRef;
     }
 }

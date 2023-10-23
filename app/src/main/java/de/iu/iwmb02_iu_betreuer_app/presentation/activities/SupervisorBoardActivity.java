@@ -10,14 +10,14 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.Query;
 
 import de.iu.iwmb02_iu_betreuer_app.R;
-import de.iu.iwmb02_iu_betreuer_app.data.dao.FirestoreDao;
+import de.iu.iwmb02_iu_betreuer_app.data.dao.FirebaseFirestoreDao;
 import de.iu.iwmb02_iu_betreuer_app.model.Supervisor;
 import de.iu.iwmb02_iu_betreuer_app.presentation.adapters.SupervisorRecyclerAdapter;
 
 public class SupervisorBoardActivity extends AppCompatActivity {
     private static final String TAG = "SupervisorBoardActivity";
     private final Context context = SupervisorBoardActivity.this;
-    private FirestoreDao firestoreDao;
+    private FirebaseFirestoreDao firebaseFirestoreDao;
     private RecyclerView supervisorBoardRecyclerView;
     private SupervisorRecyclerAdapter supervisorRecyclerAdapter;
 
@@ -26,7 +26,7 @@ public class SupervisorBoardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_supervisor_board);
 
-        firestoreDao = FirestoreDao.getInstance();
+        firebaseFirestoreDao = FirebaseFirestoreDao.getInstance();
         supervisorBoardRecyclerView = findViewById(R.id.supervisorBoardRecyclerView);
 
         supervisorRecyclerAdapter = getSupervisorRecyclerAdapter("");
@@ -61,7 +61,7 @@ public class SupervisorBoardActivity extends AppCompatActivity {
         switch (orderOption){
             // TODO: implement other sorting options and set up selection via buttons
             default:
-                query = firestoreDao.getSupervisorsCollection()
+                query = firebaseFirestoreDao.getSupervisorsCollectionRef()
                         .orderBy("nameLast", Query.Direction.ASCENDING);
         }
         return query;

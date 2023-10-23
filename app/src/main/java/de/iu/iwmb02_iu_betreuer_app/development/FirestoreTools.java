@@ -10,7 +10,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
-import de.iu.iwmb02_iu_betreuer_app.data.dao.FirestoreDao;
+import de.iu.iwmb02_iu_betreuer_app.data.dao.FirebaseFirestoreDao;
 import de.iu.iwmb02_iu_betreuer_app.model.Student;
 import de.iu.iwmb02_iu_betreuer_app.model.Supervisor;
 
@@ -20,7 +20,7 @@ public class FirestoreTools implements DatabaseTools {
     private final CollectionReference studentsCollection;
     private final CollectionReference supervisorsCollection;
     private final CollectionReference thesesCollection;
-    private final FirestoreDao firestoreDao;
+    private final FirebaseFirestoreDao firebaseFirestoreDao;
     private final SampleDataGenerator sampleDataGenerator;
 
     public FirestoreTools() {
@@ -28,7 +28,7 @@ public class FirestoreTools implements DatabaseTools {
         studentsCollection = firestore.collection("students");
         supervisorsCollection = firestore.collection("supervisors");
         thesesCollection = firestore.collection("theses");
-        firestoreDao = FirestoreDao.getInstance();
+        firebaseFirestoreDao = FirebaseFirestoreDao.getInstance();
         sampleDataGenerator = new SampleDataGenerator();
     }
 
@@ -83,12 +83,12 @@ public class FirestoreTools implements DatabaseTools {
     public void populateDatabasesWithSampleData() {
         ArrayList<Student> students = sampleDataGenerator.getStudents();
         for (Student student: students) {
-            firestoreDao.saveNewStudent(student);
+            firebaseFirestoreDao.saveNewStudent(student);
         }
 
         ArrayList<Supervisor> supervisors = sampleDataGenerator.getSupervisors();
         for (Supervisor supervisor: supervisors) {
-            firestoreDao.saveNewSupervisor(supervisor);
+            firebaseFirestoreDao.saveNewSupervisor(supervisor);
         }
     }
 

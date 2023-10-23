@@ -5,7 +5,6 @@ import de.iu.iwmb02_iu_betreuer_app.util.Callback;
 
 public interface SupervisorDao {
     void getSupervisor(String supervisorId, Callback<Supervisor> callback);
-    void saveNewSupervisor(Supervisor supervisor);
-    void updateSupervisor(String supervisorId, Supervisor supervisor);
+    void saveSupervisor(String supervisorId, Supervisor supervisor);
 }
 

@@ -10,8 +10,8 @@ public class Student extends User{
         //needed for Firebase Firestore
     }
 
-    public Student(String nameFirst, String nameLast, String nameTitle, String email, String studyProgram, String studyLevel) {
-        super(nameFirst, nameLast, nameTitle, email);
+    public Student(String studentId, String nameFirst, String nameLast, String nameTitle, String email, String studyProgram, String studyLevel) {
+        super(studentId, nameFirst, nameLast, nameTitle, email);
         this.studyProgram = studyProgram;
         this.studyLevel = studyLevel;
     }

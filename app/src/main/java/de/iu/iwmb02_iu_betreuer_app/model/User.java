@@ -14,7 +14,8 @@ public abstract class User {
         //needed for Firebase Firestore
     }
 
-    public User(String nameFirst, String nameLast, String nameTitle, String email) {
+    public User(String userId, String nameFirst, String nameLast, String nameTitle, String email) {
+        this.userId = userId;
         this.nameFirst = nameFirst;
         this.nameLast = nameLast;
         this.nameTitle = nameTitle;

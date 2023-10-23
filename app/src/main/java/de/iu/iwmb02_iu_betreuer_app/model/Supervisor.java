@@ -14,8 +14,8 @@ public class Supervisor extends User{
         // needed for Firebase Firestore
     }
 
-    public Supervisor(String nameFirst, String nameLast, String nameTitle, String email, ArrayList<String> studyFields,String profilePictureUrl, String profileDescription, ArrayList<String> languages) {
-        super(nameFirst, nameLast, nameTitle, email);
+    public Supervisor(String supervisorId, String nameFirst, String nameLast, String nameTitle, String email, ArrayList<String> studyFields,String profilePictureUrl, String profileDescription, ArrayList<String> languages) {
+        super(supervisorId, nameFirst, nameLast, nameTitle, email);
         this.studyFields = studyFields;
         this.profilePictureUrl = profilePictureUrl;
         this.profileDescription = profileDescription;

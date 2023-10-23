@@ -62,18 +62,18 @@ public class FirebaseFirestoreDao implements StudentDao, SupervisorDao, ThesisDa
     }
 
     @Override
-    public void saveNewStudent(Student student) {
-       studentsCollectionRef.add(student).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-           @Override
-           public void onSuccess(DocumentReference documentReference) {
-               Log.d(TAG, "Student added with ID: "+ documentReference.getId());
-           }
-       }).addOnFailureListener(new OnFailureListener() {
-           @Override
-           public void onFailure(@NonNull Exception e) {
-               Log.e(TAG, "Error adding student", e);
-           }
-       });
+    public void saveStudent(String studentId, Student student) {
+        studentsCollectionRef.document(studentId).set(student).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                Log.d(TAG, "Student "+studentId+" successfully saved");
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.e(TAG, "Error updating supervisor", e);
+            }
+        });
     }
 
     @Override
@@ -98,26 +98,11 @@ public class FirebaseFirestoreDao implements StudentDao, SupervisorDao, ThesisDa
     }
 
     @Override
-    public void saveNewSupervisor(Supervisor supervisor) {
-        supervisorsCollectionRef.add(supervisor).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-            @Override
-            public void onSuccess(DocumentReference documentReference) {
-                Log.d(TAG, "Supervisor added with ID: "+ documentReference.getId());
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Log.e(TAG, "Error adding supervisor", e);
-            }
-        });
-    }
-
-    @Override
-    public void updateSupervisor(String supervisorId, Supervisor supervisor) {
+    public void saveSupervisor(String supervisorId, Supervisor supervisor) {
         supervisorsCollectionRef.document(supervisorId).set(supervisor).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
-                Log.d(TAG, "Thesis "+supervisorId+" successfully updated");
+                Log.d(TAG, "Supervisor "+supervisorId+" successfully saved");
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override

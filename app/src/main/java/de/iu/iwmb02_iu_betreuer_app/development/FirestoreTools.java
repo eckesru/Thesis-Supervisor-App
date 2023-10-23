@@ -83,12 +83,12 @@ public class FirestoreTools implements DatabaseTools {
     public void populateDatabasesWithSampleData() {
         ArrayList<Student> students = sampleDataGenerator.getStudents();
         for (Student student: students) {
-            firebaseFirestoreDao.saveNewStudent(student);
+            firebaseFirestoreDao.saveStudent(student.getUserId(), student);
         }
 
         ArrayList<Supervisor> supervisors = sampleDataGenerator.getSupervisors();
         for (Supervisor supervisor: supervisors) {
-            firebaseFirestoreDao.saveNewSupervisor(supervisor);
+            firebaseFirestoreDao.saveSupervisor(supervisor.getUserId(), supervisor);
         }
     }
 

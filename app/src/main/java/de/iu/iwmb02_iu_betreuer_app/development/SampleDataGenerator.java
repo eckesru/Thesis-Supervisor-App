@@ -18,13 +18,13 @@ public class SampleDataGenerator {
 
     private void populateLists(){
         //Students
-        students.add(new Student("k4gOSldMysb1wYgfRwckQ8wduX92","Max","Mustermann","B.Sc.","m.mustermann@mail.com", "Informatik", "M.Sc."));
-        students.add(new Student("br0IbQqJ88RkGKb3XfLNsQpCBOC3","Anna","Schmidt","B.Sc.","a.schmidt@mail.com", "Mathematik", "M.Sc."));
-        students.add(new Student("qHAf5dqRnAR8QWRhk2sXJWtUVBs1","Tom","Becker","","t.becker@mail.com", "Geschichte", "B.A."));
+        students.add(new Student("PDFKi7OU2fdNKP0PXtknTIdGYsZ2","Max","Mustermann","B.Sc.","m.mustermann@mail.com", "Informatik", "M.Sc."));
+        students.add(new Student("bN5kMCYX0rZCrdaic69rWFRzzml2","Anna","Schmidt","B.Sc.","a.schmidt@mail.com", "Mathematik", "M.Sc."));
+        students.add(new Student("NSqdIbZZ7AMH1tII092KwwjxYSs2","Tom","Becker","","t.becker@mail.com", "Geschichte", "B.A."));
 
         //Supervisors
         supervisors.add(new Supervisor(
-                "vMaLqkIwmRVYynBn6QsgK5xA41E2",
+                "xshcPBn95LbTxxd0Ltb5vj1dXl72",
                 "David",
                 "Müller",
                 "Prof.",
@@ -35,7 +35,7 @@ public class SampleDataGenerator {
                 new ArrayList<String>(Arrays.asList("Deutsch","Englisch"))));
 
         supervisors.add(new Supervisor(
-                "Fx8Sls2yl9QZmr37Z5GuEfaBjKo2",
+                "zBpj74f5NaOENmIIMAQksKF44cJ2",
                 "Michael",
                 "Hindley",
                 "Prof. Dr.",
@@ -46,7 +46,7 @@ public class SampleDataGenerator {
                 new ArrayList<String>(Arrays.asList("Englisch"))));
 
         supervisors.add(new Supervisor(
-                "hD81mfggRmO21RqXz6M6BGeyKK23",
+                "Np7QGaYv1TaCuJy0z2Dq2AHDlVZ2",
                 "Magdalena",
                 "Schulz",
                 "Prof. Dr.",

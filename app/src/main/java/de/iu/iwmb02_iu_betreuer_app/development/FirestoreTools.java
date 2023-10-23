@@ -20,6 +20,7 @@ public class FirestoreTools implements DatabaseTools {
     private final CollectionReference studentsCollection;
     private final CollectionReference supervisorsCollection;
     private final CollectionReference thesesCollection;
+    private final CollectionReference usersCollection;
     private final FirebaseFirestoreDao firebaseFirestoreDao;
     private final SampleDataGenerator sampleDataGenerator;
 
@@ -28,6 +29,7 @@ public class FirestoreTools implements DatabaseTools {
         studentsCollection = firestore.collection("students");
         supervisorsCollection = firestore.collection("supervisors");
         thesesCollection = firestore.collection("theses");
+        usersCollection = firestore.collection("users");
         firebaseFirestoreDao = FirebaseFirestoreDao.getInstance();
         sampleDataGenerator = new SampleDataGenerator();
     }
@@ -73,10 +75,24 @@ public class FirestoreTools implements DatabaseTools {
     }
 
     @Override
+    public void deleteUserDB() {
+        usersCollection.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                for(DocumentSnapshot document: queryDocumentSnapshots.getDocuments()){
+                    document.getReference().delete();
+                    Log.d(TAG, "UserDB deleted");
+                }
+            }
+        });
+    }
+
+    @Override
     public void deleteAllDBs() {
         deleteStudentsDB();
         deleteSupervisorDB();
         deleteThesesDB();
+        deleteUserDB();
     }
 
     @Override

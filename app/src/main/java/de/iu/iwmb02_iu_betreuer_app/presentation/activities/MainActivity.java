@@ -14,7 +14,13 @@ import com.firebase.ui.auth.AuthUI;
 import com.google.firebase.auth.FirebaseAuth;
 
 import de.iu.iwmb02_iu_betreuer_app.R;
+import de.iu.iwmb02_iu_betreuer_app.data.dao.FirebaseFirestoreDao;
+import de.iu.iwmb02_iu_betreuer_app.data.dao.UserDao;
 import de.iu.iwmb02_iu_betreuer_app.development.FirestoreTools;
+import de.iu.iwmb02_iu_betreuer_app.model.Student;
+import de.iu.iwmb02_iu_betreuer_app.model.Supervisor;
+import de.iu.iwmb02_iu_betreuer_app.model.User;
+import de.iu.iwmb02_iu_betreuer_app.util.Callback;
 
 public class MainActivity extends AppCompatActivity implements FirebaseAuth.AuthStateListener{
 
@@ -31,11 +37,28 @@ public class MainActivity extends AppCompatActivity implements FirebaseAuth.Auth
         ImageView logoutImageView = findViewById(R.id.menuItem_logout);
         setItemClickListener(logoutImageView);
 
-        //TODO: Just for testing
+        //TODO: Delete - Just for testing
         FirestoreTools tools = new FirestoreTools();
         //tools.deleteAllDBs();
         //tools.populateDatabasesWithSampleData();
-        ActivityStarter.startSupervisorBoardActivity(context);
+
+        UserDao userDao = FirebaseFirestoreDao.getInstance();
+        if(auth.getCurrentUser() != null) {
+            userDao.getUser(auth.getCurrentUser().getUid(), new Callback<User>() {
+                @Override
+                public void onCallback(User user) {
+                    if (user instanceof Student) {
+                        Log.d(TAG, "Logged in User is a student");
+                        ActivityStarter.startSupervisorBoardActivity(context);
+                    } else if (user instanceof Supervisor) {
+                        Log.d(TAG, "Logged in user is a supervisor");
+                        //TODO: implement thesis overview activity
+                    } else {
+                        Log.d(TAG, "Unknown usertype");
+                    }
+                }
+            });
+        }
     }
 
 

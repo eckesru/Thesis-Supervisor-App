@@ -11,18 +11,24 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import de.iu.iwmb02_iu_betreuer_app.model.Student;
 import de.iu.iwmb02_iu_betreuer_app.model.Supervisor;
 import de.iu.iwmb02_iu_betreuer_app.model.Thesis;
+import de.iu.iwmb02_iu_betreuer_app.model.User;
 import de.iu.iwmb02_iu_betreuer_app.util.Callback;
 
-public class FirebaseFirestoreDao implements StudentDao, SupervisorDao, ThesisDao{
+public class FirebaseFirestoreDao implements StudentDao, SupervisorDao, ThesisDao, UserDao{
     private static FirebaseFirestoreDao instance;
     private static final String TAG = "FirebaseFirestoreDao";
 
     private final CollectionReference studentsCollectionRef;
     private final CollectionReference supervisorsCollectionRef;
+
     private final CollectionReference thesesCollectionRef;
+    private final CollectionReference usersCollectionRef;
 
 
     public static FirebaseFirestoreDao getInstance() {
@@ -38,6 +44,7 @@ public class FirebaseFirestoreDao implements StudentDao, SupervisorDao, ThesisDa
         studentsCollectionRef = firestore.collection("students");
         supervisorsCollectionRef = firestore.collection("supervisors");
         thesesCollectionRef = firestore.collection("theses");
+        usersCollectionRef = firestore.collection("users");
     }
 
     @Override
@@ -67,6 +74,12 @@ public class FirebaseFirestoreDao implements StudentDao, SupervisorDao, ThesisDa
             @Override
             public void onSuccess(Void unused) {
                 Log.d(TAG, "Student "+studentId+" successfully saved");
+
+                //save document reference in user collection
+                DocumentReference studentRef = studentsCollectionRef.document(studentId);
+                Map<String, DocumentReference> docData = new HashMap<>();
+                docData.put("userRef",studentRef);
+                usersCollectionRef.document(studentId).set(docData);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -103,6 +116,12 @@ public class FirebaseFirestoreDao implements StudentDao, SupervisorDao, ThesisDa
             @Override
             public void onSuccess(Void unused) {
                 Log.d(TAG, "Supervisor "+supervisorId+" successfully saved");
+
+                //save document reference in user collection
+                DocumentReference supervisorRef = supervisorsCollectionRef.document(supervisorId);
+                Map<String, DocumentReference> docData = new HashMap<>();
+                docData.put("userRef",supervisorRef);
+                usersCollectionRef.document(supervisorId).set(docData);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -160,6 +179,39 @@ public class FirebaseFirestoreDao implements StudentDao, SupervisorDao, ThesisDa
             @Override
             public void onFailure(@NonNull Exception e) {
                 Log.e(TAG, "Error updating supervisor", e);
+            }
+        });
+    }
+
+    @Override
+    public void getUser(String userId, Callback<User> callback) {
+        usersCollectionRef.document(userId).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                DocumentReference userRef = (DocumentReference) documentSnapshot.get("userRef");
+                userRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if(documentSnapshot.exists()){
+                            Log.d(TAG, "User data: " + documentSnapshot.getData());
+                            DocumentReference docRef = documentSnapshot.getReference();
+                            User user = null;
+                            if(docRef.getPath().startsWith("student")){
+                                user = documentSnapshot.toObject(Student.class);
+                            } else if (docRef.getPath().startsWith("supervisor")) {
+                                user = documentSnapshot.toObject(Supervisor.class);
+                            }
+                            callback.onCallback(user);
+                        }else{
+                            Log.d(TAG, "No user found with ID: " + userId);
+                        }
+                    }
+                });
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.e(TAG, "No user with Id: " + userId, e);
             }
         });
     }

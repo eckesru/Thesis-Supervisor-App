@@ -16,6 +16,7 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import de.iu.iwmb02_iu_betreuer_app.R;
 import de.iu.iwmb02_iu_betreuer_app.data.dao.FirebaseStorageDao;
 import de.iu.iwmb02_iu_betreuer_app.model.Supervisor;
+import de.iu.iwmb02_iu_betreuer_app.presentation.activities.ActivityStarter;
 import de.iu.iwmb02_iu_betreuer_app.util.Callback;
 
 public class SupervisorRecyclerAdapter extends FirestoreRecyclerAdapter<Supervisor, SupervisorRecyclerAdapter.SupervisorViewHolder> {
@@ -43,6 +44,15 @@ public class SupervisorRecyclerAdapter extends FirestoreRecyclerAdapter<Supervis
                 holder.imgSupervisorProfilePicture.setImageBitmap(bmp);
             }
         });
+
+        holder.imgSupervisorProfilePicture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ActivityStarter.startSupervisorDetailsActivity(holder.imgSupervisorProfilePicture.getContext(),supervisor);
+            }
+        });
+
+
     }
 
     public class SupervisorViewHolder extends RecyclerView.ViewHolder{

@@ -27,4 +27,10 @@ public class ActivityStarter {
         intent.putExtra("user", user);
         context.startActivity(intent);
     }
+
+    public static void startSupervisorDetailsActivity(Context context, User user){
+        Intent intent = new Intent(context, SupervisorDetailsActivity.class);
+        intent.putExtra("user", user);
+        context.startActivity(intent);
+    }
 }

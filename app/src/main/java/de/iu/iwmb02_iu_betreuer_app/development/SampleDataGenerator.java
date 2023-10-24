@@ -23,6 +23,7 @@ public class SampleDataGenerator {
         students.add(new Student("NSqdIbZZ7AMH1tII092KwwjxYSs2","Tom","Becker","","t.becker@mail.com", "Geschichte", "B.A."));
 
         //Supervisors
+        //TODO: reduce img resolution to 200x200
         supervisors.add(new Supervisor(
                 "xshcPBn95LbTxxd0Ltb5vj1dXl72",
                 "David",

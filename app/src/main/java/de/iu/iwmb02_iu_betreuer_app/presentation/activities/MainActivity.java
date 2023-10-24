@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements FirebaseAuth.Auth
                     if (user instanceof Student) {
                         Log.d(TAG, "Logged in User is a student");
                         ActivityStarter.startSupervisorBoardActivity(context, user);
+                        MainActivity.this.finish();
                     } else if (user instanceof Supervisor) {
                         Log.d(TAG, "Logged in user is a supervisor");
                         //TODO: implement thesis overview activity
@@ -60,7 +61,6 @@ public class MainActivity extends AppCompatActivity implements FirebaseAuth.Auth
             });
         }
     }
-
 
     private void setItemClickListener(ImageView logoutImageView) {
         logoutImageView.setOnClickListener(new ImageView.OnClickListener() {
@@ -101,5 +101,6 @@ public class MainActivity extends AppCompatActivity implements FirebaseAuth.Auth
         Log.d(TAG, "logOutUser: Logging out");
         AuthUI.getInstance().signOut(this);
         Toast.makeText(context, getString(R.string.logged_out), Toast.LENGTH_SHORT).show();
+        this.finish();
     }
 }

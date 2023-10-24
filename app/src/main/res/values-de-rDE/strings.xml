@@ -34,4 +34,7 @@
     <string name="supervisor_image">Betreuer:in-Bild</string>
     <string name="study_fields_label">Studienbereiche</string>
     <string name="upload_data">Daten hochladen</string>
+    <string name="supervisor_languages_string_placeholder">Sprachen: %s</string>
+    <string name="language_german">Deutsch</string>
+    <string name="language_english">Englisch</string>
 </resources>

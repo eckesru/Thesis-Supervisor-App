@@ -33,4 +33,7 @@
     <string name="supervisor_image">Supervisor-Image</string>
     <string name="study_fields_label">Study fields</string>
     <string name="upload_data">upload data</string>
+    <string name="supervisor_languages_string_placeholder">Languages: %s</string>
+    <string name="language_german">German</string>
+    <string name="language_english">English</string>
 </resources>

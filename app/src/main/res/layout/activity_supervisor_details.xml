@@ -29,16 +29,18 @@
 
         <TextView
             android:id="@+id/supervisorDescriptionTextView"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
             android:maxLines="5"
-            android:minLines="5"
+            android:minLines="1"
             android:text="@string/supervisor_description_string_placeholder"
             android:textAlignment="textStart"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/supervisorEmailTextView" />
+            app:layout_constraintTop_toBottomOf="@+id/supervisorLanguageTextView" />
 
             <ImageView
                 android:id="@+id/supervisorImageView"
@@ -99,6 +101,16 @@
             android:text="@string/email_string_placeholder"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/supervisorNameTextView" />
+
+        <TextView
+            android:id="@+id/supervisorLanguageTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/email_string_placeholder"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/supervisorEmailTextView" />
 
         <TextView
             android:id="@+id/studyFieldsTextView"

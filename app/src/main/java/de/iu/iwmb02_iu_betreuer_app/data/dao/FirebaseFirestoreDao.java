@@ -26,7 +26,6 @@ public class FirebaseFirestoreDao implements StudentDao, SupervisorDao, ThesisDa
 
     private final CollectionReference studentsCollectionRef;
     private final CollectionReference supervisorsCollectionRef;
-
     private final CollectionReference thesesCollectionRef;
     private final CollectionReference usersCollectionRef;
 

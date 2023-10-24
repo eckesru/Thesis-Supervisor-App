@@ -1,11 +1,17 @@
 package de.iu.iwmb02_iu_betreuer_app.presentation.activities;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.OpenableColumns;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -42,7 +48,10 @@ public class ThesisRequestActivity extends AppCompatActivity implements Firebase
     private TextView supervisorNameTextView;
     private TextView studentNameTextView;
     private TextView studentStudyProgramTextView;
+    private TextView exposeFilePathTextView;
     private EditText thesisTitleEditText;
+    private ActivityResultLauncher<Intent> pdfPickerLauncher;
+    private Uri exposeUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,12 +69,27 @@ public class ThesisRequestActivity extends AppCompatActivity implements Firebase
         supervisorNameTextView = findViewById(R.id.supervisorNameTextView);
         studentNameTextView = findViewById(R.id.studentNameTextView);
         studentStudyProgramTextView = findViewById(R.id.studentStudyProgramTextView);
+        exposeFilePathTextView = findViewById(R.id.exposeFilePathTextView);
         thesisTitleEditText = findViewById(R.id.thesisTitleEditText);
 
         setOnClickListeners();
 
         getSupervisorData();
         getStudentData();
+
+        pdfPickerLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == Activity.RESULT_OK) {
+                        Intent data = result.getData();
+                        if (data != null) {
+                            exposeUri = data.getData();
+                            String pdfName = getFileName(exposeUri);
+                            exposeFilePathTextView.setText(pdfName);
+                        }
+                    } else {
+                        Toast.makeText(ThesisRequestActivity.this, "No PDF selected", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
 
@@ -108,12 +132,49 @@ public class ThesisRequestActivity extends AppCompatActivity implements Firebase
             }
         });
 
+        exposeUploadButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openPdfPicker();
+            }
+        });
+
         submitThesisRequestButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ActivityStarter.startThesisRequestActivity(context, supervisor);
+                //TODO: implement validation (is URI null, is thesis title filled?,...)
+                firebaseStorageDao.uploadExpose(exposeUri, new Callback<String>() {
+                    @Override
+                    public void onCallback(String exposePath) {
+                        System.out.println(exposePath);
+                    }
+                });
             }
         });
+    }
+
+    private void openPdfPicker() {
+        Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+        intent.setType("application/pdf");
+        pdfPickerLauncher.launch(intent);
+    }
+
+    private String getFileName(Uri uri) {
+        String result = null;
+        if (uri.getScheme().equals("content")) {
+            try (Cursor cursor = getContentResolver().query(uri, null, null, null, null)) {
+                if (cursor != null && cursor.moveToFirst()) {
+                    int columnIndex = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME);
+                    if (columnIndex != -1) {
+                        result = cursor.getString(columnIndex);
+                    }
+                }
+            }
+        }
+        if (result == null) {
+            result = uri.getLastPathSegment();
+        }
+        return result;
     }
 
     @Override

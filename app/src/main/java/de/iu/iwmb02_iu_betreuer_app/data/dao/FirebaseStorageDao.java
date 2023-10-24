@@ -2,7 +2,7 @@ package de.iu.iwmb02_iu_betreuer_app.data.dao;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.Image;
+import android.net.Uri;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -11,6 +11,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import de.iu.iwmb02_iu_betreuer_app.util.Callback;
 
@@ -52,7 +53,22 @@ public class FirebaseStorageDao implements FileStorageDao{
     }
 
     @Override
-    public void uploadImage(Image image) {
+    public void uploadExpose(Uri file, Callback<String> callback) {
+        StorageReference riversRef = storageRef.child("exposes/"+file.getLastPathSegment());
+        UploadTask uploadTask = riversRef.putFile(file);
 
+        uploadTask.addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.e(TAG, "Expose upload failed", e);
+            }
+        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                Log.d(TAG, "Expose successfully uploaded");
+                callback.onCallback(taskSnapshot.getStorage().getPath());
+            }
+        });
     }
+
 }

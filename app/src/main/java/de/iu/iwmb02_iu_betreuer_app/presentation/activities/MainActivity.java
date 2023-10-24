@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements FirebaseAuth.Auth
     private static final String TAG = "MainActivity";
     private final Context context = MainActivity.this;
     private FirebaseAuth auth;
+    private ImageView logoutImageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +35,8 @@ public class MainActivity extends AppCompatActivity implements FirebaseAuth.Auth
 
         auth = FirebaseAuth.getInstance();
 
-        ImageView logoutImageView = findViewById(R.id.menuItem_logout);
-        setItemClickListener(logoutImageView);
+        logoutImageView = findViewById(R.id.menuItem_logout);
+        setItemClickListener();
 
         //TODO: Delete - Just for development
         //FirestoreTools tools = new FirestoreTools();
@@ -62,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements FirebaseAuth.Auth
         }
     }
 
-    private void setItemClickListener(ImageView logoutImageView) {
+    private void setItemClickListener() {
         logoutImageView.setOnClickListener(new ImageView.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -26,7 +26,7 @@
     <string name="expose_filepath_placeholder">File: %s</string>
     <string name="thesis_submit_form_title">Thesis request form</string>
     <string name="expose_label">Exposé</string>
-    <string name="thesis_topic_label">Thesis topic</string>
+    <string name="thesis_title_label">Thesis title</string>
     <string name="supervisor_description_string_placeholder">Description: %s</string>
     <string name="topic_string_placeholder">Topic: %s</string>
     <string name="topic_board_title">Topic-Board</string>

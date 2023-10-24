@@ -27,7 +27,7 @@
     <string name="expose_filepath_placeholder">Datei: %s</string>
     <string name="thesis_submit_form_title">Betreuungsanfrage-Formular</string>
     <string name="expose_label">Exposé</string>
-    <string name="thesis_topic_label">Thema der Abschlussarbeit</string>
+    <string name="thesis_title_label">Titel der Abschlussarbeit</string>
     <string name="supervisor_description_string_placeholder">Beschreibung: %s</string>
     <string name="topic_string_placeholder">Thema: %s</string>
     <string name="topic_board_title">Themen-Board</string>

@@ -72,27 +72,13 @@ public class ThesisRequestActivity extends AppCompatActivity implements Firebase
         exposeFilePathTextView = findViewById(R.id.exposeFilePathTextView);
         thesisTitleEditText = findViewById(R.id.thesisTitleEditText);
 
-        setOnClickListeners();
-
         getSupervisorData();
         getStudentData();
 
-        pdfPickerLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
-                result -> {
-                    if (result.getResultCode() == Activity.RESULT_OK) {
-                        Intent data = result.getData();
-                        if (data != null) {
-                            exposeUri = data.getData();
-                            String pdfName = getFileName(exposeUri);
-                            exposeFilePathTextView.setText(pdfName);
-                        }
-                    } else {
-                        Toast.makeText(ThesisRequestActivity.this, "No PDF selected", Toast.LENGTH_SHORT).show();
-                    }
-                });
+        setOnClickListeners();
+
+        initializePdfPicker();
     }
-
-
 
     private void getSupervisorData() {
         Intent intent = getIntent();
@@ -110,7 +96,7 @@ public class ThesisRequestActivity extends AppCompatActivity implements Firebase
                 public void onCallback(User user) {
                     student = (Student) user;
                     studentNameTextView.setText(student.getFullName());
-                    studentStudyProgramTextView.setText(student.getStudyProgram());
+                    studentStudyProgramTextView.setText(student.getStudyProgram() + " " + student.getStudyLevel());
                 }
             });
         }
@@ -142,7 +128,15 @@ public class ThesisRequestActivity extends AppCompatActivity implements Firebase
         submitThesisRequestButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO: implement validation (is URI null, is thesis title filled?,...)
+                if(thesisTitleEditText.getText().toString().isEmpty()){
+                    Toast.makeText(ThesisRequestActivity.this, "Thesis title can't be empty", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                //TODO: add expose upload validation
+//                if(exposeFilePathTextView.getText().toString().isEmpty()){
+//                    Toast.makeText(ThesisRequestActivity.this, "Please upload an expose to submit", Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
                 firebaseStorageDao.uploadExpose(exposeUri, new Callback<String>() {
                     @Override
                     public void onCallback(String exposePath) {
@@ -151,6 +145,22 @@ public class ThesisRequestActivity extends AppCompatActivity implements Firebase
                 });
             }
         });
+    }
+
+    private void initializePdfPicker() {
+        pdfPickerLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == Activity.RESULT_OK) {
+                        Intent data = result.getData();
+                        if (data != null) {
+                            exposeUri = data.getData();
+                            String pdfName = getFileName(exposeUri);
+                            exposeFilePathTextView.setText(pdfName);
+                        }
+                    } else {
+                        Toast.makeText(ThesisRequestActivity.this, "No PDF selected", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
     private void openPdfPicker() {
@@ -195,7 +205,6 @@ public class ThesisRequestActivity extends AppCompatActivity implements Firebase
             ActivityStarter.startLoginActivity(context);
             this.finish();
         }
-
     }
 
     private void logOutUser(){

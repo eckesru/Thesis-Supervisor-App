@@ -1,6 +1,7 @@
 package de.iu.iwmb02_iu_betreuer_app.model;
 
 import com.google.firebase.firestore.DocumentId;
+import com.google.firebase.firestore.Exclude;
 
 import java.io.Serializable;
 
@@ -62,5 +63,14 @@ public abstract class User implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Exclude
+    public String getFullName() {
+        String title = getNameTitle();
+        String first = getNameFirst();
+        String last = getNameLast();
+
+        return (title.isEmpty() ? "" : title + " ") + first + " " + last;
     }
 }

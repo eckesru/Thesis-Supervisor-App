@@ -54,14 +54,6 @@ public class Supervisor extends User{
         this.languages = languages;
     }
 
-    public String getFullName() {
-        String title = getNameTitle();
-        String first = getNameFirst();
-        String last = getNameLast();
-
-        return (title.isEmpty() ? "" : title + " ") + first + " " + last;
-    }
-
 
     @NonNull
     @Override

@@ -32,4 +32,5 @@
     <string name="topic_board_title">Topic-Board</string>
     <string name="supervisor_image">Supervisor-Image</string>
     <string name="study_fields_label">Study fields</string>
+    <string name="upload_data">upload data</string>
 </resources>

@@ -33,4 +33,11 @@ public class ActivityStarter {
         intent.putExtra("user", user);
         context.startActivity(intent);
     }
+
+    public static void startThesisRequestActivity(Context context, User user){
+        Intent intent = new Intent(context, ThesisRequestActivity.class);
+        intent.putExtra("user", user);
+        context.startActivity(intent);
+    }
+
 }

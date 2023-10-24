@@ -9,6 +9,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -28,8 +29,8 @@ public class SupervisorDetailsActivity extends AppCompatActivity implements Fire
     private final Context context = SupervisorDetailsActivity.this;
     private Supervisor supervisor;
     private FirebaseStorageDao firebaseStorageDao;
-
     private ImageButton supervisorDetailsBackButton;
+    private Button startThesisRequestButton;
     private ImageView menuItem_logout;
     private ImageView supervisorImageView;
     private TextView supervisorNameTextView;
@@ -41,9 +42,11 @@ public class SupervisorDetailsActivity extends AppCompatActivity implements Fire
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_supervisor_details);
+
         firebaseStorageDao = FirebaseStorageDao.getInstance();
 
         supervisorDetailsBackButton = findViewById(R.id.supervisorDetailsBackButton);
+        startThesisRequestButton = findViewById(R.id.startThesisRequestButton);
         menuItem_logout = findViewById(R.id.menuItem_logout);
 
         supervisorImageView = findViewById(R.id.supervisorImageView);
@@ -54,13 +57,13 @@ public class SupervisorDetailsActivity extends AppCompatActivity implements Fire
 
         setOnClickListeners();
 
-        getTutorFromIntentExtra();
+        getSupervisorFromIntentExtra();
         displayProfileImage();
         fillSupervisorDetails();
     }
 
 
-    private void getTutorFromIntentExtra() {
+    private void getSupervisorFromIntentExtra() {
         Intent intent = getIntent();
         if(intent.hasExtra("user")){
             supervisor = (Supervisor) intent.getSerializableExtra("user");
@@ -101,6 +104,13 @@ public class SupervisorDetailsActivity extends AppCompatActivity implements Fire
             public void onClick(View view) {
                 onBackPressed();
                 finish();
+            }
+        });
+
+        startThesisRequestButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ActivityStarter.startThesisRequestActivity(context, supervisor);
             }
         });
     }

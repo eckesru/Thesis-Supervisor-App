@@ -18,14 +18,17 @@
         android:orientation="vertical"
         android:paddingStart="6dp"
         android:paddingEnd="6dp">
-    <ImageView
+
+        <ImageView
             android:id="@+id/supervisorImageView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="5dp"
+            android:background="@drawable/standard_image"
+            android:clipToOutline="true"
             android:minWidth="130dp"
             android:minHeight="130dp"
             app:layout_constraintBottom_toTopOf="@+id/supervisorNameTextView"
@@ -34,7 +37,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0"
             app:srcCompat="@drawable/fui_ic_anonymous_white_24dp"
-        tools:ignore="ContentDescription" />
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/supervisorNameTextView"

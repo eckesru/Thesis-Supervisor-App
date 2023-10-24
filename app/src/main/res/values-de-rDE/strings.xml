@@ -32,4 +32,5 @@
     <string name="topic_string_placeholder">Thema: %s</string>
     <string name="topic_board_title">Themen-Board</string>
     <string name="supervisor_image">Betreuer:in-Bild</string>
+    <string name="study_fields_label">Studienbereiche</string>
 </resources>

@@ -31,4 +31,5 @@
     <string name="topic_string_placeholder">Topic: %s</string>
     <string name="topic_board_title">Topic-Board</string>
     <string name="supervisor_image">Supervisor-Image</string>
+    <string name="study_fields_label">Study fields</string>
 </resources>

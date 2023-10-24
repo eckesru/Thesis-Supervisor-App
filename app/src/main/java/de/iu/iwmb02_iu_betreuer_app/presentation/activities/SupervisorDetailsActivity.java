@@ -35,7 +35,7 @@ public class SupervisorDetailsActivity extends AppCompatActivity implements Fire
     private TextView supervisorNameTextView;
     private TextView supervisorEmailTextView;
     private TextView supervisorDescriptionTextView;
-    private TextView topicCategoriesListTextView;
+    private TextView studyFieldsListTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +50,7 @@ public class SupervisorDetailsActivity extends AppCompatActivity implements Fire
         supervisorNameTextView = findViewById(R.id.supervisorNameTextView);
         supervisorEmailTextView = findViewById(R.id.supervisorEmailTextView);
         supervisorDescriptionTextView = findViewById(R.id.supervisorDescriptionTextView);
-        topicCategoriesListTextView = findViewById(R.id.topicCategoriesListTextView);
+        studyFieldsListTextView = findViewById(R.id.studyFieldsListTextView);
 
         setOnClickListeners();
 
@@ -80,7 +80,12 @@ public class SupervisorDetailsActivity extends AppCompatActivity implements Fire
         supervisorNameTextView.setText(supervisor.getFullName());
         supervisorEmailTextView.setText(supervisor.getEmail());
         supervisorDescriptionTextView.setText(supervisor.getProfileDescription());
-        //topicCategoriesListTextView.setText(supervisor.getStudyFields());
+
+        StringBuilder sb = new StringBuilder();
+        for (String studyfield: supervisor.getStudyFields()){
+            sb.append(studyfield + "\n");
+        }
+        studyFieldsListTextView.setText(sb);
     }
 
     public void setOnClickListeners(){

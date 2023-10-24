@@ -27,8 +27,10 @@ public class SupervisorDetailsActivity extends AppCompatActivity implements Fire
 
     private static final String TAG = "SupervisorDetailsActivity";
     private final Context context = SupervisorDetailsActivity.this;
-    private Supervisor supervisor;
+
+    private FirebaseAuth auth;
     private FirebaseStorageDao firebaseStorageDao;
+    private Supervisor supervisor;
     private ImageButton supervisorDetailsBackButton;
     private Button startThesisRequestButton;
     private ImageView menuItem_logout;
@@ -43,6 +45,7 @@ public class SupervisorDetailsActivity extends AppCompatActivity implements Fire
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_supervisor_details);
 
+        auth = FirebaseAuth.getInstance();
         firebaseStorageDao = FirebaseStorageDao.getInstance();
 
         supervisorDetailsBackButton = findViewById(R.id.supervisorDetailsBackButton);
@@ -113,6 +116,18 @@ public class SupervisorDetailsActivity extends AppCompatActivity implements Fire
                 ActivityStarter.startThesisRequestActivity(context, supervisor);
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        auth.addAuthStateListener(this);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        auth.removeAuthStateListener(this);
     }
 
     public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {

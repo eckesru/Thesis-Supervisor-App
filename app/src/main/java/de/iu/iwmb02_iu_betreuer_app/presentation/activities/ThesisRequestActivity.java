@@ -116,6 +116,18 @@ public class ThesisRequestActivity extends AppCompatActivity implements Firebase
         });
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        auth.addAuthStateListener(this);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        auth.removeAuthStateListener(this);
+    }
+
     public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
         if (firebaseAuth.getCurrentUser() == null) {
             Log.d(TAG, "onAuthStateChanged: No user signed in. Starting LoginActivity");

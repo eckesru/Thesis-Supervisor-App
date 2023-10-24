@@ -4,9 +4,6 @@ import androidx.annotation.NonNull;
 
 import com.google.firebase.firestore.DocumentId;
 
-import de.iu.iwmb02_iu_betreuer_app.data.BillingStateEnum;
-import de.iu.iwmb02_iu_betreuer_app.data.ThesisStateEnum;
-
 public class Thesis {
     @DocumentId
     private String thesisId;
@@ -14,14 +11,14 @@ public class Thesis {
     private String studentId;
     private String primarySupervisorId;
     private String secondarySupervisorId;
-    private ThesisStateEnum thesisState;
-    private BillingStateEnum billingState;
+    private String thesisState;
+    private String billingState;
     private String exposeId;
 
     public Thesis() {
     }
 
-    public Thesis(String title, String studentId, String primarySupervisorId, String secondarySupervisorId, ThesisStateEnum thesisState, BillingStateEnum billingState, String exposeId) {
+    public Thesis(String title, String studentId, String primarySupervisorId, String secondarySupervisorId, String thesisState, String billingState, String exposeId) {
         this.title = title;
         this.studentId = studentId;
         this.primarySupervisorId = primarySupervisorId;
@@ -67,19 +64,19 @@ public class Thesis {
         this.secondarySupervisorId = secondarySupervisorId;
     }
 
-    public ThesisStateEnum getThesisState() {
+    public String getThesisState() {
         return thesisState;
     }
 
-    public void setThesisState(ThesisStateEnum thesisState) {
+    public void setThesisState(String thesisState) {
         this.thesisState = thesisState;
     }
 
-    public BillingStateEnum getBillingState() {
+    public String getBillingState() {
         return billingState;
     }
 
-    public void setBillingState(BillingStateEnum billingState) {
+    public void setBillingState(String billingState) {
         this.billingState = billingState;
     }
 

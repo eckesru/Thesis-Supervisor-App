@@ -35,6 +35,14 @@
     <string name="study_fields_label">Studienbereiche</string>
     <string name="upload_data">Daten hochladen</string>
     <string name="supervisor_languages_string_placeholder">Sprachen: %s</string>
-    <string name="language_german">Deutsch</string>
-    <string name="language_english">Englisch</string>
+    <string name="german">Deutsch</string>
+    <string name="english">Englisch</string>
+    <string name ="open">Offen</string>
+    <string name ="consulation">In Abstimung</string>
+    <string name ="registered">Registriert</string>
+    <string name ="submitted">Abgegeben</string>
+    <string name ="colloquium">Kolloquium</string>
+    <string name ="completed">Abgeschlossen</string>
+    <string name ="canceled">Abgebrochen</string>
+    <string name ="billed">Verrechnet</string>
 </resources>

@@ -34,6 +34,14 @@
     <string name="study_fields_label">Study fields</string>
     <string name="upload_data">upload data</string>
     <string name="supervisor_languages_string_placeholder">Languages: %s</string>
-    <string name="language_german">German</string>
-    <string name="language_english">English</string>
+    <string name="german">German</string>
+    <string name="english">English</string>
+    <string name ="open">Open</string>
+    <string name ="consulation">Consulation</string>
+    <string name ="registered">Registered</string>
+    <string name ="submitted">Submitted</string>
+    <string name ="colloquium">Colloquium</string>
+    <string name ="completed">Completed</string>
+    <string name ="canceled">Canceled</string>
+    <string name ="billed">Billed</string>
 </resources>

@@ -25,11 +25,14 @@ import com.firebase.ui.auth.AuthUI;
 import com.google.firebase.auth.FirebaseAuth;
 
 import de.iu.iwmb02_iu_betreuer_app.R;
+import de.iu.iwmb02_iu_betreuer_app.data.BillingStateEnum;
+import de.iu.iwmb02_iu_betreuer_app.data.ThesisStateEnum;
 import de.iu.iwmb02_iu_betreuer_app.data.dao.FirebaseFirestoreDao;
 import de.iu.iwmb02_iu_betreuer_app.data.dao.FirebaseStorageDao;
 import de.iu.iwmb02_iu_betreuer_app.data.dao.UserDao;
 import de.iu.iwmb02_iu_betreuer_app.model.Student;
 import de.iu.iwmb02_iu_betreuer_app.model.Supervisor;
+import de.iu.iwmb02_iu_betreuer_app.model.Thesis;
 import de.iu.iwmb02_iu_betreuer_app.model.User;
 import de.iu.iwmb02_iu_betreuer_app.util.Callback;
 
@@ -38,6 +41,7 @@ public class ThesisRequestActivity extends AppCompatActivity implements Firebase
     private static final String TAG = "ThesisRequestActivity";
     private final Context context = ThesisRequestActivity.this;
     private FirebaseAuth auth;
+    private FirebaseFirestoreDao firebaseFirestoreDao;
     private FirebaseStorageDao firebaseStorageDao;
     private Supervisor supervisor;
     private Student student;
@@ -60,6 +64,7 @@ public class ThesisRequestActivity extends AppCompatActivity implements Firebase
         setContentView(R.layout.activity_thesis_request);
 
         auth = FirebaseAuth.getInstance();
+        firebaseFirestoreDao = FirebaseFirestoreDao.getInstance();
         firebaseStorageDao = FirebaseStorageDao.getInstance();
 
         thesisRequestBackButton = findViewById(R.id.thesisRequestBackButton);
@@ -134,6 +139,15 @@ public class ThesisRequestActivity extends AppCompatActivity implements Firebase
                     firebaseStorageDao.uploadExpose(exposeUri, new Callback<String>() {
                         @Override
                         public void onCallback(String exposePath) {
+                            Thesis thesis = new Thesis(
+                                    thesisTitleEditText.getText().toString(),
+                                    student.getUserId(),
+                                    supervisor.getUserId(),
+                                    "",
+                                    ThesisStateEnum.open.toString(),
+                                    BillingStateEnum.open.toString(),
+                                    exposePath);
+                            firebaseFirestoreDao.saveNewThesis(thesis);
                             Toast.makeText(ThesisRequestActivity.this, "Thesis request submitted", Toast.LENGTH_SHORT).show();
                             //TODO: implement navigation to success page
                         }

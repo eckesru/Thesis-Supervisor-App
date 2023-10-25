@@ -45,7 +45,7 @@ public class SupervisorRecyclerAdapter extends FirestoreRecyclerAdapter<Supervis
             }
         });
 
-        holder.imgSupervisorProfilePicture.setOnClickListener(new View.OnClickListener() {
+        holder.itemSupervisorConstraintView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ActivityStarter.startSupervisorDetailsActivity(holder.imgSupervisorProfilePicture.getContext(),supervisor);
@@ -57,11 +57,13 @@ public class SupervisorRecyclerAdapter extends FirestoreRecyclerAdapter<Supervis
 
     public class SupervisorViewHolder extends RecyclerView.ViewHolder{
         private final TextView txtSupervisorName;
+        private final View itemSupervisorConstraintView;
         private final ImageView imgSupervisorProfilePicture;
 
         public SupervisorViewHolder(@NonNull View itemView) {
             super(itemView);
             txtSupervisorName = itemView.findViewById(R.id.supervisorNameTextView);
+            itemSupervisorConstraintView = itemView.findViewById(R.id.itemSupervisorConstraintView);
             imgSupervisorProfilePicture = itemView.findViewById(R.id.supervisorImageView);
         }
     }

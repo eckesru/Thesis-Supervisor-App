@@ -18,6 +18,8 @@ import android.widget.Toast;
 import com.firebase.ui.auth.AuthUI;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.ArrayList;
+
 import de.iu.iwmb02_iu_betreuer_app.R;
 import de.iu.iwmb02_iu_betreuer_app.data.dao.FirebaseStorageDao;
 import de.iu.iwmb02_iu_betreuer_app.model.Supervisor;
@@ -37,6 +39,7 @@ public class SupervisorDetailsActivity extends AppCompatActivity implements Fire
     private ImageView supervisorImageView;
     private TextView supervisorNameTextView;
     private TextView supervisorEmailTextView;
+    private TextView supervisorLanguageTextView;
     private TextView supervisorDescriptionTextView;
     private TextView studyFieldsListTextView;
 
@@ -55,15 +58,17 @@ public class SupervisorDetailsActivity extends AppCompatActivity implements Fire
         supervisorImageView = findViewById(R.id.supervisorImageView);
         supervisorNameTextView = findViewById(R.id.supervisorNameTextView);
         supervisorEmailTextView = findViewById(R.id.supervisorEmailTextView);
+        supervisorLanguageTextView = findViewById(R.id.supervisorLanguageTextView);
         supervisorDescriptionTextView = findViewById(R.id.supervisorDescriptionTextView);
         studyFieldsListTextView = findViewById(R.id.studyFieldsListTextView);
 
         setOnClickListeners();
 
         getSupervisorFromIntentExtra();
-        displayProfileImage();
-        fillSupervisorDetails();
+        displaySupervisorProfileImage();
+        fillSupervisorTextViews();
     }
+
 
 
     private void getSupervisorFromIntentExtra() {
@@ -73,7 +78,7 @@ public class SupervisorDetailsActivity extends AppCompatActivity implements Fire
         }
     }
 
-    private void displayProfileImage() {
+    private void displaySupervisorProfileImage() {
         firebaseStorageDao.downloadImage(supervisor.getProfilePictureUrl(), new Callback<Bitmap>() {
             @Override
             public void onCallback(Bitmap bmp) {
@@ -82,14 +87,23 @@ public class SupervisorDetailsActivity extends AppCompatActivity implements Fire
         });
     }
 
-    private void fillSupervisorDetails() {
+    private void fillSupervisorTextViews() {
         supervisorNameTextView.setText(supervisor.getFullName());
-        supervisorEmailTextView.setText(supervisor.getEmail());
-        supervisorDescriptionTextView.setText(supervisor.getProfileDescription());
+        supervisorEmailTextView.setText(this.getString(R.string.email_string_placeholder,supervisor.getEmail()));
 
-        StringBuilder sb = new StringBuilder();
+        ArrayList<String> languageList = supervisor.getLanguages();
+        StringBuilder sb = new StringBuilder(languageList.get(0));
+        for (int i = 1; i<languageList.size();i++){
+            sb.append(", " + languageList.get(i));
+        }
+
+        supervisorLanguageTextView.setText(this.getString(R.string.supervisor_languages_string_placeholder,sb));
+        supervisorDescriptionTextView.setText(this.getString(R.string.supervisor_description_string_placeholder,supervisor.getProfileDescription()));
+
+        sb = new StringBuilder();
+        char bulletSymbol='\u2022';
         for (String studyfield: supervisor.getStudyFields()){
-            sb.append(studyfield + "\n");
+            sb.append(bulletSymbol + " " + studyfield + "\n");
         }
         studyFieldsListTextView.setText(sb);
     }

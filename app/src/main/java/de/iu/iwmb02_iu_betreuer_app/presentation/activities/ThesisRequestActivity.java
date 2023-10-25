@@ -52,6 +52,7 @@ public class ThesisRequestActivity extends AppCompatActivity implements Firebase
     private EditText thesisTitleEditText;
     private ActivityResultLauncher<Intent> pdfPickerLauncher;
     private Uri exposeUri;
+    private boolean isValidThesisData = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,7 +85,7 @@ public class ThesisRequestActivity extends AppCompatActivity implements Firebase
         Intent intent = getIntent();
         if(intent.hasExtra("user")){
             supervisor = (Supervisor) intent.getSerializableExtra("user");
-            supervisorNameTextView.setText(supervisor.getFullName());
+            supervisorNameTextView.setText(this.getString(R.string.supervisor_name_string_placeholder,supervisor.getFullName()));
         }
     }
 
@@ -95,8 +96,8 @@ public class ThesisRequestActivity extends AppCompatActivity implements Firebase
                 @Override
                 public void onCallback(User user) {
                     student = (Student) user;
-                    studentNameTextView.setText(student.getFullName());
-                    studentStudyProgramTextView.setText(student.getStudyProgram() + " " + student.getStudyLevel());
+                    studentNameTextView.setText(ThesisRequestActivity.this.getString(R.string.student_name_string_placeholder,student.getFullName()));
+                    studentStudyProgramTextView.setText(ThesisRequestActivity.this.getString(R.string.student_study_program_string_placeholder,student.getStudyProgram() + " " + student.getStudyLevel()));
                 }
             });
         }
@@ -128,23 +129,30 @@ public class ThesisRequestActivity extends AppCompatActivity implements Firebase
         submitThesisRequestButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(thesisTitleEditText.getText().toString().isEmpty()){
-                    Toast.makeText(ThesisRequestActivity.this, "Thesis title can't be empty", Toast.LENGTH_SHORT).show();
-                    return;
+                validateThesisData();
+                if(isValidThesisData){
+                    firebaseStorageDao.uploadExpose(exposeUri, new Callback<String>() {
+                        @Override
+                        public void onCallback(String exposePath) {
+                            Toast.makeText(ThesisRequestActivity.this, "Thesis request submitted", Toast.LENGTH_SHORT).show();
+                            //TODO: implement navigation to success page
+                        }
+                    });
                 }
-                //TODO: add expose upload validation
-//                if(exposeFilePathTextView.getText().toString().isEmpty()){
-//                    Toast.makeText(ThesisRequestActivity.this, "Please upload an expose to submit", Toast.LENGTH_SHORT).show();
-//                    return;
-//                }
-                firebaseStorageDao.uploadExpose(exposeUri, new Callback<String>() {
-                    @Override
-                    public void onCallback(String exposePath) {
-                        System.out.println(exposePath);
-                    }
-                });
             }
         });
+    }
+
+    private void validateThesisData(){
+        if(thesisTitleEditText.getText().toString().isEmpty()){
+            Toast.makeText(ThesisRequestActivity.this, "Thesis title can't be empty", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(exposeFilePathTextView.getText().toString().equals(getString(R.string.expose_filepath_placeholder))){
+            Toast.makeText(ThesisRequestActivity.this, "Please upload an expose to submit", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        isValidThesisData = true;
     }
 
     private void initializePdfPicker() {

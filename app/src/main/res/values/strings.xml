@@ -23,7 +23,7 @@
     <string name="student_name_string_placeholder">Student: %s</string>
     <string name="supervisor_name_string_placeholder">Supervisor: %s</string>
     <string name="student_study_program_string_placeholder">Study program: %s</string>
-    <string name="expose_filepath_placeholder">File: %s</string>
+    <string name="expose_filepath_placeholder">File: [empty]</string>
     <string name="thesis_submit_form_title">Thesis request form</string>
     <string name="expose_label">Exposé</string>
     <string name="thesis_title_label">Thesis title</string>

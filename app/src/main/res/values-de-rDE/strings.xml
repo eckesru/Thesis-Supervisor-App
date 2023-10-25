@@ -24,7 +24,7 @@
     <string name="student_name_string_placeholder">Student:in: %s</string>
     <string name="supervisor_name_string_placeholder">Betreuer:in: %s</string>
     <string name="student_study_program_string_placeholder">Studiengang: %s</string>
-    <string name="expose_filepath_placeholder">Datei: %s</string>
+    <string name="expose_filepath_placeholder">Datei: [leer]</string>
     <string name="thesis_submit_form_title">Betreuungsanfrage-Formular</string>
     <string name="expose_label">Exposé</string>
     <string name="thesis_title_label">Titel der Abschlussarbeit</string>

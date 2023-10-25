@@ -6,7 +6,7 @@
     <string name="hello">Hello</string>
     <string name="logged_in_as">Signed in as</string>
     <string name="logged_out">Signed out</string>
-    <string name="iu_name">International University \n of Applied Sciences</string>
+    <string name="iu_name">INTERNATIONAL UNIVERSITY</string>
     <string name="welcome_message">Welcome to \n IU Supervisor-App</string>
     <string name="welcome_message_login">Please sign in to proceed</string>
     <string name="supervisor_board_title">Supervisor-Board</string>

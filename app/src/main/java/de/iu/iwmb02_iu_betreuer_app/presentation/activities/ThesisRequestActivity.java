@@ -4,6 +4,7 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.app.Activity;
 import android.content.Context;
@@ -13,6 +14,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.OpenableColumns;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.firebase.auth.FirebaseAuth;
 
 import de.iu.iwmb02_iu_betreuer_app.R;
@@ -81,7 +84,9 @@ public class ThesisRequestActivity extends AppCompatActivity implements Firebase
         getSupervisorData();
         getStudentData();
 
-        setOnClickListeners();
+        MaterialToolbar toolbar = findViewById(R.id.materialToolbar);
+        toolbar.inflateMenu(R.menu.empty_menu);
+        setOnClickListeners(toolbar);
 
         initializePdfPicker();
     }
@@ -108,11 +113,16 @@ public class ThesisRequestActivity extends AppCompatActivity implements Firebase
         }
     }
 
-    public void setOnClickListeners(){
-        menuItem_logout.setOnClickListener(new ImageView.OnClickListener() {
+    public void setOnClickListeners(MaterialToolbar toolbar) {
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
-            public void onClick(View view) {
-                logOutUser();
+            public boolean onMenuItemClick(MenuItem item) {
+                int id = item.getItemId();
+                if (id == R.id.menuItem_logout) {
+                    logOutUser();
+                    return true;
+                }
+                return false;
             }
         });
 

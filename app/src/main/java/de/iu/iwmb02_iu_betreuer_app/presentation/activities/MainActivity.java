@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.firebase.auth.FirebaseAuth;
 
 import de.iu.iwmb02_iu_betreuer_app.R;
@@ -35,13 +36,13 @@ public class MainActivity extends AppCompatActivity implements FirebaseAuth.Auth
 
         auth = FirebaseAuth.getInstance();
 
-        logoutImageView = findViewById(R.id.menuItem_logout);
-        setItemClickListener();
-
         //TODO: Delete - Just for development
         //FirestoreTools tools = new FirestoreTools();
         //tools.deleteAllDBs();
         //tools.populateDatabasesWithSampleData();
+
+        MaterialToolbar toolbar = findViewById(R.id.materialToolbar);
+        toolbar.inflateMenu(R.menu.empty_menu);
 
         UserDao userDao = FirebaseFirestoreDao.getInstance();
         if(auth.getCurrentUser() != null) {

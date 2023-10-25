@@ -15,13 +15,13 @@ import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract;
 import com.firebase.ui.auth.IdpResponse;
 import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult;
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Arrays;
 import java.util.List;
 
 import de.iu.iwmb02_iu_betreuer_app.R;
-
 
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
@@ -43,12 +43,9 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        ImageView toolbarImageView = findViewById(R.id.menuItem_logout);
-        if (toolbarImageView != null) {
-            toolbarImageView.setVisibility(View.INVISIBLE);
-        } else {
-            Log.d("Debug", "ImageView nicht gefunden");
-        }
+        MaterialToolbar toolbar = findViewById(R.id.materialToolbar);
+        toolbar.inflateMenu(R.menu.empty_menu);
+
     }
 
     public void onClick(View view){
@@ -81,7 +78,7 @@ public class LoginActivity extends AppCompatActivity {
         Intent signInIntent = AuthUI.getInstance()
                 .createSignInIntentBuilder()
                 .setAvailableProviders(providers)
-                .setTheme(R.style.LoginStyle)
+                .setTheme(R.style.ToolbarStyle)
                 .setIsSmartLockEnabled(false)
                 .setLogo(R.drawable.iu_logo)
                 .build();

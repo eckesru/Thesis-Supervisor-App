@@ -2,19 +2,20 @@ package de.iu.iwmb02_iu_betreuer_app.presentation.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.ImageView;
+import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.Query;
 
@@ -31,7 +32,6 @@ public class SupervisorBoardActivity extends AppCompatActivity implements Fireba
     private FirebaseFirestoreDao firebaseFirestoreDao;
     private RecyclerView supervisorBoardRecyclerView;
     private SupervisorRecyclerAdapter supervisorRecyclerAdapter;
-    private ImageView menuItem_logout;
     private TextView txtHiUser;
     private User user;
 
@@ -48,11 +48,13 @@ public class SupervisorBoardActivity extends AppCompatActivity implements Fireba
         supervisorBoardRecyclerView.setAdapter(supervisorRecyclerAdapter);
         supervisorBoardRecyclerView.setItemAnimator(null);
 
-        menuItem_logout = findViewById(R.id.menuItem_logout);
         txtHiUser = findViewById(R.id.hiUserNameTextView);
 
         handleUserGreeting();
-        setOnClickListeners();
+
+        MaterialToolbar toolbar = findViewById(R.id.materialToolbar);
+        toolbar.inflateMenu(R.menu.filter_logout_menu);
+        setOnClickListeners(toolbar);
     }
 
     private void handleUserGreeting() {
@@ -65,11 +67,19 @@ public class SupervisorBoardActivity extends AppCompatActivity implements Fireba
         txtHiUser.setText("User");
     }
 
-    public void setOnClickListeners(){
-        menuItem_logout.setOnClickListener(new ImageView.OnClickListener() {
+    public void setOnClickListeners(MaterialToolbar toolbar) {
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
-            public void onClick(View view) {
+            public boolean onMenuItemClick(MenuItem item) {
+                int id = item.getItemId();
+                if (id == R.id.menuItem_logout) {
                     logOutUser();
+                    return true;
+                } else if (id == R.id.menuItem_filter) {
+                   // TODO: Flter-Methode implementieren
+                    return true;
+                }
+                return false;
             }
         });
     }

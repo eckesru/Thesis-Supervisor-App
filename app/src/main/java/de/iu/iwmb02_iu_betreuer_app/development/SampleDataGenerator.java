@@ -31,7 +31,7 @@ public class SampleDataGenerator {
                 "Prof.",
                 "d.mueller@mail.com",
                 new ArrayList<String>(Arrays.asList("Data Science & Articifial Intelligence","Design & Medien")),
-                "profilepictures/supervisor_m2.jpg",
+                "profilepictures/profile_d_mueller.jpg",
                 "Dies ist eine Profilbeschreibung.",
                 new ArrayList<String>(Arrays.asList("Deutsch","Englisch"))));
 
@@ -42,7 +42,7 @@ public class SampleDataGenerator {
                 "Prof. Dr.",
                 "m.hindley@mail.com",
                 new ArrayList<String>(Arrays.asList("Betriebswirtschaft & Management","Personal & Recht")),
-                "profilepictures/supervisor_m1.jpg",
+                "profilepictures/profile_m_hindley.jpg",
                 "Dies ist eine Profilbeschreibung.",
                 new ArrayList<String>(Arrays.asList("Englisch"))));
 
@@ -53,7 +53,7 @@ public class SampleDataGenerator {
                 "Prof. Dr.",
                 "m.schulz@mail.com",
                 new ArrayList<String>(Arrays.asList("Ingenieurswissenschaften","Planung & Controlling")),
-                "profilepictures/supervisor_f1.jpg",
+                "profilepictures/profile_m_schulz.jpg",
                 "Dies ist eine Profilbeschreibung.",
                 new ArrayList<String>(Arrays.asList("Deutsch","Englisch"))));
     }

@@ -1,5 +1,7 @@
 package de.iu.iwmb02_iu_betreuer_app.data;
 
+import android.content.Context;
+
 import de.iu.iwmb02_iu_betreuer_app.R;
 
 public enum ThesisStateEnum {
@@ -11,13 +13,17 @@ public enum ThesisStateEnum {
     completed(R.string.thesis_state_completed),
     canceled(R.string.thesis_state_canceled);
 
-    private int stringResId;
+    private final int stringResId;
 
     ThesisStateEnum(int stringResId) {
         this.stringResId = stringResId;
     }
 
-    public int getStringResId(){
+    public static String getLocalizedString(Context context, String enumName){
+        return context.getString(ThesisStateEnum.valueOf(enumName).getStringResId());
+    }
+
+    private int getStringResId(){
         return stringResId;
     }
 }

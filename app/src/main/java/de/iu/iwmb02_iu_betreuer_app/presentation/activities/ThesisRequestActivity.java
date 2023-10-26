@@ -22,7 +22,6 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.firebase.ui.auth.AuthUI;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -103,7 +102,7 @@ public class ThesisRequestActivity extends AppCompatActivity implements Firebase
                 public void onCallback(User user) {
                     student = (Student) user;
                     studentNameTextView.setText(ThesisRequestActivity.this.getString(R.string.student_name_string_placeholder,student.getFullName()));
-                    studentStudyProgramTextView.setText(ThesisRequestActivity.this.getString(R.string.student_study_program_string_placeholder, getString(StudyProgramEnum.valueOf(student.getStudyProgram()).getStringResId()) + " " + student.getStudyLevel()));
+                    studentStudyProgramTextView.setText(ThesisRequestActivity.this.getString(R.string.student_study_program_string_placeholder, StudyProgramEnum.getLocalizedString(context,student.getStudyProgram())) + " " + student.getStudyLevel());
                 }
             });
         }
@@ -142,8 +141,8 @@ public class ThesisRequestActivity extends AppCompatActivity implements Firebase
                                     student.getUserId(),
                                     supervisor.getUserId(),
                                     "",
-                                    ThesisStateEnum.open.getStringResId(),
-                                    BillingStateEnum.open.getStringResId(),
+                                    ThesisStateEnum.open.name(),
+                                    BillingStateEnum.open.name(),
                                     exposePath);
                             firebaseFirestoreDao.saveNewThesis(thesis);
                             Toast.makeText(ThesisRequestActivity.this, "Thesis request submitted", Toast.LENGTH_SHORT).show();
@@ -225,13 +224,6 @@ public class ThesisRequestActivity extends AppCompatActivity implements Firebase
             ActivityStarter.startLoginActivity(context);
             this.finish();
         }
-    }
-
-    private void logOutUser(){
-        Log.d(TAG, "logOutUser: Logging out");
-        AuthUI.getInstance().signOut(this);
-        Toast.makeText(context, getString(R.string.logged_out), Toast.LENGTH_SHORT).show();
-        this.finish();
     }
 
 }

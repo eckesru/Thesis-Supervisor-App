@@ -11,14 +11,14 @@ public class Thesis {
     private String studentId;
     private String primarySupervisorId;
     private String secondarySupervisorId;
-    private int thesisState;
-    private int billingState;
+    private String thesisState;
+    private String billingState;
     private String exposeId;
 
     public Thesis() {
     }
 
-    public Thesis(String title, String studentId, String primarySupervisorId, String secondarySupervisorId, int thesisState, int billingState, String exposeId) {
+    public Thesis(String title, String studentId, String primarySupervisorId, String secondarySupervisorId, String thesisState, String billingState, String exposeId) {
         this.title = title;
         this.studentId = studentId;
         this.primarySupervisorId = primarySupervisorId;
@@ -64,19 +64,19 @@ public class Thesis {
         this.secondarySupervisorId = secondarySupervisorId;
     }
 
-    public int getThesisState() {
+    public String getThesisState() {
         return thesisState;
     }
 
-    public void setThesisState(int thesisState) {
+    public void setThesisState(String thesisState) {
         this.thesisState = thesisState;
     }
 
-    public int getBillingState() {
+    public String getBillingState() {
         return billingState;
     }
 
-    public void setBillingState(int billingState) {
+    public void setBillingState(String billingState) {
         this.billingState = billingState;
     }
 

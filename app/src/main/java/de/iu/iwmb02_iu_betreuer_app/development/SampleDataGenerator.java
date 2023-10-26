@@ -58,7 +58,7 @@ public class SampleDataGenerator {
                 new ArrayList<String>(Arrays.asList(StudyFieldEnum.engineeringsciences.name(),StudyFieldEnum.planning_controlling.name())),
                 "profilepictures/profile_m_schulz.jpg",
                 "Dies ist eine Profilbeschreibung.",
-                new ArrayList<String>(Arrays.asList(StudyFieldEnum.business_management.name(),StudyFieldEnum.personell_law.name()))));
+                new ArrayList<String>(Arrays.asList(LanguageEnum.german.name(),LanguageEnum.english.name()))));
     }
 
     public ArrayList<Student> getStudents() {

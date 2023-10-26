@@ -1,5 +1,7 @@
 package de.iu.iwmb02_iu_betreuer_app.data;
 
+import android.content.Context;
+
 import de.iu.iwmb02_iu_betreuer_app.R;
 
 public enum StudyFieldEnum {
@@ -10,13 +12,18 @@ public enum StudyFieldEnum {
     business_management(R.string.studyfield_business_management),
     personell_law(R.string.studyfield_personell_law);
 
-    private int stringResId;
+    private final int stringResId;
 
     StudyFieldEnum(int stringResId) {
         this.stringResId = stringResId;
     }
 
-    public int getStringResId(){
+    public static String getLocalizedString(Context context, String enumName){
+        return context.getString(StudyFieldEnum.valueOf(enumName).getStringResId());
+    }
+
+    private int getStringResId(){
         return stringResId;
     }
+
 }

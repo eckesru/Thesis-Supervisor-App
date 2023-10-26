@@ -14,9 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.firebase.ui.auth.AuthUI;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -94,18 +92,18 @@ public class SupervisorDetailsActivity extends AppCompatActivity implements Fire
         supervisorEmailTextView.setText(this.getString(R.string.email_string_placeholder,supervisor.getEmail()));
 
         ArrayList<String> languageList = supervisor.getLanguages();
-        StringBuilder sb = new StringBuilder(getString(LanguageEnum.valueOf(languageList.get(0)).getStringResId()));
+        StringBuilder sb = new StringBuilder(LanguageEnum.getLocalizedString(context,languageList.get(0)));
         for (int i = 1; i<languageList.size();i++){
-            sb.append(", " + getString(LanguageEnum.valueOf(languageList.get(i)).getStringResId()));
+            sb.append(", " + LanguageEnum.getLocalizedString(context,languageList.get(i)));
         }
+        supervisorLanguageTextView.setText(getString(R.string.supervisor_languages_string_placeholder,sb));
 
-        supervisorLanguageTextView.setText(this.getString(R.string.supervisor_languages_string_placeholder,sb));
         supervisorDescriptionTextView.setText(this.getString(R.string.supervisor_description_string_placeholder,supervisor.getProfileDescription()));
 
         sb = new StringBuilder();
         char bulletSymbol='\u2022';
         for (String studyfield: supervisor.getStudyFields()){
-            sb.append(bulletSymbol + " " + getString(StudyFieldEnum.valueOf(studyfield).getStringResId()) + "\n");
+            sb.append(bulletSymbol + " " + StudyFieldEnum.getLocalizedString(context,studyfield) + "\n");
         }
         studyFieldsListTextView.setText(sb);
     }
@@ -152,12 +150,4 @@ public class SupervisorDetailsActivity extends AppCompatActivity implements Fire
         }
 
     }
-
-    private void logOutUser(){
-        Log.d(TAG, "logOutUser: Logging out");
-        AuthUI.getInstance().signOut(this);
-        Toast.makeText(context, getString(R.string.logged_out), Toast.LENGTH_SHORT).show();
-        this.finish();
-    }
-
 }

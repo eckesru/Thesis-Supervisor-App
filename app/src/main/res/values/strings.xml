@@ -57,5 +57,9 @@
     <string name="studyfield_business_management">Business administration &amp; Management</string>
     <string name="studyfield_personell_law">Personnel &amp; Law</string>
 
+    <string name="studyprogram_computerscience">Computer Science</string>
+    <string name="studyprogram_history">History</string>
+    <string name="studyprogram_mathematics">Mathematics</string>
+
 
 </resources>

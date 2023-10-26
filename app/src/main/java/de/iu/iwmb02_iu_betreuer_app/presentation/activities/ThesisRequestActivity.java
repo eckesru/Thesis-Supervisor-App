@@ -28,6 +28,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import de.iu.iwmb02_iu_betreuer_app.R;
 import de.iu.iwmb02_iu_betreuer_app.data.BillingStateEnum;
+import de.iu.iwmb02_iu_betreuer_app.data.StudyProgramEnum;
 import de.iu.iwmb02_iu_betreuer_app.data.ThesisStateEnum;
 import de.iu.iwmb02_iu_betreuer_app.data.dao.FirebaseFirestoreDao;
 import de.iu.iwmb02_iu_betreuer_app.data.dao.FirebaseStorageDao;
@@ -102,7 +103,7 @@ public class ThesisRequestActivity extends AppCompatActivity implements Firebase
                 public void onCallback(User user) {
                     student = (Student) user;
                     studentNameTextView.setText(ThesisRequestActivity.this.getString(R.string.student_name_string_placeholder,student.getFullName()));
-                    studentStudyProgramTextView.setText(ThesisRequestActivity.this.getString(R.string.student_study_program_string_placeholder,student.getStudyProgram() + " " + student.getStudyLevel()));
+                    studentStudyProgramTextView.setText(ThesisRequestActivity.this.getString(R.string.student_study_program_string_placeholder, getString(student.getStudyProgram()) + " " + student.getStudyLevel()));
                 }
             });
         }

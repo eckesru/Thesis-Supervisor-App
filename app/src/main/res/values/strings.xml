@@ -34,8 +34,6 @@
     <string name="study_fields_label">Study fields</string>
     <string name="upload_data">upload data</string>
     <string name="supervisor_languages_string_placeholder">Languages: %s</string>
-    <string name="german">German</string>
-    <string name="english">English</string>
     <string name ="open">Open</string>
     <string name ="consulation">Consulation</string>
     <string name ="registered">Registered</string>
@@ -44,4 +42,16 @@
     <string name ="completed">Completed</string>
     <string name ="canceled">Canceled</string>
     <string name ="billed">Billed</string>
+
+    <string name="language_german">German</string>
+    <string name="language_english">English</string>
+
+    <string name="studyfield_engineeringsciences">Engineering Sciences</string>
+    <string name="studyfield_planning_controlling">Planning &amp; Controlling</string>
+    <string name="studyfield_datascience_ai">Data science &amp; Artificial Intelligence</string>
+    <string name="studyfield_design_media">Design &amp; Media</string>
+    <string name="studyfield_business_management">Business administration &amp; Management</string>
+    <string name="studyfield_personell_law">Personnel &amp; Law</string>
+
+
 </resources>

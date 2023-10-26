@@ -91,10 +91,10 @@ public class SupervisorDetailsActivity extends AppCompatActivity implements Fire
         supervisorNameTextView.setText(supervisor.getFullName());
         supervisorEmailTextView.setText(this.getString(R.string.email_string_placeholder,supervisor.getEmail()));
 
-        ArrayList<String> languageList = supervisor.getLanguages();
-        StringBuilder sb = new StringBuilder(languageList.get(0));
+        ArrayList<Integer> languageList = supervisor.getLanguages();
+        StringBuilder sb = new StringBuilder(getString(languageList.get(0)));
         for (int i = 1; i<languageList.size();i++){
-            sb.append(", " + languageList.get(i));
+            sb.append(", " + getString(languageList.get(i)));
         }
 
         supervisorLanguageTextView.setText(this.getString(R.string.supervisor_languages_string_placeholder,sb));
@@ -102,8 +102,8 @@ public class SupervisorDetailsActivity extends AppCompatActivity implements Fire
 
         sb = new StringBuilder();
         char bulletSymbol='\u2022';
-        for (String studyfield: supervisor.getStudyFields()){
-            sb.append(bulletSymbol + " " + studyfield + "\n");
+        for (int studyfield: supervisor.getStudyFields()){
+            sb.append(bulletSymbol + " " + getString(studyfield) + "\n");
         }
         studyFieldsListTextView.setText(sb);
     }

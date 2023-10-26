@@ -35,8 +35,6 @@
     <string name="study_fields_label">Studienbereiche</string>
     <string name="upload_data">Daten hochladen</string>
     <string name="supervisor_languages_string_placeholder">Sprachen: %s</string>
-    <string name="german">Deutsch</string>
-    <string name="english">Englisch</string>
     <string name ="open">Offen</string>
     <string name ="consulation">In Abstimung</string>
     <string name ="registered">Registriert</string>
@@ -45,4 +43,14 @@
     <string name ="completed">Abgeschlossen</string>
     <string name ="canceled">Abgebrochen</string>
     <string name ="billed">Verrechnet</string>
+
+    <string name="language_german">Deutsch</string>
+    <string name="language_english">Englisch</string>
+
+    <string name="studyfield_engineeringsciences">Ingenieurswissenschaften</string>
+    <string name="studyfield_planning_controlling">Planung &amp; Controlling</string>
+    <string name="studyfield_datascience_ai">Data Science &amp; Artificial Intelligence</string>
+    <string name="studyfield_design_media">Design &amp; Medien</string>
+    <string name="studyfield_business_management">Betriebswirtschaft &amp; Management</string>
+    <string name="studyfield_personell_law">Personal &amp; Recht</string>
 </resources>

@@ -3,6 +3,7 @@ package de.iu.iwmb02_iu_betreuer_app.development;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import de.iu.iwmb02_iu_betreuer_app.R;
 import de.iu.iwmb02_iu_betreuer_app.model.Student;
 import de.iu.iwmb02_iu_betreuer_app.model.Supervisor;
 
@@ -30,10 +31,10 @@ public class SampleDataGenerator {
                 "Müller",
                 "Prof.",
                 "d.mueller@mail.com",
-                new ArrayList<String>(Arrays.asList("Data Science & Articifial Intelligence","Design & Medien")),
+                new ArrayList<Integer>(Arrays.asList(R.string.studyfield_datascience_ai,R.string.studyfield_design_media)),
                 "profilepictures/profile_d_mueller.jpg",
                 "Dies ist eine Profilbeschreibung.",
-                new ArrayList<String>(Arrays.asList("Deutsch","Englisch"))));
+                new ArrayList<Integer>(Arrays.asList(R.string.language_german,R.string.language_english))));
 
         supervisors.add(new Supervisor(
                 "zBpj74f5NaOENmIIMAQksKF44cJ2",
@@ -41,10 +42,10 @@ public class SampleDataGenerator {
                 "Hindley",
                 "Prof. Dr.",
                 "m.hindley@mail.com",
-                new ArrayList<String>(Arrays.asList("Betriebswirtschaft & Management","Personal & Recht")),
+                new ArrayList<Integer>(Arrays.asList(R.string.studyfield_business_management,R.string.studyfield_personell_law)),
                 "profilepictures/profile_m_hindley.jpg",
                 "Dies ist eine Profilbeschreibung.",
-                new ArrayList<String>(Arrays.asList("Englisch"))));
+                new ArrayList<Integer>(Arrays.asList(R.string.language_english))));
 
         supervisors.add(new Supervisor(
                 "Np7QGaYv1TaCuJy0z2Dq2AHDlVZ2",
@@ -52,10 +53,10 @@ public class SampleDataGenerator {
                 "Schulz",
                 "Prof. Dr.",
                 "m.schulz@mail.com",
-                new ArrayList<String>(Arrays.asList("Ingenieurswissenschaften","Planung & Controlling")),
+                new ArrayList<Integer>(Arrays.asList(R.string.studyfield_engineeringsciences,R.string.studyfield_planning_controlling)),
                 "profilepictures/profile_m_schulz.jpg",
                 "Dies ist eine Profilbeschreibung.",
-                new ArrayList<String>(Arrays.asList("Deutsch","Englisch"))));
+                new ArrayList<Integer>(Arrays.asList(R.string.language_german,R.string.language_english))));
     }
 
     public ArrayList<Student> getStudents() {

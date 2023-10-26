@@ -23,6 +23,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import java.util.ArrayList;
 
 import de.iu.iwmb02_iu_betreuer_app.R;
+import de.iu.iwmb02_iu_betreuer_app.data.LanguageEnum;
+import de.iu.iwmb02_iu_betreuer_app.data.StudyFieldEnum;
 import de.iu.iwmb02_iu_betreuer_app.data.dao.FirebaseStorageDao;
 import de.iu.iwmb02_iu_betreuer_app.model.Supervisor;
 import de.iu.iwmb02_iu_betreuer_app.util.Callback;
@@ -91,10 +93,10 @@ public class SupervisorDetailsActivity extends AppCompatActivity implements Fire
         supervisorNameTextView.setText(supervisor.getFullName());
         supervisorEmailTextView.setText(this.getString(R.string.email_string_placeholder,supervisor.getEmail()));
 
-        ArrayList<Integer> languageList = supervisor.getLanguages();
-        StringBuilder sb = new StringBuilder(getString(languageList.get(0)));
+        ArrayList<String> languageList = supervisor.getLanguages();
+        StringBuilder sb = new StringBuilder(getString(LanguageEnum.valueOf(languageList.get(0)).getStringResId()));
         for (int i = 1; i<languageList.size();i++){
-            sb.append(", " + getString(languageList.get(i)));
+            sb.append(", " + getString(LanguageEnum.valueOf(languageList.get(i)).getStringResId()));
         }
 
         supervisorLanguageTextView.setText(this.getString(R.string.supervisor_languages_string_placeholder,sb));
@@ -102,8 +104,8 @@ public class SupervisorDetailsActivity extends AppCompatActivity implements Fire
 
         sb = new StringBuilder();
         char bulletSymbol='\u2022';
-        for (int studyfield: supervisor.getStudyFields()){
-            sb.append(bulletSymbol + " " + getString(studyfield) + "\n");
+        for (String studyfield: supervisor.getStudyFields()){
+            sb.append(bulletSymbol + " " + getString(StudyFieldEnum.valueOf(studyfield).getStringResId()) + "\n");
         }
         studyFieldsListTextView.setText(sb);
     }

@@ -21,9 +21,9 @@ public class SampleDataGenerator {
 
     private void populateLists(){
         //Students
-        students.add(new Student("PDFKi7OU2fdNKP0PXtknTIdGYsZ2","Max","Mustermann","B.Sc.","m.mustermann@mail.com", StudyProgramEnum.computerscience.getStringResId(), "M.Sc."));
-        students.add(new Student("bN5kMCYX0rZCrdaic69rWFRzzml2","Anna","Schmidt","B.Sc.","a.schmidt@mail.com", StudyProgramEnum.mathematics.getStringResId(), "M.Sc."));
-        students.add(new Student("NSqdIbZZ7AMH1tII092KwwjxYSs2","Tom","Becker","","t.becker@mail.com", StudyProgramEnum.history.getStringResId(), "B.A."));
+        students.add(new Student("PDFKi7OU2fdNKP0PXtknTIdGYsZ2","Max","Mustermann","B.Sc.","m.mustermann@mail.com", StudyProgramEnum.computerscience.name(), "M.Sc."));
+        students.add(new Student("bN5kMCYX0rZCrdaic69rWFRzzml2","Anna","Schmidt","B.Sc.","a.schmidt@mail.com", StudyProgramEnum.mathematics.name(), "M.Sc."));
+        students.add(new Student("NSqdIbZZ7AMH1tII092KwwjxYSs2","Tom","Becker","","t.becker@mail.com", StudyProgramEnum.history.name(), "B.A."));
 
         //Supervisors
         //TODO: reduce img resolution to 200x200
@@ -33,10 +33,10 @@ public class SampleDataGenerator {
                 "Müller",
                 "Prof.",
                 "d.mueller@mail.com",
-                new ArrayList<Integer>(Arrays.asList(StudyFieldEnum.datascience_ai.getStringResId(),StudyFieldEnum.design_media.getStringResId())),
+                new ArrayList<String>(Arrays.asList(StudyFieldEnum.datascience_ai.name(),StudyFieldEnum.design_media.name())),
                 "profilepictures/profile_d_mueller.jpg",
                 "Dies ist eine Profilbeschreibung.",
-                new ArrayList<Integer>(Arrays.asList(LanguageEnum.german.getStringResId(),LanguageEnum.english.getStringResId()))));
+                new ArrayList<String>(Arrays.asList(LanguageEnum.german.name(),LanguageEnum.english.name()))));
 
         supervisors.add(new Supervisor(
                 "zBpj74f5NaOENmIIMAQksKF44cJ2",
@@ -44,10 +44,10 @@ public class SampleDataGenerator {
                 "Hindley",
                 "Prof. Dr.",
                 "m.hindley@mail.com",
-                new ArrayList<Integer>(Arrays.asList(StudyFieldEnum.business_management.getStringResId(),StudyFieldEnum.personell_law.getStringResId())),
+                new ArrayList<String>(Arrays.asList(StudyFieldEnum.business_management.name(),StudyFieldEnum.personell_law.name())),
                 "profilepictures/profile_m_hindley.jpg",
                 "Dies ist eine Profilbeschreibung.",
-                new ArrayList<Integer>(Arrays.asList(LanguageEnum.english.getStringResId()))));
+                new ArrayList<String>(Arrays.asList(LanguageEnum.english.name()))));
 
         supervisors.add(new Supervisor(
                 "Np7QGaYv1TaCuJy0z2Dq2AHDlVZ2",
@@ -55,10 +55,10 @@ public class SampleDataGenerator {
                 "Schulz",
                 "Prof. Dr.",
                 "m.schulz@mail.com",
-                new ArrayList<Integer>(Arrays.asList(StudyFieldEnum.engineeringsciences.getStringResId(),StudyFieldEnum.planning_controlling.getStringResId())),
+                new ArrayList<String>(Arrays.asList(StudyFieldEnum.engineeringsciences.name(),StudyFieldEnum.planning_controlling.name())),
                 "profilepictures/profile_m_schulz.jpg",
                 "Dies ist eine Profilbeschreibung.",
-                new ArrayList<Integer>(Arrays.asList(StudyFieldEnum.business_management.getStringResId(),StudyFieldEnum.personell_law.getStringResId()))));
+                new ArrayList<String>(Arrays.asList(StudyFieldEnum.business_management.name(),StudyFieldEnum.personell_law.name()))));
     }
 
     public ArrayList<Student> getStudents() {

@@ -5,16 +5,16 @@ import androidx.annotation.NonNull;
 import java.util.ArrayList;
 
 public class Supervisor extends User{
-    private ArrayList<Integer> studyFields;
+    private ArrayList<String> studyFields;
     private String profilePictureUrl;
     private String profileDescription;
-    private ArrayList<Integer> languages;
+    private ArrayList<String> languages;
 
     public Supervisor() {
         // needed for Firebase Firestore
     }
 
-    public Supervisor(String supervisorId, String nameFirst, String nameLast, String nameTitle, String email, ArrayList<Integer> studyFields,String profilePictureUrl, String profileDescription, ArrayList<Integer> languages) {
+    public Supervisor(String supervisorId, String nameFirst, String nameLast, String nameTitle, String email, ArrayList<String> studyFields,String profilePictureUrl, String profileDescription, ArrayList<String> languages) {
         super(supervisorId, nameFirst, nameLast, nameTitle, email);
         this.studyFields = studyFields;
         this.profilePictureUrl = profilePictureUrl;
@@ -22,11 +22,11 @@ public class Supervisor extends User{
         this.languages = languages;
     }
 
-    public ArrayList<Integer> getStudyFields() {
+    public ArrayList<String> getStudyFields() {
         return studyFields;
     }
 
-    public void setStudyFields(ArrayList<Integer> studyFields) {
+    public void setStudyFields(ArrayList<String> studyFields) {
         this.studyFields = studyFields;
     }
 
@@ -46,11 +46,11 @@ public class Supervisor extends User{
         this.profileDescription = profileDescription;
     }
 
-    public ArrayList<Integer> getLanguages() {
+    public ArrayList<String> getLanguages() {
         return languages;
     }
 
-    public void setLanguages(ArrayList<Integer> languages) {
+    public void setLanguages(ArrayList<String> languages) {
         this.languages = languages;
     }
 

@@ -19,7 +19,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,7 +47,6 @@ public class ThesisRequestActivity extends AppCompatActivity implements Firebase
     private FirebaseStorageDao firebaseStorageDao;
     private Supervisor supervisor;
     private Student student;
-    private ImageButton thesisRequestBackButton;
     private ImageButton exposeUploadButton;
     private Button submitThesisRequestButton;
     private TextView supervisorNameTextView;
@@ -69,7 +67,6 @@ public class ThesisRequestActivity extends AppCompatActivity implements Firebase
         firebaseFirestoreDao = FirebaseFirestoreDao.getInstance();
         firebaseStorageDao = FirebaseStorageDao.getInstance();
 
-        thesisRequestBackButton = findViewById(R.id.thesisRequestBackButton);
         exposeUploadButton = findViewById(R.id.exposeUploadButton);
         submitThesisRequestButton = findViewById(R.id.submitThesisRequestButton);
 
@@ -116,19 +113,11 @@ public class ThesisRequestActivity extends AppCompatActivity implements Firebase
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 int id = item.getItemId();
-                if (id == R.id.menuItem_logout) {
-                    logOutUser();
+                if (id == R.id.menuItem_back) {
+                    onBackPressed();
                     return true;
                 }
                 return false;
-            }
-        });
-
-        thesisRequestBackButton.setOnClickListener(new ImageView.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-                finish();
             }
         });
 

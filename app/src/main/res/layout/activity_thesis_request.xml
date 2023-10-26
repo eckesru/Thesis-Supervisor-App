@@ -27,7 +27,7 @@
                 android:id="@+id/materialToolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:menu="@menu/logout_menu"
+                app:menu="@menu/back_menu"
                 app:navigationIcon="@drawable/ic_iu_logo"
                 app:logoAdjustViewBounds="true"/>
 
@@ -100,19 +100,6 @@
             app:layout_constraintTop_toBottomOf="@+id/supervisorNameTextView" />
 
         <ImageButton
-            android:id="@+id/thesisRequestBackButton"
-            style="@style/StandardButton"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:contentDescription="@string/back_button"
-            android:scaleType="centerCrop"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
-            app:srcCompat="?attr/homeAsUpIndicator" />
-
-        <ImageButton
             android:id="@+id/exposeUploadButton"
             style="@style/StandardButton"
             android:layout_width="55dp"
@@ -131,7 +118,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
             android:ellipsize="end"
             android:fontFamily="@font/inter_semibold"
@@ -141,7 +128,7 @@
             android:textSize="34sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/thesisRequestBackButton" />
+            app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
         <TextView
             android:id="@+id/supervisorNameTextView"

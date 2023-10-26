@@ -12,7 +12,6 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,9 +35,7 @@ public class SupervisorDetailsActivity extends AppCompatActivity implements Fire
     private FirebaseAuth auth;
     private FirebaseStorageDao firebaseStorageDao;
     private Supervisor supervisor;
-    private ImageButton supervisorDetailsBackButton;
     private Button startThesisRequestButton;
-    private ImageView menuItem_logout;
     private ImageView supervisorImageView;
     private TextView supervisorNameTextView;
     private TextView supervisorEmailTextView;
@@ -54,7 +51,6 @@ public class SupervisorDetailsActivity extends AppCompatActivity implements Fire
         auth = FirebaseAuth.getInstance();
         firebaseStorageDao = FirebaseStorageDao.getInstance();
 
-        supervisorDetailsBackButton = findViewById(R.id.supervisorDetailsBackButton);
         startThesisRequestButton = findViewById(R.id.startThesisRequestButton);
 
         supervisorImageView = findViewById(R.id.supervisorImageView);
@@ -117,21 +113,14 @@ public class SupervisorDetailsActivity extends AppCompatActivity implements Fire
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 int id = item.getItemId();
-                if (id == R.id.menuItem_logout) {
-                    logOutUser();
+                if (id == R.id.menuItem_back) {
+                    onBackPressed();
                     return true;
                 }
                 return false;
             }
         });
 
-        supervisorDetailsBackButton.setOnClickListener(new ImageView.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-                finish();
-            }
-        });
 
         startThesisRequestButton.setOnClickListener(new View.OnClickListener() {
             @Override

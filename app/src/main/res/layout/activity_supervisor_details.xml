@@ -27,7 +27,7 @@
                 android:id="@+id/materialToolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:menu="@menu/logout_menu"
+                app:menu="@menu/back_menu"
                 app:navigationIcon="@drawable/ic_iu_logo"
                 app:logoAdjustViewBounds="true"/>
 
@@ -60,36 +60,22 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/supervisorLanguageTextView" />
 
-            <ImageView
-                android:id="@+id/supervisorImageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="80dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="80dp"
-                android:background="@drawable/standard_image"
-                android:clipToOutline="true"
-                android:contentDescription="@string/supervisor_image"
-                android:minWidth="180dp"
-                android:minHeight="180dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
-                app:srcCompat="@drawable/fui_ic_anonymous_white_24dp" />
-
-        <ImageButton
-            android:id="@+id/supervisorDetailsBackButton"
-            style="@style/StandardButton"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:contentDescription="@string/back_button"
-            android:scaleType="centerCrop"
+        <ImageView
+            android:id="@+id/supervisorImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="80dp"
+            android:background="@drawable/standard_image"
+            android:clipToOutline="true"
+            android:contentDescription="@string/supervisor_image"
+            android:minWidth="180dp"
+            android:minHeight="180dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
-            app:srcCompat="?attr/homeAsUpIndicator" />
-
+            app:srcCompat="@drawable/fui_ic_anonymous_white_24dp" />
 
 
         <TextView

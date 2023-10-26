@@ -141,8 +141,8 @@ public class ThesisRequestActivity extends AppCompatActivity implements Firebase
                                     student.getUserId(),
                                     supervisor.getUserId(),
                                     "",
-                                    ThesisStateEnum.open.toString(),
-                                    BillingStateEnum.open.toString(),
+                                    ThesisStateEnum.open.getStringResId(),
+                                    BillingStateEnum.open.getStringResId(),
                                     exposePath);
                             firebaseFirestoreDao.saveNewThesis(thesis);
                             Toast.makeText(ThesisRequestActivity.this, "Thesis request submitted", Toast.LENGTH_SHORT).show();

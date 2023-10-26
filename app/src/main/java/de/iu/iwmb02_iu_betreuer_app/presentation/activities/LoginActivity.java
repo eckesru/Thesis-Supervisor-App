@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -78,9 +77,9 @@ public class LoginActivity extends AppCompatActivity {
         Intent signInIntent = AuthUI.getInstance()
                 .createSignInIntentBuilder()
                 .setAvailableProviders(providers)
-                .setTheme(R.style.ToolbarStyle)
+                .setTheme(R.style.MainTheme)
                 .setIsSmartLockEnabled(false)
-                .setLogo(R.drawable.iu_logo)
+                .setLogo(R.drawable.ic_iu_logo)
                 .build();
         signInLauncher.launch(signInIntent);
     }

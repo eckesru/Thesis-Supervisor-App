@@ -7,13 +7,23 @@
     tools:context=".presentation.activities.LoginActivity"
     android:id="@+id/loginActivityConstraintLayout">
 
-    <include
-        android:id="@+id/toolbarInclude"
-        layout="@layout/toolbar_layout"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:menu="@menu/empty_menu"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/materialToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:menu="@menu/empty_menu"
+            app:navigationIcon="@drawable/ic_iu_logo"
+            app:logoAdjustViewBounds="true"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <TextView
         android:id="@+id/welcomeMessageTextView"

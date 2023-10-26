@@ -56,7 +56,6 @@ public class SupervisorDetailsActivity extends AppCompatActivity implements Fire
 
         supervisorDetailsBackButton = findViewById(R.id.supervisorDetailsBackButton);
         startThesisRequestButton = findViewById(R.id.startThesisRequestButton);
-        menuItem_logout = findViewById(R.id.menuItem_logout);
 
         supervisorImageView = findViewById(R.id.supervisorImageView);
         supervisorNameTextView = findViewById(R.id.supervisorNameTextView);

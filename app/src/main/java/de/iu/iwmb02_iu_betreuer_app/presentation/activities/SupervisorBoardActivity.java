@@ -34,6 +34,7 @@ public class SupervisorBoardActivity extends AppCompatActivity implements Fireba
     private SupervisorRecyclerAdapter supervisorRecyclerAdapter;
     private TextView txtHiUser;
     private User user;
+    private MaterialToolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,9 +53,8 @@ public class SupervisorBoardActivity extends AppCompatActivity implements Fireba
 
         handleUserGreeting();
 
-        MaterialToolbar toolbar = findViewById(R.id.materialToolbar);
-        toolbar.inflateMenu(R.menu.filter_logout_menu);
-        setOnClickListeners(toolbar);
+        toolbar = findViewById(R.id.materialToolbar);
+        setOnClickListeners();
     }
 
     private void handleUserGreeting() {
@@ -67,7 +67,7 @@ public class SupervisorBoardActivity extends AppCompatActivity implements Fireba
         txtHiUser.setText("User");
     }
 
-    public void setOnClickListeners(MaterialToolbar toolbar) {
+    public void setOnClickListeners() {
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {

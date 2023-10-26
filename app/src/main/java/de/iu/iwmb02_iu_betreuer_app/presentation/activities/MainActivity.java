@@ -17,6 +17,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import de.iu.iwmb02_iu_betreuer_app.R;
 import de.iu.iwmb02_iu_betreuer_app.data.dao.FirebaseFirestoreDao;
 import de.iu.iwmb02_iu_betreuer_app.data.dao.UserDao;
+import de.iu.iwmb02_iu_betreuer_app.development.FirestoreTools;
 import de.iu.iwmb02_iu_betreuer_app.model.Student;
 import de.iu.iwmb02_iu_betreuer_app.model.Supervisor;
 import de.iu.iwmb02_iu_betreuer_app.model.User;
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements FirebaseAuth.Auth
         auth = FirebaseAuth.getInstance();
 
         //TODO: Delete - Just for development
-        //FirestoreTools tools = new FirestoreTools();
+        FirestoreTools tools = new FirestoreTools();
         //tools.deleteAllDBs();
         //tools.populateDatabasesWithSampleData();
 
@@ -53,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements FirebaseAuth.Auth
                         Log.d(TAG, "Logged in User is a student");
                         ActivityStarter.startSupervisorBoardActivity(context, user);
                         MainActivity.this.finish();
+                        //TODO: check if thesis object exists --> goto successpage
                     } else if (user instanceof Supervisor) {
                         Log.d(TAG, "Logged in user is a supervisor");
                         //TODO: implement thesis overview activity

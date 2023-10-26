@@ -51,7 +51,6 @@ public class ThesisRequestActivity extends AppCompatActivity implements Firebase
     private ImageButton thesisRequestBackButton;
     private ImageButton exposeUploadButton;
     private Button submitThesisRequestButton;
-    private ImageView menuItem_logout;
     private TextView supervisorNameTextView;
     private TextView studentNameTextView;
     private TextView studentStudyProgramTextView;
@@ -73,7 +72,6 @@ public class ThesisRequestActivity extends AppCompatActivity implements Firebase
         thesisRequestBackButton = findViewById(R.id.thesisRequestBackButton);
         exposeUploadButton = findViewById(R.id.exposeUploadButton);
         submitThesisRequestButton = findViewById(R.id.submitThesisRequestButton);
-        menuItem_logout = findViewById(R.id.menuItem_logout);
 
         supervisorNameTextView = findViewById(R.id.supervisorNameTextView);
         studentNameTextView = findViewById(R.id.studentNameTextView);

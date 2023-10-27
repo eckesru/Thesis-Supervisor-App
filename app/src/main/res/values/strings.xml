@@ -39,6 +39,8 @@
     <string name="primary_supervisor_name_string_placeholder">1st Supervisor: %s</string>
     <string name="secondary_supervisor_name_string_placeholder">2nd Supervisor: %s</string>
     <string name="thesis_details_label">Thesis details</string>
+    <string name="thesis_details_delete">Delete Thesis</string>
+    <string name="thesis_submitted_text">Your supervisor will contact you via email. \n \n If you have any questions, please contact your supervisor. A response will be given within 48 hours.</string>
 
     <string name="thesis_state_open">Open</string>
     <string name="thesis_state_consultation">Consultation</string>

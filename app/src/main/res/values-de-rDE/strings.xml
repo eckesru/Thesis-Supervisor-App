@@ -39,7 +39,9 @@
     <string name="expose_string_placeholder">Exposé: %s</string>
     <string name="primary_supervisor_name_string_placeholder">Betreuer:in: %s</string>
     <string name="secondary_supervisor_name_string_placeholder">Zweitgutachter:in: %s</string>
-    <string name="thesis_details_label">Abschlussarbeit-Details</string>
+    <string name="thesis_details_label">Details zur Abschlussarbeit</string>
+    <string name="thesis_details_delete">Abschlussarbeit löschen</string>
+    <string name="thesis_submitted_text">Ihr Betreuer wird sich mit Ihnen über E-Mail in Verbindung setzen. \n \n Bei Fragen wenden Sie sich bitte an Ihren Betreuer. Eine Rückmeldung erfolgt innerhalb von 48 Stunden.</string>
 
     <string name ="thesis_state_open">Offen</string>
     <string name ="thesis_state_consultation">In Abstimmung</string>

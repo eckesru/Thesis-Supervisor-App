@@ -42,6 +42,18 @@
     <string name="thesis_details_label">Details zur Abschlussarbeit</string>
     <string name="thesis_details_delete">Abschlussarbeit löschen</string>
     <string name="thesis_submitted_text">Ihr Betreuer wird sich mit Ihnen über E-Mail in Verbindung setzen. \n \n Bei Fragen wenden Sie sich bitte an Ihren Betreuer. Eine Rückmeldung erfolgt innerhalb von 48 Stunden.</string>
+    <string name="thesis_submitted_label">Deine Abschlussarbeit</string>
+    <string name="topic_tender_submit">Thema ausschreiben</string>
+    <string name="topic_tender_text_label">Thema</string>
+    <string name="topic_tender_label">Neues Thema ausschreiben →</string>
+    <string name="thesis_overview_label">Betreuungsübersicht</string>
+    <string name="thesis_state_string_placeholder">Status: %s</string>
+    <string name="thesis_billing_string_placeholder">Abrechnung: %s</string>
+    <string name="thesis_overview_supervision_label">Betreuung: </string>
+    <string name="thesis_overview_state_label">Status: </string>
+    <string name="thesis_overview_billing_label">Abrechnung: </string>
+    <string name="thesis_overview_supervision_primary_label">Betreuer:in</string>
+    <string name="thesis_overview_supervision_secondary_label">Zweitgutachter:in</string>
 
     <string name ="thesis_state_open">Offen</string>
     <string name ="thesis_state_consultation">In Abstimmung</string>
@@ -68,15 +80,5 @@
     <string name="studyprogram_computerscience">Informatik</string>
     <string name="studyprogram_history">Geschichte</string>
     <string name="studyprogram_mathematics">Mathematik</string>
-
-    <string name="topic_tender_label">Neues Thema ausschreiben →</string>
-    <string name="thesis_overview_label">Betreuungsübersicht</string>
-    <string name="thesis_state_string_placeholder">Status: %s</string>
-    <string name="thesis_billing_string_placeholder">Abrechnung: %s</string>
-    <string name="thesis_overview_supervision_label">Betreuung: </string>
-    <string name="thesis_overview_state_label">Status: </string>
-    <string name="thesis_overview_billing_label">Abrechnung: </string>
-    <string name="thesis_overview_supervision_primary_label">Betreuer:in</string>
-    <string name="thesis_overview_supervision_secondary_label">Zweitgutachter:in</string>
 
 </resources>

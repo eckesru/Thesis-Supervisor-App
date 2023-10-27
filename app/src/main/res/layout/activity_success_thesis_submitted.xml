@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presentation.activities.LoginActivity"
-    android:id="@+id/loginActivityConstraintLayout33">
+    android:id="@+id/ThesisSubmittedConstraintLayout">
 
     <ImageButton
         android:id="@+id/exposeDownloadButton"
@@ -17,11 +17,11 @@
         android:contentDescription="@string/upload_data"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/thesisDetailsTopicTextView2"
+        app:layout_constraintTop_toBottomOf="@+id/thesisSubmittedTopicTextView"
         app:srcCompat="@android:drawable/stat_sys_download" />
 
     <TextView
-        android:id="@+id/thesisDetailsTopicTextView2"
+        android:id="@+id/thesisSubmittedTopicTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -31,10 +31,10 @@
         android:text="@string/topic_string_placeholder"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcomeMessageTextView33" />
+        app:layout_constraintTop_toBottomOf="@+id/thesisSubmittedThesisLabelTextView" />
 
     <TextView
-        android:id="@+id/thesisDetailsExposeTextView2"
+        android:id="@+id/thesisSubmittedExposeTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -43,10 +43,10 @@
         android:text="@string/expose_string_placeholder"
         app:layout_constraintEnd_toStartOf="@+id/exposeDownloadButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/thesisDetailsTopicTextView2" />
+        app:layout_constraintTop_toBottomOf="@+id/thesisSubmittedTopicTextView" />
 
     <TextView
-        android:id="@+id/thesisDetailsStateTextView2"
+        android:id="@+id/thesisSubmittedStateTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -55,10 +55,10 @@
         android:text="@string/thesis_state_string_placeholder"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/thesisDetailsExposeTextView2" />
+        app:layout_constraintTop_toBottomOf="@+id/thesisSubmittedExposeTextView" />
 
     <TextView
-        android:id="@+id/thesisDetailsPrimarySupervisorTextView2"
+        android:id="@+id/thesisSubmittedSupervisorTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -68,10 +68,10 @@
         android:text="@string/supervisor_name_string_placeholder"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/thesisDetailsStateTextView2" />
+        app:layout_constraintTop_toBottomOf="@+id/thesisSubmittedStateTextView" />
 
     <TextView
-        android:id="@+id/thesisDetailsPrimarySupervisorTextView3"
+        android:id="@+id/thesisSubmittedEmailTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -81,7 +81,7 @@
         android:text="@string/email_string_placeholder"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/thesisDetailsPrimarySupervisorTextView2" />
+        app:layout_constraintTop_toBottomOf="@+id/thesisSubmittedSupervisorTextView" />
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -102,23 +102,23 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <TextView
-        android:id="@+id/welcomeMessageTextView33"
+        android:id="@+id/thesisSubmittedThesisLabelTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:maxLines="2"
-        android:text="Your Thesis"
+        android:text="@string/thesis_submitted_label"
         android:textAlignment="viewStart"
-        android:textSize="32sp"
+        android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
     <TextView
-        android:id="@+id/welcomeMessageCreateLoginTextView33"
+        android:id="@+id/thesisSubmittedInfoTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -130,7 +130,7 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/thesisDetailsPrimarySupervisorTextView3" />
+        app:layout_constraintTop_toBottomOf="@+id/thesisSubmittedEmailTextView" />
 
 
 

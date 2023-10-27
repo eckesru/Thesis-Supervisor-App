@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/supervisorBoardConstraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.activities.SupervisorBoardActivity">
+
+  <TextView
+      android:id="@+id/hiUserNameTextView2"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="5dp"
+      android:layout_marginTop="10dp"
+      android:layout_marginEnd="20dp"
+      android:ellipsize="end"
+      android:fontFamily="@font/inter_semibold"
+      android:maxLines="1"
+      android:text="@string/hi_user_string_placeholder"
+      android:textSize="30sp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@+id/hiUserTextView5"
+      app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
+
+  <TextView
+      android:id="@+id/hiUserTextView5"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="20dp"
+      android:layout_marginTop="10dp"
+      android:ellipsize="end"
+      android:text="@string/hi_user_label"
+      android:textSize="30sp"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
+
+  <com.google.android.material.appbar.AppBarLayout
+      android:id="@+id/appBarLayout"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/materialToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:logoAdjustViewBounds="true"
+        app:menu="@menu/filter_logout_menu"
+        app:navigationIcon="@drawable/ic_iu_logo" />
+
+  </com.google.android.material.appbar.AppBarLayout>
+
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/supervisorBoardBottomConstraintLayout"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_marginStart="5dp"
+      android:layout_marginEnd="5dp"
+      android:layout_marginBottom="5dp"
+      android:background="@drawable/standard_background"
+      android:backgroundTint="@color/iu_main_grey"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/chipFilterConstraintLayout">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/supervisorBoardRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/standard_background"
+        android:backgroundTint="@color/white"
+        android:overScrollMode="always"
+        android:scrollbars="vertical"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topicBoardButton"
+        app:layout_constraintVertical_bias="0.0"
+        app:spanCount="1"
+        tools:listitem="@layout/item_thesis" />
+
+    <Button
+        android:id="@+id/topicBoardButton"
+        style="@style/StandardButton"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="15dp"
+        android:duplicateParentState="false"
+        android:text="@string/topic_tender_label"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="VisualLintButtonSize" />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+  <TextView
+      android:id="@+id/supervisorBoardTextView"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="20dp"
+      android:layout_marginTop="10dp"
+      android:layout_marginEnd="20dp"
+      android:ellipsize="end"
+      android:fontFamily="@font/inter_semibold"
+      android:maxLines="1"
+      android:text="@string/thesis_overview_label"
+      android:textSize="30sp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/hiUserTextView5" />
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/chipFilterConstraintLayout"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_marginStart="20dp"
+      android:layout_marginTop="5dp"
+      android:layout_marginEnd="20dp"
+      android:visibility="gone"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/supervisorBoardTextView">
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/billingChipGroup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/chipFilterBillingLabel"
+        app:layout_constraintTop_toBottomOf="@+id/stateChipGroup">
+
+
+      <com.google.android.material.chip.Chip
+          android:id="@+id/chipBillingOpen"
+          style="@style/StandardChipFilter"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:checkable="true"
+          android:text="@string/billing_state_open" />
+
+      <com.google.android.material.chip.Chip
+          android:id="@+id/chipBillingBilled"
+          style="@style/StandardChipFilter"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:checkable="true"
+          android:text="@string/billing_state_billed" />
+
+      <com.google.android.material.chip.Chip
+          android:id="@+id/chipBillingSettled"
+          style="@style/StandardChipFilter"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:checkable="true"
+          android:text="@string/billing_state_settled" />
+
+    </com.google.android.material.chip.ChipGroup>
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/stateChipGroup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/chipFilterStateLabel"
+        app:layout_constraintTop_toBottomOf="@+id/supervisionChipGroup">
+
+      <com.google.android.material.chip.Chip
+          android:id="@+id/chipStateOpen"
+          style="@style/StandardChipFilter"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:checkable="true"
+          android:text="@string/thesis_state_open" />
+
+
+      <com.google.android.material.chip.Chip
+          android:id="@+id/chipStateConsultation"
+          style="@style/StandardChipFilter"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:checkable="true"
+          android:text="@string/thesis_state_consultation" />
+
+      <com.google.android.material.chip.Chip
+          android:id="@+id/chipStateRegistered"
+          style="@style/StandardChipFilter"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:checkable="true"
+          android:text="@string/thesis_state_registered" />
+
+      <com.google.android.material.chip.Chip
+          android:id="@+id/chipStateColloquium"
+          style="@style/StandardChipFilter"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:checkable="true"
+          android:text="@string/thesis_state_colloquium" />
+
+      <com.google.android.material.chip.Chip
+          android:id="@+id/chipStateCompleted"
+          style="@style/StandardChipFilter"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:checkable="true"
+          android:text="@string/thesis_state_completed" />
+
+    </com.google.android.material.chip.ChipGroup>
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/supervisionChipGroup"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/chipFilterSupvervisionLabel"
+        app:layout_constraintTop_toTopOf="parent">
+
+      <com.google.android.material.chip.Chip
+          android:id="@+id/chipPrimarySupervisor"
+          style="@style/StandardChipFilter"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:checkable="true"
+          android:text="@string/thesis_overview_supervision_primary_label" />
+
+      <com.google.android.material.chip.Chip
+          android:id="@+id/chipSecondarySupervisor"
+          style="@style/StandardChipFilter"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:checkable="true"
+          android:text="@string/thesis_overview_supervision_secondary_label" />
+
+    </com.google.android.material.chip.ChipGroup>
+
+    <TextView
+        android:id="@+id/chipFilterBillingLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:ellipsize="end"
+        android:text="@string/thesis_overview_billing_label"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stateChipGroup" />
+
+    <TextView
+        android:id="@+id/chipFilterStateLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:ellipsize="end"
+        android:text="@string/thesis_overview_state_label"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/supervisionChipGroup" />
+
+    <TextView
+        android:id="@+id/chipFilterSupvervisionLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:ellipsize="end"
+        android:text="@string/thesis_overview_supervision_label"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

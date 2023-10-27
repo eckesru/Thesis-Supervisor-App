@@ -40,4 +40,9 @@ public class ActivityStarter {
         context.startActivity(intent);
     }
 
+    public static void startThesisOverviewActivity(Context context, User user) {
+        Intent intent = new Intent(context, ThesisOverviewActivity.class);
+        intent.putExtra("user", user);
+        context.startActivity(intent);
+    }
 }

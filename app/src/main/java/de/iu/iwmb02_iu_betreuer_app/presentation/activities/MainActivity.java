@@ -57,7 +57,8 @@ public class MainActivity extends AppCompatActivity implements FirebaseAuth.Auth
                         //TODO: check if thesis object exists --> goto successpage
                     } else if (user instanceof Supervisor) {
                         Log.d(TAG, "Logged in user is a supervisor");
-                        //TODO: implement thesis overview activity
+                        ActivityStarter.startThesisOverviewActivity(context, user);
+                        MainActivity.this.finish();
                     } else {
                         Log.d(TAG, "Unknown usertype");
                     }

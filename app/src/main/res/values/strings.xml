@@ -35,17 +35,17 @@
     <string name="upload_data">upload data</string>
     <string name="supervisor_languages_string_placeholder">Languages: %s</string>
 
-    <string name ="thesis_state_open">Open</string>
-    <string name ="thesis_state_consulation">Consulation</string>
-    <string name ="thesis_state_registered">Registered</string>
-    <string name ="thesis_state_submitted">Submitted</string>
-    <string name ="thesis_state_colloquium">Colloquium</string>
-    <string name ="thesis_state_completed">Completed</string>
-    <string name ="thesis_state_canceled">Canceled</string>
+    <string name="thesis_state_open">Open</string>
+    <string name="thesis_state_consultation">Consultation</string>
+    <string name="thesis_state_registered">Registered</string>
+    <string name="thesis_state_submitted">Submitted</string>
+    <string name="thesis_state_colloquium">Colloquium</string>
+    <string name="thesis_state_completed">Completed</string>
+    <string name="thesis_state_canceled">Canceled</string>
 
-    <string name ="billing_state_open">Open</string>
-    <string name ="billing_state_billed">Billed</string>
-    <string name ="billing_state_settled">Settled</string>
+    <string name="billing_state_open">Open</string>
+    <string name="billing_state_billed">Billed</string>
+    <string name="billing_state_settled">Settled</string>
 
     <string name="language_german">German</string>
     <string name="language_english">English</string>
@@ -61,5 +61,14 @@
     <string name="studyprogram_history">History</string>
     <string name="studyprogram_mathematics">Mathematics</string>
 
+    <string name="topic_tender_label">Write out new topic →</string>
+    <string name="thesis_overview_label">Supervision overview</string>
+    <string name="thesis_state_string_placeholder">State: %s</string>
+    <string name="thesis_billing_string_placeholder">Billing: %s</string>
+    <string name="thesis_overview_supervision_label">Supervision: </string>
+    <string name="thesis_overview_state_label">State: </string>
+    <string name="thesis_overview_billing_label">Billing: </string>
+    <string name="thesis_overview_supervision_primary_label">Primary</string>
+    <string name="thesis_overview_supervision_secondary_label">Secondary</string>
 
 </resources>

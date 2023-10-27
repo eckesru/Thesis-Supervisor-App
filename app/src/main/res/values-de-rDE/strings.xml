@@ -37,7 +37,7 @@
     <string name="supervisor_languages_string_placeholder">Sprachen: %s</string>
 
     <string name ="thesis_state_open">Offen</string>
-    <string name ="thesis_state_consulation">In Abstimmung</string>
+    <string name ="thesis_state_consultation">In Abstimmung</string>
     <string name ="thesis_state_registered">Registriert</string>
     <string name ="thesis_state_submitted">Abgegeben</string>
     <string name ="thesis_state_colloquium">Kolloquium</string>
@@ -61,4 +61,15 @@
     <string name="studyprogram_computerscience">Informatik</string>
     <string name="studyprogram_history">Geschichte</string>
     <string name="studyprogram_mathematics">Mathematik</string>
+
+    <string name="topic_tender_label">Neues Thema ausschreiben →</string>
+    <string name="thesis_overview_label">Betreuungsübersicht</string>
+    <string name="thesis_state_string_placeholder">Status: %s</string>
+    <string name="thesis_billing_string_placeholder">Abrechnung: %s</string>
+    <string name="thesis_overview_supervision_label">Betreuung: </string>
+    <string name="thesis_overview_state_label">Status: </string>
+    <string name="thesis_overview_billing_label">Abrechnung: </string>
+    <string name="thesis_overview_supervision_primary_label">Erstgutachter</string>
+    <string name="thesis_overview_supervision_secondary_label">Zweitgutachter</string>
+
 </resources>

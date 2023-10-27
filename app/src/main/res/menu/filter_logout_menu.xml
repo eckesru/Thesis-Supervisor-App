@@ -6,7 +6,15 @@
         android:contentDescription="@string/filter"
         android:icon="@drawable/ic_filter"
         android:title="@string/filter"
-        app:showAsAction="always" />
+        app:showAsAction="always">
+        <menu>
+            <item
+                android:id="@+id/menuItem_showAll"
+                android:contentDescription="@string/filter"
+                android:title="@string/show_all"/>
+            <!--- empty submenu, filled programmatically -->
+        </menu>
+    </item>
 
     <item
         android:id="@+id/menuItem_logout"

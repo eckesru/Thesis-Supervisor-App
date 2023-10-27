@@ -35,6 +35,7 @@
     <string name="study_fields_label">Studienbereiche</string>
     <string name="upload_data">Daten hochladen</string>
     <string name="supervisor_languages_string_placeholder">Sprachen: %s</string>
+    <string name="show_all">Alle anzeigen</string>
 
     <string name ="thesis_state_open">Offen</string>
     <string name ="thesis_state_consulation">In Abstimmung</string>
@@ -61,4 +62,5 @@
     <string name="studyprogram_computerscience">Informatik</string>
     <string name="studyprogram_history">Geschichte</string>
     <string name="studyprogram_mathematics">Mathematik</string>
+
 </resources>

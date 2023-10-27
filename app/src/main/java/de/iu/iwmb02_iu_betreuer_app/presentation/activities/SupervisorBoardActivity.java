@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,6 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.Query;
 
 import de.iu.iwmb02_iu_betreuer_app.R;
+import de.iu.iwmb02_iu_betreuer_app.data.StudyFieldEnum;
 import de.iu.iwmb02_iu_betreuer_app.data.dao.FirebaseFirestoreDao;
 import de.iu.iwmb02_iu_betreuer_app.model.Supervisor;
 import de.iu.iwmb02_iu_betreuer_app.model.User;
@@ -40,31 +42,55 @@ public class SupervisorBoardActivity extends AppCompatActivity implements Fireba
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_supervisor_board);
-        auth = FirebaseAuth.getInstance();
 
+        auth = FirebaseAuth.getInstance();
         firebaseFirestoreDao = FirebaseFirestoreDao.getInstance();
 
         supervisorBoardRecyclerView = findViewById(R.id.supervisorBoardRecyclerView);
+        txtHiUser = findViewById(R.id.hiUserNameTextView);
+        toolbar = findViewById(R.id.materialToolbar);
+
         supervisorRecyclerAdapter = getSupervisorRecyclerAdapter("");
         supervisorBoardRecyclerView.setAdapter(supervisorRecyclerAdapter);
         supervisorBoardRecyclerView.setItemAnimator(null);
 
-        txtHiUser = findViewById(R.id.hiUserNameTextView);
+        fillToolbarSubmenus();
+        setOnClickListeners();
 
         handleUserGreeting();
-
-        toolbar = findViewById(R.id.materialToolbar);
-        setOnClickListeners();
     }
 
-    private void handleUserGreeting() {
-        Intent intent = getIntent();
-        if(intent.hasExtra("user")){
-            user = (User) intent.getSerializableExtra("user");
-            txtHiUser.setText(user.getNameFirst());
-            return;
+    private void fillToolbarSubmenus(){
+        Menu submenu = toolbar.getMenu().findItem(R.id.menuItem_filter).getSubMenu();
+
+        for (StudyFieldEnum studyFieldEnum : StudyFieldEnum.values()) {
+            String enumName = studyFieldEnum.name();
+            int stringResId = studyFieldEnum.getStringResId();
+
+            submenu.add(
+                    0,
+                    stringResId,
+                    0,
+                    StudyFieldEnum.getLocalizedString(context, enumName)
+            ).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                @Override
+                public boolean onMenuItemClick(@NonNull MenuItem menuItem) {
+                    handleSubMenuClick(enumName);
+                    return true;
+                }
+            });
         }
-        txtHiUser.setText("User");
+    }
+
+    private void handleSubMenuClick(String filterOption) {
+        Log.d(TAG, "Clicked: " + filterOption);
+        connectNewRecyclerAdapter(filterOption);
+    }
+
+    private void connectNewRecyclerAdapter(String filterOption) {
+        supervisorRecyclerAdapter = getSupervisorRecyclerAdapter(filterOption);
+        supervisorBoardRecyclerView.setAdapter(supervisorRecyclerAdapter);
+        supervisorRecyclerAdapter.startListening();
     }
 
     public void setOnClickListeners() {
@@ -76,12 +102,24 @@ public class SupervisorBoardActivity extends AppCompatActivity implements Fireba
                     logOutUser();
                     return true;
                 } else if (id == R.id.menuItem_filter) {
-                   // TODO: Flter-Methode implementieren
                     return true;
-                }
+                } else if (id == R.id.menuItem_showAll) {
+                    connectNewRecyclerAdapter("");
+                    return true;
+            }
                 return false;
             }
         });
+    }
+
+    private void handleUserGreeting() {
+        Intent intent = getIntent();
+        if(intent.hasExtra("user")){
+            user = (User) intent.getSerializableExtra("user");
+            txtHiUser.setText(user.getNameFirst());
+            return;
+        }
+        txtHiUser.setText("User");
     }
 
     @Override
@@ -98,8 +136,8 @@ public class SupervisorBoardActivity extends AppCompatActivity implements Fireba
         auth.removeAuthStateListener(this);
     }
 
-    private SupervisorRecyclerAdapter getSupervisorRecyclerAdapter(String sortingOption){
-        FirestoreRecyclerOptions<Supervisor> options = getFirestoreRecyclerOptions(getSupervisorQuery(sortingOption));
+    private SupervisorRecyclerAdapter getSupervisorRecyclerAdapter(String filterOption){
+        FirestoreRecyclerOptions<Supervisor> options = getFirestoreRecyclerOptions(getSupervisorQuery(filterOption));
         return new SupervisorRecyclerAdapter(options);
     }
 
@@ -108,16 +146,15 @@ public class SupervisorBoardActivity extends AppCompatActivity implements Fireba
                 .setQuery(query, Supervisor.class)
                 .build();
     }
+    
+    private Query getSupervisorQuery(String filterOption){
+        Query query = firebaseFirestoreDao.getSupervisorsCollectionRef();
 
-    private Query getSupervisorQuery(String orderOption){
-        Query query;
-        switch (orderOption){
-            // TODO: implement other sorting options and set up selection via buttons
-            default:
-                query = firebaseFirestoreDao.getSupervisorsCollectionRef()
-                        .orderBy("nameLast", Query.Direction.ASCENDING);
+        if (filterOption != null && !filterOption.isEmpty()) {
+            return query.whereArrayContains("studyFields", filterOption);
+        } else {
+            return query.orderBy("nameLast", Query.Direction.ASCENDING);
         }
-        return query;
     }
 
 

@@ -34,6 +34,7 @@
     <string name="study_fields_label">Study fields</string>
     <string name="upload_data">upload data</string>
     <string name="supervisor_languages_string_placeholder">Languages: %s</string>
+    <string name="show_all">Show all</string>
 
     <string name ="thesis_state_open">Open</string>
     <string name ="thesis_state_consulation">Consulation</string>
@@ -60,6 +61,7 @@
     <string name="studyprogram_computerscience">Computer Science</string>
     <string name="studyprogram_history">History</string>
     <string name="studyprogram_mathematics">Mathematics</string>
+
 
 
 </resources>

@@ -22,7 +22,7 @@ public enum StudyFieldEnum {
         return context.getString(StudyFieldEnum.valueOf(enumName).getStringResId());
     }
 
-    private int getStringResId(){
+    public int getStringResId(){
         return stringResId;
     }
 

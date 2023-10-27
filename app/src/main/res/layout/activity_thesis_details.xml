@@ -15,6 +15,147 @@
         android:scrollbars="vertical"
         tools:context=".ui.NewEditProfile">
 
+        <TextView
+            android:id="@+id/studyFieldsTextView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="168dp"
+            android:fontFamily="@font/inter_semibold"
+            android:text="@string/thesis_details_label"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toStartOf="@+id/thesisDetailsDeleteButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
+
+        <ImageButton
+            android:id="@+id/thesisTopicEditButton"
+            style="@style/StandardButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:contentDescription="@string/upload_data"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/thesisDetailsEmailTextView"
+            app:srcCompat="@drawable/edit_icon" />
+
+        <ImageButton
+            android:id="@+id/thesisDetailsDeleteButton"
+            style="@style/StandardButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:contentDescription="@string/upload_data"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+            app:srcCompat="@drawable/trashcan_android" />
+
+        <ImageButton
+            android:id="@+id/exposeDownloadButton"
+            style="@style/StandardButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:contentDescription="@string/upload_data"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/thesisDetailsTopicTextView"
+            app:srcCompat="@android:drawable/stat_sys_download" />
+
+        <ImageButton
+            android:id="@+id/thesisStateEditButton"
+            style="@style/StandardButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:contentDescription="@string/upload_data"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/thesisDetailsExposeTextView"
+            app:srcCompat="@drawable/edit_icon" />
+
+        <ImageButton
+            android:id="@+id/thesisBillingEditButton"
+            style="@style/StandardButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:contentDescription="@string/upload_data"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/thesisDetailsStateTextView"
+            app:srcCompat="@drawable/edit_icon" />
+
+        <ImageButton
+            android:id="@+id/thesisPrimarySupervisorEditButton"
+            style="@style/StandardButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:contentDescription="@string/upload_data"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/thesisDetailsBillingTextView"
+            app:srcCompat="@drawable/edit_icon" />
+
+        <ImageButton
+            android:id="@+id/thesisSecondarySupervisorEditButton"
+            style="@style/StandardButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:contentDescription="@string/upload_data"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/thesisDetailsPrimarySupervisorTextView"
+            app:srcCompat="@drawable/edit_icon" />
+
+        <TextView
+            android:id="@+id/thesisDetailsStudentNameTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:text="@string/student_name_string_placeholder"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/studyFieldsTextView2" />
+
+        <TextView
+            android:id="@+id/thesisDetailsExposeTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:text="@string/expose_string_placeholder"
+            app:layout_constraintEnd_toStartOf="@+id/exposeDownloadButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/thesisDetailsTopicTextView" />
+
+        <TextView
+            android:id="@+id/thesisDetailsTopicTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:text="@string/topic_string_placeholder"
+            app:layout_constraintEnd_toStartOf="@+id/thesisTopicEditButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/thesisDetailsEmailTextView" />
+
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
@@ -27,113 +168,86 @@
                 android:id="@+id/materialToolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
+                app:logoAdjustViewBounds="true"
                 app:menu="@menu/back_menu"
-                app:navigationIcon="@drawable/ic_iu_logo"
-                app:logoAdjustViewBounds="true"/>
+                app:navigationIcon="@drawable/ic_iu_logo" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <TextView
-            android:id="@+id/studyFieldsListTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="5dp"
-            android:maxLines="3"
-            android:minLines="1"
-            android:text="@string/string_placeholder"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/studyFieldsTextView" />
 
         <TextView
-            android:id="@+id/supervisorDescriptionTextView"
+            android:id="@+id/thesisDetailsEmailTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="20dp"
-            android:maxLines="5"
-            android:minLines="1"
-            android:text="@string/supervisor_description_string_placeholder"
-            android:textAlignment="textStart"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/supervisorLanguageTextView" />
-
-        <ImageView
-            android:id="@+id/supervisorImageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="80dp"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="80dp"
-            android:background="@drawable/standard_image"
-            android:clipToOutline="true"
-            android:contentDescription="@string/supervisor_image"
-            android:minWidth="180dp"
-            android:minHeight="180dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
-            app:srcCompat="@drawable/fui_ic_anonymous_white_24dp" />
-
-
-        <TextView
-            android:id="@+id/supervisorNameTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/inter_semibold"
-            android:text="@string/string_placeholder"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/supervisorImageView" />
-
-        <TextView
-            android:id="@+id/supervisorEmailTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:text="@string/email_string_placeholder"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/supervisorNameTextView" />
-
-        <TextView
-            android:id="@+id/supervisorLanguageTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:text="@string/supervisor_languages_string_placeholder"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/supervisorEmailTextView" />
-
-        <TextView
-            android:id="@+id/studyFieldsTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/inter_semibold"
-            android:text="@string/study_fields_label"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/supervisorDescriptionTextView" />
-
-        <Button
-            android:id="@+id/startThesisRequestButton"
-            style="@style/StandardButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="50dp"
             android:layout_marginEnd="20dp"
-            android:text="@string/thesis_request_button_text"
+            android:text="@string/email_string_placeholder"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/studyFieldsListTextView" />
+            app:layout_constraintTop_toBottomOf="@+id/thesisDetailsStudyProgramTextView" />
+
+        <TextView
+            android:id="@+id/thesisDetailsPrimarySupervisorTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:maxLines="2"
+            android:text="@string/primary_supervisor_name_string_placeholder"
+            app:layout_constraintEnd_toStartOf="@+id/thesisPrimarySupervisorEditButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/thesisDetailsBillingTextView" />
+
+        <TextView
+            android:id="@+id/thesisDetailsStateTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:text="@string/thesis_state_string_placeholder"
+            app:layout_constraintEnd_toStartOf="@+id/thesisStateEditButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/thesisDetailsExposeTextView" />
+
+        <TextView
+            android:id="@+id/thesisDetailsBillingTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:text="@string/thesis_billing_string_placeholder"
+            app:layout_constraintEnd_toStartOf="@+id/thesisBillingEditButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/thesisDetailsStateTextView" />
+
+        <TextView
+            android:id="@+id/thesisDetailsSecondarySupervisorTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:maxLines="2"
+            android:text="@string/secondary_supervisor_name_string_placeholder"
+            app:layout_constraintEnd_toStartOf="@+id/thesisSecondarySupervisorEditButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/thesisDetailsPrimarySupervisorTextView" />
+
+        <TextView
+            android:id="@+id/thesisDetailsStudyProgramTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:text="@string/student_study_program_string_placeholder"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/thesisDetailsStudentNameTextView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

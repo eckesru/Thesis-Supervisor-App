@@ -36,6 +36,10 @@
     <string name="upload_data">Daten hochladen</string>
     <string name="supervisor_languages_string_placeholder">Sprachen: %s</string>
     <string name="show_all">Alle anzeigen</string>
+    <string name="expose_string_placeholder">Exposé: %s</string>
+    <string name="primary_supervisor_name_string_placeholder">Betreuer:in: %s</string>
+    <string name="secondary_supervisor_name_string_placeholder">Zweitgutachter:in: %s</string>
+    <string name="thesis_details_label">Abschlussarbeit-Details</string>
 
     <string name ="thesis_state_open">Offen</string>
     <string name ="thesis_state_consultation">In Abstimmung</string>
@@ -70,7 +74,7 @@
     <string name="thesis_overview_supervision_label">Betreuung: </string>
     <string name="thesis_overview_state_label">Status: </string>
     <string name="thesis_overview_billing_label">Abrechnung: </string>
-    <string name="thesis_overview_supervision_primary_label">Erstgutachter</string>
-    <string name="thesis_overview_supervision_secondary_label">Zweitgutachter</string>
+    <string name="thesis_overview_supervision_primary_label">Betreuer:in</string>
+    <string name="thesis_overview_supervision_secondary_label">Zweitgutachter:in</string>
 
 </resources>

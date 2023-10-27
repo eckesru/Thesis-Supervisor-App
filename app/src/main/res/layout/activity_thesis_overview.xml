@@ -2,13 +2,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/supervisorBoardConstraintLayout"
+    android:id="@+id/thesisOverviewConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presentation.activities.SupervisorBoardActivity">
 
   <TextView
-      android:id="@+id/hiUserNameTextView2"
+      android:id="@+id/hiUserNameTextView"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
       android:layout_marginStart="5dp"
@@ -20,11 +20,11 @@
       android:text="@string/hi_user_string_placeholder"
       android:textSize="30sp"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toEndOf="@+id/hiUserTextView5"
+      app:layout_constraintStart_toEndOf="@+id/hiUserTextView"
       app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
   <TextView
-      android:id="@+id/hiUserTextView5"
+      android:id="@+id/hiUserTextView"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
       android:layout_marginStart="20dp"
@@ -55,7 +55,7 @@
 
 
   <androidx.constraintlayout.widget.ConstraintLayout
-      android:id="@+id/supervisorBoardBottomConstraintLayout"
+      android:id="@+id/thesisOverviewBottomConstraintLayout"
       android:layout_width="match_parent"
       android:layout_height="0dp"
       android:layout_marginStart="5dp"
@@ -69,7 +69,7 @@
       app:layout_constraintTop_toBottomOf="@+id/chipFilterConstraintLayout">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/supervisorBoardRecyclerView"
+        android:id="@+id/thesisOverviewRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="10dp"
@@ -85,13 +85,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topicBoardButton"
+        app:layout_constraintTop_toBottomOf="@+id/topicTenderButton"
         app:layout_constraintVertical_bias="0.0"
         app:spanCount="1"
         tools:listitem="@layout/item_thesis" />
 
     <Button
-        android:id="@+id/topicBoardButton"
+        android:id="@+id/topicTenderButton"
         style="@style/StandardButton"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -122,7 +122,7 @@
       android:textSize="30sp"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/hiUserTextView5" />
+      app:layout_constraintTop_toBottomOf="@+id/hiUserTextView" />
 
   <androidx.constraintlayout.widget.ConstraintLayout
       android:id="@+id/chipFilterConstraintLayout"

@@ -3,6 +3,7 @@ package de.iu.iwmb02_iu_betreuer_app.presentation.activities;
 import android.content.Context;
 import android.content.Intent;
 
+import de.iu.iwmb02_iu_betreuer_app.model.Thesis;
 import de.iu.iwmb02_iu_betreuer_app.model.User;
 
 public class ActivityStarter {
@@ -45,4 +46,11 @@ public class ActivityStarter {
         intent.putExtra("user", user);
         context.startActivity(intent);
     }
+
+    public static void startThesisDetailsActivity(Context context, Thesis thesis) {
+        Intent intent = new Intent(context, ThesisDetailsActivity.class);
+        intent.putExtra("thesis", thesis);
+        context.startActivity(intent);
+    }
+
 }

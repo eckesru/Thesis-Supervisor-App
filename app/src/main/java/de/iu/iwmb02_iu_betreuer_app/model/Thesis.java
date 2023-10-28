@@ -4,7 +4,9 @@ import androidx.annotation.NonNull;
 
 import com.google.firebase.firestore.DocumentId;
 
-public class Thesis {
+import java.io.Serializable;
+
+public class Thesis implements Serializable {
     @DocumentId
     private String thesisId;
     private String title;

@@ -54,13 +54,13 @@ public class SupervisorBoardActivity extends AppCompatActivity implements Fireba
         supervisorBoardRecyclerView.setAdapter(supervisorRecyclerAdapter);
         supervisorBoardRecyclerView.setItemAnimator(null);
 
-        fillToolbarSubmenus();
+        fillSupervisorStudyFieldFilterOptions();
         setOnClickListeners();
 
         handleUserGreeting();
     }
 
-    private void fillToolbarSubmenus(){
+    private void fillSupervisorStudyFieldFilterOptions(){
         Menu submenu = toolbar.getMenu().findItem(R.id.menuItem_filter).getSubMenu();
 
         for (StudyFieldEnum studyFieldEnum : StudyFieldEnum.values()) {
@@ -75,14 +75,14 @@ public class SupervisorBoardActivity extends AppCompatActivity implements Fireba
             ).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                 @Override
                 public boolean onMenuItemClick(@NonNull MenuItem menuItem) {
-                    handleSubMenuClick(enumName);
+                    handleSubMenuItemClick(enumName);
                     return true;
                 }
             });
         }
     }
 
-    private void handleSubMenuClick(String filterOption) {
+    private void handleSubMenuItemClick(String filterOption) {
         Log.d(TAG, "Clicked: " + filterOption);
         connectNewRecyclerAdapter(filterOption);
     }

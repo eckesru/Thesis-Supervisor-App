@@ -12,8 +12,6 @@ import android.os.Bundle;
 import android.provider.OpenableColumns;
 import android.util.Log;
 import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.material.appbar.MaterialToolbar;
@@ -70,8 +68,6 @@ public class ThesisDetailsActivity extends AppCompatActivity implements Firebase
         thesisDetailsSecondarySupervisorTextView = findViewById(R.id.thesisDetailsSecondarySupervisorTextView);
         toolbar = findViewById(R.id.materialToolbar);
 
-        toolbar = findViewById(R.id.materialToolbar);
-
         getThesisFromIntentExtra();
         getUsers();
         getExpose();
@@ -103,9 +99,9 @@ public class ThesisDetailsActivity extends AppCompatActivity implements Firebase
                 }
             });
         }else {
-            thesisDetailsStudentNameTextView.setText(getString(R.string.student_name_string_placeholder, ""));
-            thesisDetailsStudentStudyProgramTextView.setText(getString(R.string.student_study_program_string_placeholder, ""));
-            thesisDetailsStudentEmailTextView.setText(getString(R.string.email_string_placeholder, ""));
+            thesisDetailsStudentNameTextView.setText(getString(R.string.student_name_string_placeholder, getString(R.string.empty)));
+            thesisDetailsStudentStudyProgramTextView.setText(getString(R.string.student_study_program_string_placeholder, getString(R.string.empty)));
+            thesisDetailsStudentEmailTextView.setText(getString(R.string.email_string_placeholder, getString(R.string.empty)));
         }
 
         if(!thesis.getPrimarySupervisorId().isEmpty()){
@@ -128,13 +124,17 @@ public class ThesisDetailsActivity extends AppCompatActivity implements Firebase
                 }
             });
         }else {
-            thesisDetailsSecondarySupervisorTextView.setText(getString(R.string.secondary_supervisor_name_string_placeholder, " "));
+            thesisDetailsSecondarySupervisorTextView.setText(getString(R.string.secondary_supervisor_name_string_placeholder, getString(R.string.empty)));
         }
     }
 
     private void getExpose() {
-        thesisDetailsExposeTextView.setText(getString(R.string.expose_string_placeholder, getFileName(Uri.parse(thesis.getexposeDownloadUri()))));
-        //TODO: set metadata expose title to display here
+        if(thesis.getexposeDownloadUri().isEmpty()){
+            thesisDetailsExposeTextView.setText(getString(R.string.expose_string_placeholder, getString(R.string.empty)));
+        }else {
+            thesisDetailsExposeTextView.setText(getString(R.string.expose_string_placeholder, getFileName(Uri.parse(thesis.getexposeDownloadUri()))));
+            //TODO: set metadata expose title to display here
+        }
     }
 
     private String getFileName(Uri uri) {

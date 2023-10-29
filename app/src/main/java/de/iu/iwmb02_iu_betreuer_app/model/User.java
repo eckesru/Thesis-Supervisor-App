@@ -68,9 +68,15 @@ public abstract class User implements Serializable {
     @Exclude
     public String getFullName() {
         String title = getNameTitle();
+        if (title.isEmpty()){
+            title = "";}
+
         String first = getNameFirst();
         String last = getNameLast();
 
-        return (title.isEmpty() ? "" : title + " ") + first + " " + last;
+        if (title.contains("Dr.") || title.contains("Prof.")){
+            return title + " " + first + " " + last;
+        }
+        return  first + " " + last + " "+ title;
     }
 }

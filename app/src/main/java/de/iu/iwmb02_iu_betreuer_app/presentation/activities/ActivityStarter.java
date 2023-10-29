@@ -53,4 +53,10 @@ public class ActivityStarter {
         context.startActivity(intent);
     }
 
+    public static void startCreateTopicActivity(Context context, User user) {
+        Intent intent = new Intent(context, TopicCreateActivity.class);
+        intent.putExtra("user", user);
+        context.startActivity(intent);
+    }
+
 }

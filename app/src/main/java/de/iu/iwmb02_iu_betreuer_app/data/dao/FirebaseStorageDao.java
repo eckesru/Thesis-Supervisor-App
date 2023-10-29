@@ -7,8 +7,10 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -53,22 +55,32 @@ public class FirebaseStorageDao implements FileStorageDao{
     }
 
     @Override
-    public void uploadExpose(Uri file, Callback<String> callback) {
-        StorageReference riversRef = storageRef.child("exposes/"+file.getLastPathSegment());
-        UploadTask uploadTask = riversRef.putFile(file);
+    public void uploadExpose(Uri file, Callback<Uri> callback) {
+        StorageReference ref = storageRef.child("exposes/"+file.getLastPathSegment());
+        UploadTask uploadTask = ref.putFile(file);
 
-        uploadTask.addOnFailureListener(new OnFailureListener() {
+        uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+            @Override
+            public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                if (!task.isSuccessful()) {
+                    throw task.getException();
+                }
+
+                // Continue with the task to get the download URL
+                return ref.getDownloadUrl();
+            }
+        }).addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                callback.onCallback(uri);
+                Log.d(TAG, "Expose successfully uploaded");
+            }
+        }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Log.e(TAG, "Expose upload failed", e);
-            }
-        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Log.d(TAG, "Expose successfully uploaded");
-                callback.onCallback(taskSnapshot.getStorage().getPath());
+                Log.e(TAG, "Not able to generate download uri", e);
             }
         });
-    }
 
+    }
 }

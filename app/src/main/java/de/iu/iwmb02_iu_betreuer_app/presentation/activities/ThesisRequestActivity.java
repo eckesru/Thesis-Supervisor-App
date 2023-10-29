@@ -55,7 +55,7 @@ public class ThesisRequestActivity extends AppCompatActivity implements Firebase
     private TextView exposeFilePathTextView;
     private EditText thesisTitleEditText;
     private ActivityResultLauncher<Intent> pdfPickerLauncher;
-    private Uri exposeUri;
+    private Uri exposeDownloadUri;
     private boolean isValidThesisData = false;
 
     @Override
@@ -133,9 +133,9 @@ public class ThesisRequestActivity extends AppCompatActivity implements Firebase
             public void onClick(View view) {
                 validateThesisData();
                 if(isValidThesisData){
-                    firebaseStorageDao.uploadExpose(exposeUri, new Callback<String>() {
+                    firebaseStorageDao.uploadExpose(exposeDownloadUri, new Callback<Uri>() {
                         @Override
-                        public void onCallback(String exposePath) {
+                        public void onCallback(Uri downloadUri) {
                             Thesis thesis = new Thesis(
                                     thesisTitleEditText.getText().toString(),
                                     student.getUserId(),
@@ -143,7 +143,7 @@ public class ThesisRequestActivity extends AppCompatActivity implements Firebase
                                     "",
                                     ThesisStateEnum.open.name(),
                                     BillingStateEnum.open.name(),
-                                    exposePath);
+                                    downloadUri.toString());
                             firebaseFirestoreDao.saveNewThesis(thesis);
                             Toast.makeText(ThesisRequestActivity.this, "Thesis request submitted", Toast.LENGTH_SHORT).show();
                             //TODO: implement navigation to success page
@@ -172,8 +172,8 @@ public class ThesisRequestActivity extends AppCompatActivity implements Firebase
                     if (result.getResultCode() == Activity.RESULT_OK) {
                         Intent data = result.getData();
                         if (data != null) {
-                            exposeUri = data.getData();
-                            String pdfName = getFileName(exposeUri);
+                            exposeDownloadUri = data.getData();
+                            String pdfName = getFileName(exposeDownloadUri);
                             exposeFilePathTextView.setText(pdfName);
                         }
                     } else {

@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,7 +41,7 @@ public class ThesisOverviewActivity extends AppCompatActivity implements Firebas
     private TextView txtHiUser;
     private User user;
     private MaterialToolbar toolbar;
-
+    private Button topicTenderButton;
     private ConstraintLayout chipGroups;
     Chip primaryChip;
     Chip secondaryChip;
@@ -56,6 +57,7 @@ public class ThesisOverviewActivity extends AppCompatActivity implements Firebas
         thesisOverviewRecyclerView = findViewById(R.id.thesisOverviewRecyclerView);
         txtHiUser = findViewById(R.id.hiUserNameTextView);
         toolbar = findViewById(R.id.materialToolbar);
+        topicTenderButton = findViewById(R.id.topicTenderButton);
 
         thesisRecyclerAdapter = getSupervisorRecyclerAdapter("");
         thesisOverviewRecyclerView.setAdapter(thesisRecyclerAdapter);
@@ -67,7 +69,7 @@ public class ThesisOverviewActivity extends AppCompatActivity implements Firebas
         setDefaultFilters();
 
         toolbar = findViewById(R.id.materialToolbar);
-        setOnClickListeners(toolbar);
+        setOnClickListeners();
 
         handleUserGreeting();
     }
@@ -84,7 +86,14 @@ public class ThesisOverviewActivity extends AppCompatActivity implements Firebas
 // TODO: Set all default filters
     }
 
-    public void setOnClickListeners(MaterialToolbar toolbar) {
+    public void setOnClickListeners() {
+        topicTenderButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ActivityStarter.startCreateTopicActivity(context, user);
+            }
+        });
+
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
@@ -114,6 +123,9 @@ public class ThesisOverviewActivity extends AppCompatActivity implements Firebas
                         chipGroups.startAnimation(AnimationUtils.loadAnimation(ThesisOverviewActivity.this, android.R.anim.slide_in_left));
                         chipGroups.setVisibility(View.VISIBLE);
                     }
+                    return true;
+                } else if (id == R.id.menuItem_logout) {
+                    logOutUser();
                     return true;
                 }
                 return false;

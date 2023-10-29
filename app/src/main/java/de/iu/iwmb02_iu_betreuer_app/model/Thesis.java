@@ -1,5 +1,6 @@
 package de.iu.iwmb02_iu_betreuer_app.model;
 
+
 import androidx.annotation.NonNull;
 
 import com.google.firebase.firestore.DocumentId;
@@ -15,19 +16,19 @@ public class Thesis implements Serializable {
     private String secondarySupervisorId;
     private String thesisState;
     private String billingState;
-    private String exposeId;
+    private String exposeDownloadUri;
 
     public Thesis() {
     }
 
-    public Thesis(String title, String studentId, String primarySupervisorId, String secondarySupervisorId, String thesisState, String billingState, String exposeId) {
+    public Thesis(String title, String studentId, String primarySupervisorId, String secondarySupervisorId, String thesisState, String billingState, String exposeDownloadUri) {
         this.title = title;
         this.studentId = studentId;
         this.primarySupervisorId = primarySupervisorId;
         this.secondarySupervisorId = secondarySupervisorId;
         this.thesisState = thesisState;
         this.billingState = billingState;
-        this.exposeId = exposeId;
+        this.exposeDownloadUri = exposeDownloadUri;
     }
 
     public String getThesisId() {
@@ -82,12 +83,12 @@ public class Thesis implements Serializable {
         this.billingState = billingState;
     }
 
-    public String getExposeId() {
-        return exposeId;
+    public String getexposeDownloadUri() {
+        return exposeDownloadUri;
     }
 
     public void setExposeId(String exposeId) {
-        this.exposeId = exposeId;
+        this.exposeDownloadUri = exposeId;
     }
 
     @NonNull
@@ -101,7 +102,7 @@ public class Thesis implements Serializable {
                 ", secondarySupervisorId='" + secondarySupervisorId + '\'' +
                 ", thesisState=" + thesisState +
                 ", billingState=" + billingState +
-                ", exposeId='" + exposeId + '\'' +
+                ", exposeDownloadUri='" + exposeDownloadUri + '\'' +
                 '}';
     }
 }

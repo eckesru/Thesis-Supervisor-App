@@ -63,6 +63,14 @@ public class SupervisorBoardActivity extends AppCompatActivity implements Fireba
     private void fillSupervisorStudyFieldFilterOptions(){
         Menu submenu = toolbar.getMenu().findItem(R.id.menuItem_filter).getSubMenu();
 
+        submenu.add(0,R.string.show_all,0,getString(R.string.show_all)).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(@NonNull MenuItem menuItem) {
+                connectNewRecyclerAdapter("");
+                return true;
+            }
+        });
+
         for (StudyFieldEnum studyFieldEnum : StudyFieldEnum.values()) {
             String enumName = studyFieldEnum.name();
             int stringResId = studyFieldEnum.getStringResId();
@@ -102,9 +110,6 @@ public class SupervisorBoardActivity extends AppCompatActivity implements Fireba
                     logOutUser();
                     return true;
                 } else if (id == R.id.menuItem_filter) {
-                    return true;
-                } else if (id == R.id.menuItem_showAll) {
-                    connectNewRecyclerAdapter("");
                     return true;
             }
                 return false;

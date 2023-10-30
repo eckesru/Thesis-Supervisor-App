@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements FirebaseAuth.Auth
     }
 
     private void chooseActivity(Student student) {
-        firebaseFirestoreDao.checkIfThesisExistsForStudentId(student.getUserId(), new Callback<Thesis>() {
+        firebaseFirestoreDao.checkIfOpenThesisExistsForStudentId(student.getUserId(), new Callback<Thesis>() {
             @Override
             public void onCallback(Thesis thesis) {
                 if(thesis != null){

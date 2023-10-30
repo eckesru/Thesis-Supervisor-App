@@ -12,8 +12,10 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import de.iu.iwmb02_iu_betreuer_app.data.ThesisStateEnum;
 import de.iu.iwmb02_iu_betreuer_app.model.Student;
 import de.iu.iwmb02_iu_betreuer_app.model.Supervisor;
 import de.iu.iwmb02_iu_betreuer_app.model.Thesis;
@@ -183,19 +185,23 @@ public class FirebaseFirestoreDao implements StudentDao, SupervisorDao, ThesisDa
     }
 
     @Override
-    public void checkIfThesisExistsForStudentId(String studentId, Callback<Thesis> callback) {
+    public void checkIfOpenThesisExistsForStudentId(String studentId, Callback<Thesis> callback) {
         thesesCollectionRef
                 .whereEqualTo("studentId", studentId)
-                .limit(1)
                 .get()
                 .addOnSuccessListener(querySnapshot -> {
                     if (!querySnapshot.isEmpty()) {
-                        DocumentSnapshot document = querySnapshot.getDocuments().get(0);
-                        Thesis thesis = document.toObject(Thesis.class);
-                        callback.onCallback(thesis);
-                    } else {
-                        callback.onCallback(null);
+                        List<DocumentSnapshot> documents = querySnapshot.getDocuments();
+                        for(DocumentSnapshot ds : documents){
+                            Thesis thesis = ds.toObject(Thesis.class);
+                            String state = thesis.getThesisState();
+                            if(state != ThesisStateEnum.canceled.name() && state != ThesisStateEnum.completed.name()){
+                                callback.onCallback(thesis);
+                                return;
+                            }
+                        }
                     }
+                    callback.onCallback(null);
                 })
                 .addOnFailureListener(e -> {
                     Log.e(TAG, "Thesis query failed", e);

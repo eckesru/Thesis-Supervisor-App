@@ -183,6 +183,27 @@ public class FirebaseFirestoreDao implements StudentDao, SupervisorDao, ThesisDa
     }
 
     @Override
+    public void checkIfThesisExistsForStudentId(String studentId, Callback<Thesis> callback) {
+        thesesCollectionRef
+                .whereEqualTo("studentId", studentId)
+                .limit(1)
+                .get()
+                .addOnSuccessListener(querySnapshot -> {
+                    if (!querySnapshot.isEmpty()) {
+                        DocumentSnapshot document = querySnapshot.getDocuments().get(0);
+                        Thesis thesis = document.toObject(Thesis.class);
+                        callback.onCallback(thesis);
+                    } else {
+                        callback.onCallback(null);
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    Log.e(TAG, "Thesis query failed", e);
+                    callback.onCallback(null);
+                });
+    }
+
+    @Override
     public void getUser(String userId, Callback<User> callback) {
         usersCollectionRef.document(userId).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override

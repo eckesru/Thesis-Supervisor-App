@@ -59,4 +59,10 @@ public class ActivityStarter {
         context.startActivity(intent);
     }
 
+    public static void startSuccessThesisSubmittedActivity(Context context, Thesis thesis) {
+        Intent intent = new Intent(context, SuccessThesisSubmittedActivity.class);
+        intent.putExtra("thesis", thesis);
+        context.startActivity(intent);
+    }
+
 }

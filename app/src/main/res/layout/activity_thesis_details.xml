@@ -15,20 +15,6 @@
         android:scrollbars="vertical"
         tools:context=".ui.NewEditProfile">
 
-        <TextView
-            android:id="@+id/studyFieldsTextView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="168dp"
-            android:fontFamily="@font/inter_semibold"
-            android:text="@string/thesis_details_label"
-            android:textSize="22sp"
-            app:layout_constraintEnd_toStartOf="@+id/thesisDetailsDeleteButton"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
-
         <ImageButton
             android:id="@+id/thesisTopicEditButton"
             style="@style/StandardButton"
@@ -41,19 +27,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/thesisDetailsStudentEmailTextView"
             app:srcCompat="@drawable/edit_icon" />
-
-        <ImageButton
-            android:id="@+id/thesisDetailsDeleteButton"
-            style="@style/StandardButton"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="20dp"
-            android:contentDescription="@string/thesis_details_delete"
-            android:scaleType="centerCrop"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
-            app:srcCompat="@drawable/trashcan_android" />
 
         <ImageButton
             android:id="@+id/exposeDownloadButton"
@@ -125,12 +98,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
             android:text="@string/student_name_string_placeholder"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/studyFieldsTextView2" />
+            app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
         <TextView
             android:id="@+id/thesisDetailsExposeTextView"
@@ -171,7 +144,9 @@
                 android:layout_height="?attr/actionBarSize"
                 app:logoAdjustViewBounds="true"
                 app:menu="@menu/back_menu"
-                app:navigationIcon="@drawable/ic_iu_logo" />
+                app:navigationIcon="@drawable/ic_iu_logo"
+                app:title="@string/thesis_details_label"
+                app:titleTextColor="@color/white" />
 
         </com.google.android.material.appbar.AppBarLayout>
 

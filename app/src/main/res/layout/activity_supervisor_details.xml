@@ -27,9 +27,11 @@
                 android:id="@+id/materialToolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
+                app:logoAdjustViewBounds="true"
                 app:menu="@menu/back_menu"
                 app:navigationIcon="@drawable/ic_iu_logo"
-                app:logoAdjustViewBounds="true"/>
+                app:title="@string/supervisor_details_label"
+                app:titleTextColor="@color/white" />
 
         </com.google.android.material.appbar.AppBarLayout>
 

@@ -29,7 +29,9 @@
                 android:layout_height="?attr/actionBarSize"
                 app:logoAdjustViewBounds="true"
                 app:menu="@menu/back_menu"
-                app:navigationIcon="@drawable/ic_iu_logo" />
+                app:navigationIcon="@drawable/ic_iu_logo"
+                app:title="@string/tender_topic_label"
+                app:titleTextColor="@color/white" />
 
         </com.google.android.material.appbar.AppBarLayout>
 

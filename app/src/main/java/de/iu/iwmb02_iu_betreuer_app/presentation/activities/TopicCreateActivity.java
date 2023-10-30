@@ -62,6 +62,7 @@ public class TopicCreateActivity extends AppCompatActivity implements FirebaseAu
             public void onClick(View view) {
                 if(validateTitle()){
                     saveThesisTopic();
+                    ActivityStarter.startThesisOverviewActivity(context, primarySupervisor);
                     return;
                 }
                 Toast.makeText(context, R.string.missing_topic_title_message, Toast.LENGTH_SHORT).show();

@@ -62,7 +62,9 @@ public class TopicCreateActivity extends AppCompatActivity implements FirebaseAu
             public void onClick(View view) {
                 if(validateTitle()){
                     saveThesisTopic();
+                    Toast.makeText(context, R.string.topic_created_message, Toast.LENGTH_SHORT).show();
                     ActivityStarter.startThesisOverviewActivity(context, primarySupervisor);
+                    TopicCreateActivity.this.finish();
                     return;
                 }
                 Toast.makeText(context, R.string.missing_topic_title_message, Toast.LENGTH_SHORT).show();
@@ -88,7 +90,13 @@ public class TopicCreateActivity extends AppCompatActivity implements FirebaseAu
     }
 
     private void saveThesisTopic() {
-        Thesis thesis = new Thesis(topicCreateTopicEditText.getText().toString(),"",primarySupervisor.getUserId(),"", ThesisStateEnum.open.name(), BillingStateEnum.open.name(),"");
+        Thesis thesis = new Thesis(
+                topicCreateTopicEditText.getText().toString(),
+                "",primarySupervisor.getUserId(),
+                "",
+                ThesisStateEnum.open.name(),
+                BillingStateEnum.open.name(),
+                "");
         firebaseFirestoreDao.saveNewThesis(thesis);
     }
 

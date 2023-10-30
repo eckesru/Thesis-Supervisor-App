@@ -56,6 +56,7 @@
     <string name="thesis_overview_supervision_secondary_label">Zweitgutachter:in</string>
     <string name="missing_topic_title_message">Bitte geben sie einen Titel für das Thema ein</string>
     <string name="empty">[leer]</string>
+    <string name="topic_created_message">Neues Thema erstellt</string>
 
     <string name ="thesis_state_open">Offen</string>
     <string name ="thesis_state_consultation">In Abstimmung</string>

@@ -83,7 +83,7 @@ public class ThesisOverviewActivity extends AppCompatActivity implements Firebas
 
     private void setDefaultFilters() {
         primaryChip.setChecked(true);
-// TODO: Set all default filters
+    // TODO: Set all default filters
     }
 
     public void setOnClickListeners() {

@@ -45,6 +45,7 @@
     <string name="topic_tender_submit">Tender topic</string>
     <string name="missing_topic_title_message">Please enter a valid title for the topic</string>
     <string name="empty">[empty]</string>
+    <string name="topic_created_message"> New topic created</string>
 
     <string name="thesis_state_open">Open</string>
     <string name="thesis_state_consultation">Consultation</string>

@@ -2,8 +2,10 @@ package de.iu.iwmb02_iu_betreuer_app.presentation.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.PopupMenu;
 import androidx.appcompat.widget.Toolbar;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -13,6 +15,8 @@ import android.provider.OpenableColumns;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.google.android.material.appbar.MaterialToolbar;
@@ -29,7 +33,7 @@ import de.iu.iwmb02_iu_betreuer_app.model.Thesis;
 import de.iu.iwmb02_iu_betreuer_app.model.User;
 import de.iu.iwmb02_iu_betreuer_app.util.Callback;
 
-public class ThesisDetailsActivity extends AppCompatActivity implements FirebaseAuth.AuthStateListener{
+public class ThesisDetailsActivity extends AppCompatActivity implements FirebaseAuth.AuthStateListener {
     private static final String TAG = "ThesisDetailsActivity";
     private final Context context = ThesisDetailsActivity.this;
     private FirebaseAuth auth;
@@ -75,38 +79,41 @@ public class ThesisDetailsActivity extends AppCompatActivity implements Firebase
         getExpose();
 
         setOnClickListeners();
+
+        initializeSelectThesisStateButton();
+        initializeSelectThesisBillingButton();
     }
 
     private void getThesisFromIntentExtra() {
         Intent intent = getIntent();
-        if(intent.hasExtra("thesis")){
+        if (intent.hasExtra("thesis")) {
             thesis = (Thesis) intent.getSerializableExtra("thesis");
 
             thesisDetailsTopicTextView.setText(getString(R.string.topic_string_placeholder, thesis.getTitle()));
-            thesisDetailsStateTextView.setText(getString(R.string.thesis_state_string_placeholder,ThesisStateEnum.getLocalizedString(context,thesis.getThesisState())));
-            thesisDetailsBillingTextView.setText(getString(R.string.thesis_billing_string_placeholder,ThesisStateEnum.getLocalizedString(context,thesis.getBillingState())));
+            thesisDetailsStateTextView.setText(getString(R.string.thesis_state_string_placeholder, ThesisStateEnum.getLocalizedString(context, thesis.getThesisState())));
+            thesisDetailsBillingTextView.setText(getString(R.string.thesis_billing_string_placeholder, ThesisStateEnum.getLocalizedString(context, thesis.getBillingState())));
         }
     }
 
     private void getUsers() {
-        if(!thesis.getStudentId().isEmpty()){
+        if (!thesis.getStudentId().isEmpty()) {
             firebaseFirestoreDao.getStudent(thesis.getStudentId(), new Callback<Student>() {
                 @Override
                 public void onCallback(Student s) {
                     student = s;
 
                     thesisDetailsStudentNameTextView.setText(getString(R.string.student_name_string_placeholder, s.getFullName()));
-                    thesisDetailsStudentStudyProgramTextView.setText(getString(R.string.student_study_program_string_placeholder, StudyProgramEnum.getLocalizedString(context,s.getStudyProgram())+ " " + s.getStudyLevel()));
+                    thesisDetailsStudentStudyProgramTextView.setText(getString(R.string.student_study_program_string_placeholder, StudyProgramEnum.getLocalizedString(context, s.getStudyProgram()) + " " + s.getStudyLevel()));
                     thesisDetailsStudentEmailTextView.setText(getString(R.string.email_string_placeholder, s.getEmail()));
                 }
             });
-        }else {
+        } else {
             thesisDetailsStudentNameTextView.setText(getString(R.string.student_name_string_placeholder, getString(R.string.empty)));
             thesisDetailsStudentStudyProgramTextView.setText(getString(R.string.student_study_program_string_placeholder, getString(R.string.empty)));
             thesisDetailsStudentEmailTextView.setText(getString(R.string.email_string_placeholder, getString(R.string.empty)));
         }
 
-        if(!thesis.getPrimarySupervisorId().isEmpty()){
+        if (!thesis.getPrimarySupervisorId().isEmpty()) {
             firebaseFirestoreDao.getSupervisor(thesis.getPrimarySupervisorId(), new Callback<Supervisor>() {
                 @Override
                 public void onCallback(Supervisor ps) {
@@ -116,7 +123,7 @@ public class ThesisDetailsActivity extends AppCompatActivity implements Firebase
                 }
             });
         }
-        if(!thesis.getSecondarySupervisorId().isEmpty()){
+        if (!thesis.getSecondarySupervisorId().isEmpty()) {
             firebaseFirestoreDao.getSupervisor(thesis.getSecondarySupervisorId(), new Callback<Supervisor>() {
                 @Override
                 public void onCallback(Supervisor ss) {
@@ -125,15 +132,15 @@ public class ThesisDetailsActivity extends AppCompatActivity implements Firebase
                     thesisDetailsSecondarySupervisorTextView.setText(getString(R.string.secondary_supervisor_name_string_placeholder, ss.getFullName()));
                 }
             });
-        }else {
+        } else {
             thesisDetailsSecondarySupervisorTextView.setText(getString(R.string.secondary_supervisor_name_string_placeholder, getString(R.string.empty)));
         }
     }
 
     private void getExpose() {
-        if(thesis.getexposeDownloadUri().isEmpty()){
+        if (thesis.getexposeDownloadUri().isEmpty()) {
             thesisDetailsExposeTextView.setText(getString(R.string.expose_string_placeholder, getString(R.string.empty)));
-        }else {
+        } else {
             thesisDetailsExposeTextView.setText(getString(R.string.expose_string_placeholder, getFileName(Uri.parse(thesis.getexposeDownloadUri()))));
             //TODO: set metadata expose title to display here
         }
@@ -180,10 +187,57 @@ public class ThesisDetailsActivity extends AppCompatActivity implements Firebase
         }
     }
 
-    public void setSecondarySupervisor(View view) {
+    public void setSecondarySupervisorOnClick(View view) {
         Intent intent = new Intent(this, SupervisorBoardActivity.class);
         intent.putExtra("MODE", "SELECT_SECONDARY_SUPERVISOR");
         intent.putExtra("THESIS_OBJECT", thesis);
         startActivity(intent);
+    }
+
+
+    private void initializeSelectThesisStateButton() {
+
+        ImageButton setThesisStateButton = findViewById(R.id.thesisStateEditButton);
+        setThesisStateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu popupMenu = new PopupMenu(context, setThesisStateButton);
+                popupMenu.getMenuInflater().inflate(R.menu.select_state_menu, popupMenu.getMenu());
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+
+                    @SuppressLint("NotifyDataSetChanged")
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        int itemId = item.getItemId();
+// TODO: Prüfen, ob String zum Enum passt                        thesis.setThesisState(getString(itemId));
+                        System.out.println(getString(itemId));
+//                        firebaseFirestoreDao.updateThesis(thesis.getThesisId(), thesis);
+                        return true;
+                    }
+                });
+                popupMenu.show();
+            }
+        });
+    }
+
+
+    private void initializeSelectThesisBillingButton() {
+
+        ImageButton setThesisBillingButton = findViewById(R.id.thesisBillingEditButton);
+        setThesisBillingButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu popupMenu = new PopupMenu(context, setThesisBillingButton);
+                popupMenu.getMenuInflater().inflate(R.menu.select_billing_menu, popupMenu.getMenu());
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        return false;
+                    }
+                });
+                popupMenu.show();
+            }
+        });
     }
 }

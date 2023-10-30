@@ -16,15 +16,20 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import de.iu.iwmb02_iu_betreuer_app.R;
 import de.iu.iwmb02_iu_betreuer_app.data.dao.FirebaseStorageDao;
 import de.iu.iwmb02_iu_betreuer_app.model.Supervisor;
+import de.iu.iwmb02_iu_betreuer_app.model.Thesis;
 import de.iu.iwmb02_iu_betreuer_app.presentation.activities.ActivityStarter;
 import de.iu.iwmb02_iu_betreuer_app.util.Callback;
 
 public class SupervisorRecyclerAdapter extends FirestoreRecyclerAdapter<Supervisor, SupervisorRecyclerAdapter.SupervisorViewHolder> {
 
-    private  final FirebaseStorageDao firebaseStorageDao;
-    public SupervisorRecyclerAdapter(@NonNull FirestoreRecyclerOptions<Supervisor> options) {
+    private final FirebaseStorageDao firebaseStorageDao;
+    private String mode;
+    private Thesis thesis;
+    public SupervisorRecyclerAdapter(@NonNull FirestoreRecyclerOptions<Supervisor> options, String mode, Thesis thesis) {
         super(options);
         firebaseStorageDao = FirebaseStorageDao.getInstance();
+        this.mode = mode;
+        this.thesis = thesis;
     }
 
     @NonNull
@@ -48,7 +53,7 @@ public class SupervisorRecyclerAdapter extends FirestoreRecyclerAdapter<Supervis
         holder.itemSupervisorConstraintView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ActivityStarter.startSupervisorDetailsActivity(holder.imgSupervisorProfilePicture.getContext(),supervisor);
+                ActivityStarter.startSupervisorDetailsActivity(holder.imgSupervisorProfilePicture.getContext(),supervisor, mode, thesis);
             }
         });
 

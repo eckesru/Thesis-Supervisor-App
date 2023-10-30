@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +26,7 @@ import de.iu.iwmb02_iu_betreuer_app.R;
 import de.iu.iwmb02_iu_betreuer_app.data.StudyFieldEnum;
 import de.iu.iwmb02_iu_betreuer_app.data.dao.FirebaseFirestoreDao;
 import de.iu.iwmb02_iu_betreuer_app.model.Supervisor;
+import de.iu.iwmb02_iu_betreuer_app.model.Thesis;
 import de.iu.iwmb02_iu_betreuer_app.model.User;
 import de.iu.iwmb02_iu_betreuer_app.presentation.adapters.SupervisorRecyclerAdapter;
 
@@ -38,6 +41,10 @@ public class SupervisorBoardActivity extends AppCompatActivity implements Fireba
     private User user;
     private MaterialToolbar toolbar;
 
+    private String mode = "SELECT_PRIMARY_SUPERVISOR";
+
+    private Thesis thesis;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +57,21 @@ public class SupervisorBoardActivity extends AppCompatActivity implements Fireba
         txtHiUser = findViewById(R.id.hiUserNameTextView);
         toolbar = findViewById(R.id.materialToolbar);
 
+        mode = getIntent().getStringExtra("MODE");
+        if(mode.equals("SELECT_SECONDARY_SUPERVISOR")) {
+            thesis = (Thesis) getIntent().getSerializableExtra("THESIS_OBJECT");
+            toolbar.setTitle(R.string.select_second_supervisor);
+            toolbar.inflateMenu(R.menu.filter_back_menu);
+            TextView hi_user = findViewById(R.id.hiUserTextView);
+            TextView hi_user_name = findViewById(R.id.hiUserNameTextView);
+            hi_user.setVisibility(View.GONE);
+            hi_user_name.setVisibility(View.GONE);
+            Button topicBoardButton = findViewById(R.id.topicBoardButton);
+            topicBoardButton.setVisibility(View.GONE);
+        } else {
+            toolbar.inflateMenu(R.menu.filter_logout_menu);
+        }
+
         supervisorRecyclerAdapter = getSupervisorRecyclerAdapter("");
         supervisorBoardRecyclerView.setAdapter(supervisorRecyclerAdapter);
         supervisorBoardRecyclerView.setItemAnimator(null);
@@ -58,6 +80,7 @@ public class SupervisorBoardActivity extends AppCompatActivity implements Fireba
         setOnClickListeners();
 
         handleUserGreeting();
+
     }
 
     private void fillSupervisorStudyFieldFilterOptions(){
@@ -111,7 +134,10 @@ public class SupervisorBoardActivity extends AppCompatActivity implements Fireba
                     return true;
                 } else if (id == R.id.menuItem_filter) {
                     return true;
-            }
+            } else if (id == R.id.menuItem_back) {
+                    onBackPressed();
+                    return true;
+                }
                 return false;
             }
         });
@@ -143,7 +169,7 @@ public class SupervisorBoardActivity extends AppCompatActivity implements Fireba
 
     private SupervisorRecyclerAdapter getSupervisorRecyclerAdapter(String filterOption){
         FirestoreRecyclerOptions<Supervisor> options = getFirestoreRecyclerOptions(getSupervisorQuery(filterOption));
-        return new SupervisorRecyclerAdapter(options);
+        return new SupervisorRecyclerAdapter(options, mode, thesis);
     }
 
     private FirestoreRecyclerOptions<Supervisor> getFirestoreRecyclerOptions(Query query){

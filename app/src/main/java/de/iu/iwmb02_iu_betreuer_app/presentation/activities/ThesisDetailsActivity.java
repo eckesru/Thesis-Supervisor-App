@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.provider.OpenableColumns;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.material.appbar.MaterialToolbar;
@@ -25,6 +26,7 @@ import de.iu.iwmb02_iu_betreuer_app.data.dao.FirebaseStorageDao;
 import de.iu.iwmb02_iu_betreuer_app.model.Student;
 import de.iu.iwmb02_iu_betreuer_app.model.Supervisor;
 import de.iu.iwmb02_iu_betreuer_app.model.Thesis;
+import de.iu.iwmb02_iu_betreuer_app.model.User;
 import de.iu.iwmb02_iu_betreuer_app.util.Callback;
 
 public class ThesisDetailsActivity extends AppCompatActivity implements FirebaseAuth.AuthStateListener{
@@ -176,5 +178,12 @@ public class ThesisDetailsActivity extends AppCompatActivity implements Firebase
             ActivityStarter.startLoginActivity(context);
             this.finish();
         }
+    }
+
+    public void setSecondarySupervisor(View view) {
+        Intent intent = new Intent(this, SupervisorBoardActivity.class);
+        intent.putExtra("MODE", "SELECT_SECONDARY_SUPERVISOR");
+        intent.putExtra("THESIS_OBJECT", thesis);
+        startActivity(intent);
     }
 }

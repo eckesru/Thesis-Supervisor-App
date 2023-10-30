@@ -23,8 +23,10 @@ import java.util.ArrayList;
 import de.iu.iwmb02_iu_betreuer_app.R;
 import de.iu.iwmb02_iu_betreuer_app.data.LanguageEnum;
 import de.iu.iwmb02_iu_betreuer_app.data.StudyFieldEnum;
+import de.iu.iwmb02_iu_betreuer_app.data.dao.FirebaseFirestoreDao;
 import de.iu.iwmb02_iu_betreuer_app.data.dao.FirebaseStorageDao;
 import de.iu.iwmb02_iu_betreuer_app.model.Supervisor;
+import de.iu.iwmb02_iu_betreuer_app.model.Thesis;
 import de.iu.iwmb02_iu_betreuer_app.util.Callback;
 
 public class SupervisorDetailsActivity extends AppCompatActivity implements FirebaseAuth.AuthStateListener{
@@ -34,6 +36,7 @@ public class SupervisorDetailsActivity extends AppCompatActivity implements Fire
 
     private FirebaseAuth auth;
     private FirebaseStorageDao firebaseStorageDao;
+    private FirebaseFirestoreDao firebaseFirestoreDao;
     private Supervisor supervisor;
     private Button startThesisRequestButton;
     private ImageView supervisorImageView;
@@ -42,6 +45,8 @@ public class SupervisorDetailsActivity extends AppCompatActivity implements Fire
     private TextView supervisorLanguageTextView;
     private TextView supervisorDescriptionTextView;
     private TextView studyFieldsListTextView;
+    private String mode;
+    private Thesis thesis;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +54,7 @@ public class SupervisorDetailsActivity extends AppCompatActivity implements Fire
         setContentView(R.layout.activity_supervisor_details);
 
         auth = FirebaseAuth.getInstance();
+        firebaseFirestoreDao = FirebaseFirestoreDao.getInstance();
         firebaseStorageDao = FirebaseStorageDao.getInstance();
 
         startThesisRequestButton = findViewById(R.id.startThesisRequestButton);
@@ -67,6 +73,14 @@ public class SupervisorDetailsActivity extends AppCompatActivity implements Fire
         getSupervisorFromIntentExtra();
         displaySupervisorProfileImage();
         fillSupervisorTextViews();
+
+        mode = getIntent().getStringExtra("MODE");
+        if(mode.equals("SELECT_SECONDARY_SUPERVISOR")) {
+            thesis = (Thesis) getIntent().getSerializableExtra("THESIS_OBJECT");
+            toolbar.setTitle(R.string.select_second_supervisor);
+            Button startThesisRequestButton = findViewById(R.id.startThesisRequestButton);
+            startThesisRequestButton.setText(R.string.set_second_supervisor);
+        }
     }
 
 
@@ -125,7 +139,14 @@ public class SupervisorDetailsActivity extends AppCompatActivity implements Fire
         startThesisRequestButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ActivityStarter.startThesisRequestActivity(context, supervisor);
+                if(mode.equals("SELECT_SECONDARY_SUPERVISOR")) {
+                    thesis.setSecondarySupervisorId(supervisor.getUserId());
+                    firebaseFirestoreDao.updateThesis(thesis.getThesisId(),thesis);
+                    ActivityStarter.startThesisDetailsActivity(context, thesis, mode);
+                    finish();
+                } else {
+                    ActivityStarter.startThesisRequestActivity(context, supervisor);
+                }
             }
         });
     }

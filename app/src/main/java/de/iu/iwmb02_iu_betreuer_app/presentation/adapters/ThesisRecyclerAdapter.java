@@ -24,6 +24,7 @@ import de.iu.iwmb02_iu_betreuer_app.util.Callback;
 public class ThesisRecyclerAdapter extends FirestoreRecyclerAdapter<Thesis, ThesisRecyclerAdapter.SupervisorViewHolder> {
 
     private  final FirebaseFirestoreDao firebaseFirestoreDao;
+    private String mode;
     public ThesisRecyclerAdapter(@NonNull FirestoreRecyclerOptions<Thesis> options) {
         super(options);
         firebaseFirestoreDao = FirebaseFirestoreDao.getInstance();
@@ -62,7 +63,7 @@ public class ThesisRecyclerAdapter extends FirestoreRecyclerAdapter<Thesis, Thes
         holder.itemThesisConstraintView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ActivityStarter.startThesisDetailsActivity(holderContext,thesis);
+                ActivityStarter.startThesisDetailsActivity(holderContext,thesis, mode);
             }
         });
 

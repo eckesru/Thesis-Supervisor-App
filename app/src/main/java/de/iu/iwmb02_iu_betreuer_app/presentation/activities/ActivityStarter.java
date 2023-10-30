@@ -29,9 +29,11 @@ public class ActivityStarter {
         context.startActivity(intent);
     }
 
-    public static void startSupervisorDetailsActivity(Context context, User user){
+    public static void startSupervisorDetailsActivity(Context context, User user, String mode, Thesis thesis){
         Intent intent = new Intent(context, SupervisorDetailsActivity.class);
         intent.putExtra("user", user);
+        intent.putExtra("MODE", mode);
+        intent.putExtra("THESIS_OBJECT", thesis);
         context.startActivity(intent);
     }
 
@@ -47,9 +49,12 @@ public class ActivityStarter {
         context.startActivity(intent);
     }
 
-    public static void startThesisDetailsActivity(Context context, Thesis thesis) {
+    public static void startThesisDetailsActivity(Context context, Thesis thesis, String mode) {
         Intent intent = new Intent(context, ThesisDetailsActivity.class);
         intent.putExtra("thesis", thesis);
+        if(mode != null) {
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        }
         context.startActivity(intent);
     }
 

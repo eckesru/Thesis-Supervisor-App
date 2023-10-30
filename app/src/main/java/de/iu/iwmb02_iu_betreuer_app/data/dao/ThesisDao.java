@@ -7,6 +7,6 @@ public interface ThesisDao {
     void getThesis(String thesisId, Callback<Thesis> callback);
     void saveNewThesis(Thesis thesis);
     void updateThesis(String thesisId, Thesis thesis);
-
+    void checkIfOpenThesisExistsForStudentId(String studentId, Callback<Thesis> callback);
 }
 

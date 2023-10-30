@@ -12,8 +12,10 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import de.iu.iwmb02_iu_betreuer_app.data.ThesisStateEnum;
 import de.iu.iwmb02_iu_betreuer_app.model.Student;
 import de.iu.iwmb02_iu_betreuer_app.model.Supervisor;
 import de.iu.iwmb02_iu_betreuer_app.model.Thesis;
@@ -180,6 +182,31 @@ public class FirebaseFirestoreDao implements StudentDao, SupervisorDao, ThesisDa
                 Log.e(TAG, "Error updating supervisor", e);
             }
         });
+    }
+
+    @Override
+    public void checkIfOpenThesisExistsForStudentId(String studentId, Callback<Thesis> callback) {
+        thesesCollectionRef
+                .whereEqualTo("studentId", studentId)
+                .get()
+                .addOnSuccessListener(querySnapshot -> {
+                    if (!querySnapshot.isEmpty()) {
+                        List<DocumentSnapshot> documents = querySnapshot.getDocuments();
+                        for(DocumentSnapshot ds : documents){
+                            Thesis thesis = ds.toObject(Thesis.class);
+                            String state = thesis.getThesisState();
+                            if(state != ThesisStateEnum.canceled.name() && state != ThesisStateEnum.completed.name()){
+                                callback.onCallback(thesis);
+                                return;
+                            }
+                        }
+                    }
+                    callback.onCallback(null);
+                })
+                .addOnFailureListener(e -> {
+                    Log.e(TAG, "Thesis query failed", e);
+                    callback.onCallback(null);
+                });
     }
 
     @Override

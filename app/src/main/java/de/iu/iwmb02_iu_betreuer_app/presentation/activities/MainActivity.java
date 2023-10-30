@@ -20,6 +20,7 @@ import de.iu.iwmb02_iu_betreuer_app.data.dao.UserDao;
 import de.iu.iwmb02_iu_betreuer_app.development.FirestoreTools;
 import de.iu.iwmb02_iu_betreuer_app.model.Student;
 import de.iu.iwmb02_iu_betreuer_app.model.Supervisor;
+import de.iu.iwmb02_iu_betreuer_app.model.Thesis;
 import de.iu.iwmb02_iu_betreuer_app.model.User;
 import de.iu.iwmb02_iu_betreuer_app.util.Callback;
 
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements FirebaseAuth.Auth
     private static final String TAG = "MainActivity";
     private final Context context = MainActivity.this;
     private FirebaseAuth auth;
+    private FirebaseFirestoreDao firebaseFirestoreDao;
     private ImageView logoutImageView;
 
     @Override
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements FirebaseAuth.Auth
         setContentView(R.layout.activity_main);
 
         auth = FirebaseAuth.getInstance();
+        firebaseFirestoreDao = FirebaseFirestoreDao.getInstance();
 
         //TODO: Delete - Just for development
         FirestoreTools tools = new FirestoreTools();
@@ -52,9 +55,7 @@ public class MainActivity extends AppCompatActivity implements FirebaseAuth.Auth
                 public void onCallback(User user) {
                     if (user instanceof Student) {
                         Log.d(TAG, "Logged in User is a student");
-                        ActivityStarter.startSupervisorBoardActivity(context, user);
-                        MainActivity.this.finish();
-                        //TODO: check if thesis object exists --> goto successpage
+                        chooseActivity((Student) user);
                     } else if (user instanceof Supervisor) {
                         Log.d(TAG, "Logged in user is a supervisor");
                         ActivityStarter.startThesisOverviewActivity(context, user);
@@ -65,6 +66,21 @@ public class MainActivity extends AppCompatActivity implements FirebaseAuth.Auth
                 }
             });
         }
+    }
+
+    private void chooseActivity(Student student) {
+        firebaseFirestoreDao.checkIfOpenThesisExistsForStudentId(student.getUserId(), new Callback<Thesis>() {
+            @Override
+            public void onCallback(Thesis thesis) {
+                if(thesis != null){
+                    ActivityStarter.startSuccessThesisSubmittedActivity(context, thesis);
+                    MainActivity.this.finish();
+                    return;
+                }
+                ActivityStarter.startSupervisorBoardActivity(context, student);
+                MainActivity.this.finish();
+            }
+        });
     }
 
     private void setItemClickListener() {

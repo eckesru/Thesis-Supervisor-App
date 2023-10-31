@@ -16,18 +16,20 @@ public class Thesis implements Serializable {
     private String secondarySupervisorId;
     private String thesisState;
     private String billingState;
+    private String exposeTitle;
     private String exposeDownloadUri;
 
     public Thesis() {
     }
 
-    public Thesis(String title, String studentId, String primarySupervisorId, String secondarySupervisorId, String thesisState, String billingState, String exposeDownloadUri) {
+    public Thesis(String title, String studentId, String primarySupervisorId, String secondarySupervisorId, String thesisState, String billingState,String exposeTitle, String exposeDownloadUri) {
         this.title = title;
         this.studentId = studentId;
         this.primarySupervisorId = primarySupervisorId;
         this.secondarySupervisorId = secondarySupervisorId;
         this.thesisState = thesisState;
         this.billingState = billingState;
+        this.exposeTitle = exposeTitle;
         this.exposeDownloadUri = exposeDownloadUri;
     }
 
@@ -83,7 +85,11 @@ public class Thesis implements Serializable {
         this.billingState = billingState;
     }
 
-    public String getexposeDownloadUri() {
+    public String getExposeTitle() {
+        return exposeTitle;
+    }
+
+    public String getExposeDownloadUri() {
         return exposeDownloadUri;
     }
 

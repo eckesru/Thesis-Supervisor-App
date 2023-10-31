@@ -96,6 +96,7 @@ public class TopicCreateActivity extends AppCompatActivity implements FirebaseAu
                 "",
                 ThesisStateEnum.open.name(),
                 BillingStateEnum.open.name(),
+                "",
                 "");
         firebaseFirestoreDao.saveNewThesis(thesis);
     }

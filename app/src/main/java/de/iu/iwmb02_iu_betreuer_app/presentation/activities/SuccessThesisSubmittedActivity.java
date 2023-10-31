@@ -13,7 +13,9 @@ import android.provider.OpenableColumns;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.firebase.ui.auth.AuthUI;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -89,10 +91,10 @@ public class SuccessThesisSubmittedActivity extends AppCompatActivity implements
     }
 
     private void getExpose() {
-        if (thesis.getexposeDownloadUri().isEmpty()) {
+        if (thesis.getExposeDownloadUri().isEmpty()) {
             thesisSubmittedExposeTextView.setText(getString(R.string.expose_string_placeholder, getString(R.string.empty)));
         } else {
-            thesisSubmittedExposeTextView.setText(getString(R.string.expose_string_placeholder, getFileName(Uri.parse(thesis.getexposeDownloadUri()))));
+            thesisSubmittedExposeTextView.setText(getString(R.string.expose_string_placeholder, thesis.getExposeTitle()));
             //TODO: implement download here
         }
     }
@@ -120,8 +122,8 @@ public class SuccessThesisSubmittedActivity extends AppCompatActivity implements
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 int id = item.getItemId();
-                if (id == R.id.menuItem_back) {
-                    onBackPressed();
+                if (id == R.id.menuItem_logout) {
+                    logOutUser();
                     return true;
                 }
                 return false;
@@ -136,5 +138,12 @@ public class SuccessThesisSubmittedActivity extends AppCompatActivity implements
             ActivityStarter.startLoginActivity(context);
             this.finish();
         }
+    }
+
+    private void logOutUser(){
+        Log.d(TAG, "logOutUser: Logging out");
+        AuthUI.getInstance().signOut(this);
+        Toast.makeText(context, getString(R.string.logged_out), Toast.LENGTH_SHORT).show();
+        this.finish();
     }
 }

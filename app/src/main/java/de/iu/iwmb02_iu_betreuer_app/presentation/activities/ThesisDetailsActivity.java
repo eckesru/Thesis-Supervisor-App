@@ -15,7 +15,6 @@ import android.provider.OpenableColumns;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -30,7 +29,6 @@ import de.iu.iwmb02_iu_betreuer_app.data.dao.FirebaseStorageDao;
 import de.iu.iwmb02_iu_betreuer_app.model.Student;
 import de.iu.iwmb02_iu_betreuer_app.model.Supervisor;
 import de.iu.iwmb02_iu_betreuer_app.model.Thesis;
-import de.iu.iwmb02_iu_betreuer_app.model.User;
 import de.iu.iwmb02_iu_betreuer_app.util.Callback;
 
 public class ThesisDetailsActivity extends AppCompatActivity implements FirebaseAuth.AuthStateListener {
@@ -138,11 +136,10 @@ public class ThesisDetailsActivity extends AppCompatActivity implements Firebase
     }
 
     private void getExpose() {
-        if (thesis.getexposeDownloadUri().isEmpty()) {
+        if (thesis.getExposeDownloadUri().isEmpty()) {
             thesisDetailsExposeTextView.setText(getString(R.string.expose_string_placeholder, getString(R.string.empty)));
         } else {
-            thesisDetailsExposeTextView.setText(getString(R.string.expose_string_placeholder, getFileName(Uri.parse(thesis.getexposeDownloadUri()))));
-            //TODO: set metadata expose title to display here
+            thesisDetailsExposeTextView.setText(getString(R.string.expose_string_placeholder, thesis.getExposeTitle()));
         }
     }
 

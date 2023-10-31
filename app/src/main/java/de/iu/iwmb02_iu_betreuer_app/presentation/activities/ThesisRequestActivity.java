@@ -55,6 +55,7 @@ public class ThesisRequestActivity extends AppCompatActivity implements Firebase
     private TextView exposeFilePathTextView;
     private EditText thesisTitleEditText;
     private ActivityResultLauncher<Intent> pdfPickerLauncher;
+    private String exposeTitle;
     private Uri exposeDownloadUri;
     private boolean isValidThesisData = false;
 
@@ -143,6 +144,7 @@ public class ThesisRequestActivity extends AppCompatActivity implements Firebase
                                     "",
                                     ThesisStateEnum.open.name(),
                                     BillingStateEnum.open.name(),
+                                    exposeTitle,
                                     downloadUri.toString());
                             firebaseFirestoreDao.saveNewThesis(thesis);
                             Toast.makeText(ThesisRequestActivity.this, "Thesis request submitted", Toast.LENGTH_SHORT).show();
@@ -174,8 +176,8 @@ public class ThesisRequestActivity extends AppCompatActivity implements Firebase
                         Intent data = result.getData();
                         if (data != null) {
                             exposeDownloadUri = data.getData();
-                            String pdfName = getFileName(exposeDownloadUri);
-                            exposeFilePathTextView.setText(pdfName);
+                            exposeTitle = getFileName(exposeDownloadUri);
+                            exposeFilePathTextView.setText(exposeTitle);
                         }
                     } else {
                         Toast.makeText(ThesisRequestActivity.this, "No PDF selected", Toast.LENGTH_SHORT).show();

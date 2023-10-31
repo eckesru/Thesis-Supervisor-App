@@ -146,7 +146,8 @@ public class ThesisRequestActivity extends AppCompatActivity implements Firebase
                                     downloadUri.toString());
                             firebaseFirestoreDao.saveNewThesis(thesis);
                             Toast.makeText(ThesisRequestActivity.this, "Thesis request submitted", Toast.LENGTH_SHORT).show();
-                            //TODO: implement navigation to success page
+                            ActivityStarter.startSuccessThesisSubmittedActivity(context,thesis);
+                            ThesisRequestActivity.this.finish();
                         }
                     });
                 }

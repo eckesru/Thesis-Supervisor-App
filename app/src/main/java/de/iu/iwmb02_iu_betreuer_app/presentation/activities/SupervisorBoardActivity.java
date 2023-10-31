@@ -38,6 +38,7 @@ public class SupervisorBoardActivity extends AppCompatActivity implements Fireba
     private RecyclerView supervisorBoardRecyclerView;
     private SupervisorRecyclerAdapter supervisorRecyclerAdapter;
     private TextView txtHiUser;
+    private Button  topicBoardButton;
     private User user;
     private MaterialToolbar toolbar;
 
@@ -56,6 +57,7 @@ public class SupervisorBoardActivity extends AppCompatActivity implements Fireba
         supervisorBoardRecyclerView = findViewById(R.id.supervisorBoardRecyclerView);
         txtHiUser = findViewById(R.id.hiUserNameTextView);
         toolbar = findViewById(R.id.materialToolbar);
+        topicBoardButton = findViewById(R.id.topicBoardButton);
 
         handleMode();
 
@@ -67,7 +69,6 @@ public class SupervisorBoardActivity extends AppCompatActivity implements Fireba
         setOnClickListeners();
 
         handleUserGreeting();
-
     }
 
     private void handleMode() {
@@ -75,20 +76,29 @@ public class SupervisorBoardActivity extends AppCompatActivity implements Fireba
         if(intent.hasExtra("MODE")){
             mode = intent.getStringExtra("MODE");
             if(mode.equals("SELECT_SECONDARY_SUPERVISOR")) {
-                thesis = (Thesis) getIntent().getSerializableExtra("THESIS_OBJECT");
-                toolbar.setTitle(R.string.select_second_supervisor);
-                toolbar.inflateMenu(R.menu.filter_back_menu);
-                TextView hi_user = findViewById(R.id.hiUserTextView);
-                TextView hi_user_name = findViewById(R.id.hiUserNameTextView);
-                hi_user.setVisibility(View.GONE);
-                hi_user_name.setVisibility(View.GONE);
-                Button topicBoardButton = findViewById(R.id.topicBoardButton);
-                topicBoardButton.setVisibility(View.GONE);
+                getThesisFromIntentExtra(intent);
+                adjustActivityLayoutForSupervisorMode();
             return;
             }
         }
         toolbar.inflateMenu(R.menu.filter_logout_menu);
     }
+
+    private void getThesisFromIntentExtra(Intent intent) {
+        if(intent.hasExtra("THESIS_OBJECT")){
+            thesis = (Thesis) getIntent().getSerializableExtra("THESIS_OBJECT");
+        }
+    }
+    private void adjustActivityLayoutForSupervisorMode() {
+        toolbar.setTitle(R.string.select_second_supervisor);
+        toolbar.inflateMenu(R.menu.filter_back_menu);
+        TextView hi_user = findViewById(R.id.hiUserTextView);
+        hi_user.setVisibility(View.GONE);
+        txtHiUser.setVisibility(View.GONE);
+        topicBoardButton.setVisibility(View.GONE);
+    }
+
+
 
     private void fillSupervisorStudyFieldFilterOptions(){
         Menu submenu = toolbar.getMenu().findItem(R.id.menuItem_filter).getSubMenu();

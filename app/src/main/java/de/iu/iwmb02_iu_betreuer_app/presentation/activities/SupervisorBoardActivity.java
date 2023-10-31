@@ -57,20 +57,7 @@ public class SupervisorBoardActivity extends AppCompatActivity implements Fireba
         txtHiUser = findViewById(R.id.hiUserNameTextView);
         toolbar = findViewById(R.id.materialToolbar);
 
-        mode = getIntent().getStringExtra("MODE");
-        if(mode.equals("SELECT_SECONDARY_SUPERVISOR")) {
-            thesis = (Thesis) getIntent().getSerializableExtra("THESIS_OBJECT");
-            toolbar.setTitle(R.string.select_second_supervisor);
-            toolbar.inflateMenu(R.menu.filter_back_menu);
-            TextView hi_user = findViewById(R.id.hiUserTextView);
-            TextView hi_user_name = findViewById(R.id.hiUserNameTextView);
-            hi_user.setVisibility(View.GONE);
-            hi_user_name.setVisibility(View.GONE);
-            Button topicBoardButton = findViewById(R.id.topicBoardButton);
-            topicBoardButton.setVisibility(View.GONE);
-        } else {
-            toolbar.inflateMenu(R.menu.filter_logout_menu);
-        }
+        handleMode();
 
         supervisorRecyclerAdapter = getSupervisorRecyclerAdapter("");
         supervisorBoardRecyclerView.setAdapter(supervisorRecyclerAdapter);
@@ -81,6 +68,26 @@ public class SupervisorBoardActivity extends AppCompatActivity implements Fireba
 
         handleUserGreeting();
 
+    }
+
+    private void handleMode() {
+        Intent intent = getIntent();
+        if(intent.hasExtra("MODE")){
+            mode = intent.getStringExtra("MODE");
+            if(mode.equals("SELECT_SECONDARY_SUPERVISOR")) {
+                thesis = (Thesis) getIntent().getSerializableExtra("THESIS_OBJECT");
+                toolbar.setTitle(R.string.select_second_supervisor);
+                toolbar.inflateMenu(R.menu.filter_back_menu);
+                TextView hi_user = findViewById(R.id.hiUserTextView);
+                TextView hi_user_name = findViewById(R.id.hiUserNameTextView);
+                hi_user.setVisibility(View.GONE);
+                hi_user_name.setVisibility(View.GONE);
+                Button topicBoardButton = findViewById(R.id.topicBoardButton);
+                topicBoardButton.setVisibility(View.GONE);
+            return;
+            }
+        }
+        toolbar.inflateMenu(R.menu.filter_logout_menu);
     }
 
     private void fillSupervisorStudyFieldFilterOptions(){

@@ -78,7 +78,7 @@ public class ThesisOverviewActivity extends AppCompatActivity implements Firebas
     private void initializeChips() {
         primaryChip = findViewById(R.id.chipPrimarySupervisor);
         secondaryChip = findViewById(R.id.chipSecondarySupervisor);
-        //TODO: Initialize all chips
+        // TODO: Initialize all chips
     }
 
     private void setDefaultFilters() {

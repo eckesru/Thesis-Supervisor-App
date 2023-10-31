@@ -205,10 +205,9 @@ public class ThesisDetailsActivity extends AppCompatActivity implements Firebase
                     @SuppressLint("NotifyDataSetChanged")
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
-                        int itemId = item.getItemId();
-// TODO: Prüfen, ob String zum Enum passt                        thesis.setThesisState(getString(itemId));
-                        System.out.println(getString(itemId));
-//                        firebaseFirestoreDao.updateThesis(thesis.getThesisId(), thesis);
+                        String itemTitle = item.getTitle().toString().toLowerCase();
+                        thesis.setThesisState(itemTitle);
+                        firebaseFirestoreDao.updateThesis(thesis.getThesisId(), thesis);
                         return true;
                     }
                 });
@@ -230,7 +229,10 @@ public class ThesisDetailsActivity extends AppCompatActivity implements Firebase
 
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
-                        return false;
+                        String itemTitle = item.getTitle().toString().toLowerCase();
+                        thesis.setBillingState(itemTitle);
+                        firebaseFirestoreDao.updateThesis(thesis.getThesisId(), thesis);
+                        return true;
                     }
                 });
                 popupMenu.show();

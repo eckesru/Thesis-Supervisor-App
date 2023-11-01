@@ -45,6 +45,7 @@ public class SupervisorDetailsActivity extends AppCompatActivity implements Fire
     private TextView supervisorLanguageTextView;
     private TextView supervisorDescriptionTextView;
     private TextView studyFieldsListTextView;
+    private MaterialToolbar toolbar;
     private String mode;
     private Thesis thesis;
 
@@ -66,23 +67,29 @@ public class SupervisorDetailsActivity extends AppCompatActivity implements Fire
         supervisorDescriptionTextView = findViewById(R.id.supervisorDescriptionTextView);
         studyFieldsListTextView = findViewById(R.id.studyFieldsListTextView);
 
-        MaterialToolbar toolbar = findViewById(R.id.materialToolbar);
-        toolbar.inflateMenu(R.menu.empty_menu);
-        setOnClickListeners(toolbar);
+        toolbar = findViewById(R.id.materialToolbar);
+        setOnClickListeners();
 
         getSupervisorFromIntentExtra();
         displaySupervisorProfileImage();
         fillSupervisorTextViews();
 
-        mode = getIntent().getStringExtra("MODE");
-        if(mode.equals("SELECT_SECONDARY_SUPERVISOR")) {
-            thesis = (Thesis) getIntent().getSerializableExtra("THESIS_OBJECT");
-            toolbar.setTitle(R.string.select_second_supervisor);
-            Button startThesisRequestButton = findViewById(R.id.startThesisRequestButton);
-            startThesisRequestButton.setText(R.string.set_second_supervisor);
-        }
+        handlemode();
+
     }
 
+
+    private void handlemode() {
+        Intent intent = getIntent();
+        if(intent.hasExtra("MODE") && intent.hasExtra("THESIS_OBJECT")) {
+            mode = intent.getStringExtra("MODE");
+            if (mode.equals("SELECT_SECONDARY_SUPERVISOR")) {
+                thesis = (Thesis) intent.getSerializableExtra("THESIS_OBJECT");
+                toolbar.setTitle(R.string.select_second_supervisor);
+                startThesisRequestButton.setText(R.string.set_second_supervisor);
+            }
+        }
+    }
 
 
     private void getSupervisorFromIntentExtra() {
@@ -122,7 +129,7 @@ public class SupervisorDetailsActivity extends AppCompatActivity implements Fire
         studyFieldsListTextView.setText(sb);
     }
 
-    public void setOnClickListeners(MaterialToolbar toolbar) {
+    public void setOnClickListeners() {
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {

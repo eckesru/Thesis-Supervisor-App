@@ -9,7 +9,7 @@
     app:cardCornerRadius="15dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/itemSupervisorConstraintView"
+        android:id="@+id/itemTopicConstraintView"
         style="@style/StandardItem"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

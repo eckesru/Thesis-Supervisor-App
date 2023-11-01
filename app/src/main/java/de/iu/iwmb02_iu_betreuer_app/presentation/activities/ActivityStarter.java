@@ -70,4 +70,10 @@ public class ActivityStarter {
         context.startActivity(intent);
     }
 
+    public static void startTopicBoardActivity(Context context, User user) {
+        Intent intent = new Intent(context, TopicBoardActivity.class);
+        intent.putExtra("user", user);
+        context.startActivity(intent);
+    }
+
 }

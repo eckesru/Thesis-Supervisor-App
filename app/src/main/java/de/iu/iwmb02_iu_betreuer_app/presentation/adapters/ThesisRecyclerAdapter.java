@@ -21,7 +21,7 @@ import de.iu.iwmb02_iu_betreuer_app.model.Thesis;
 import de.iu.iwmb02_iu_betreuer_app.presentation.activities.ActivityStarter;
 import de.iu.iwmb02_iu_betreuer_app.util.Callback;
 
-public class ThesisRecyclerAdapter extends FirestoreRecyclerAdapter<Thesis, ThesisRecyclerAdapter.SupervisorViewHolder> {
+public class ThesisRecyclerAdapter extends FirestoreRecyclerAdapter<Thesis, ThesisRecyclerAdapter.ThesisViewHolder> {
 
     private  final FirebaseFirestoreDao firebaseFirestoreDao;
     private String mode;
@@ -32,13 +32,13 @@ public class ThesisRecyclerAdapter extends FirestoreRecyclerAdapter<Thesis, Thes
 
     @NonNull
     @Override
-    public SupervisorViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ThesisViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_thesis,parent,false);
-        return new SupervisorViewHolder(view);
+        return new ThesisViewHolder(view);
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull SupervisorViewHolder holder, int position, @NonNull Thesis thesis) {
+    protected void onBindViewHolder(@NonNull ThesisViewHolder holder, int position, @NonNull Thesis thesis) {
         Context holderContext = holder.itemView.getContext();
         holder.thesisTitleTextView.setText(holderContext.getString(R.string.topic_string_placeholder,thesis.getTitle()));
 
@@ -70,7 +70,7 @@ public class ThesisRecyclerAdapter extends FirestoreRecyclerAdapter<Thesis, Thes
 
     }
 
-    public class SupervisorViewHolder extends RecyclerView.ViewHolder{
+    public class ThesisViewHolder extends RecyclerView.ViewHolder{
         private final View itemThesisConstraintView;
         private final TextView thesisTitleTextView;
         private final TextView thesisStudentNameTextView;
@@ -78,7 +78,7 @@ public class ThesisRecyclerAdapter extends FirestoreRecyclerAdapter<Thesis, Thes
         private final TextView thesisBillingTextView;
 
 
-        public SupervisorViewHolder(@NonNull View itemView) {
+        public ThesisViewHolder(@NonNull View itemView) {
             super(itemView);
             itemThesisConstraintView = itemView.findViewById(R.id.itemThesisConstraintView);
             thesisTitleTextView = itemView.findViewById(R.id.thesisTitleTextView);

@@ -13,6 +13,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.OpenableColumns;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
@@ -21,7 +22,11 @@ import android.widget.TextView;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+
 import de.iu.iwmb02_iu_betreuer_app.R;
+import de.iu.iwmb02_iu_betreuer_app.data.BillingStateEnum;
 import de.iu.iwmb02_iu_betreuer_app.data.StudyProgramEnum;
 import de.iu.iwmb02_iu_betreuer_app.data.ThesisStateEnum;
 import de.iu.iwmb02_iu_betreuer_app.data.dao.FirebaseFirestoreDao;
@@ -89,7 +94,7 @@ public class ThesisDetailsActivity extends AppCompatActivity implements Firebase
 
             thesisDetailsTopicTextView.setText(getString(R.string.topic_string_placeholder, thesis.getTitle()));
             thesisDetailsStateTextView.setText(getString(R.string.thesis_state_string_placeholder, ThesisStateEnum.getLocalizedString(context, thesis.getThesisState())));
-            thesisDetailsBillingTextView.setText(getString(R.string.thesis_billing_string_placeholder, ThesisStateEnum.getLocalizedString(context, thesis.getBillingState())));
+            thesisDetailsBillingTextView.setText(getString(R.string.thesis_billing_string_placeholder, BillingStateEnum.getLocalizedString(context, thesis.getBillingState())));
         }
     }
 
@@ -195,19 +200,31 @@ public class ThesisDetailsActivity extends AppCompatActivity implements Firebase
     private void initializeSelectThesisStateButton() {
 
         ImageButton setThesisStateButton = findViewById(R.id.thesisStateEditButton);
+
+        LinkedHashMap<String, String> enumMap = new LinkedHashMap<>();
+
+        for(ThesisStateEnum state : ThesisStateEnum.values()) {
+            enumMap.put(ThesisStateEnum.getLocalizedString(context, state.name()), state.name());
+        }
         setThesisStateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 PopupMenu popupMenu = new PopupMenu(context, setThesisStateButton);
-                popupMenu.getMenuInflater().inflate(R.menu.select_state_menu, popupMenu.getMenu());
+                Menu menu = popupMenu.getMenu();
+
+                for(String key : enumMap.keySet()) {
+                    menu.add(key);
+                }
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
 
                     @SuppressLint("NotifyDataSetChanged")
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
-                        String itemTitle = item.getTitle().toString().toLowerCase();
-                        thesis.setThesisState(itemTitle);
+                        String itemTitle = item.getTitle().toString();
+                        String enumString = enumMap.get(itemTitle);
+                        thesis.setThesisState(enumString);
                         firebaseFirestoreDao.updateThesis(thesis.getThesisId(), thesis);
+                        thesisDetailsStateTextView.setText(getString(R.string.thesis_state_string_placeholder, ThesisStateEnum.getLocalizedString(context, thesis.getThesisState())));
                         return true;
                     }
                 });
@@ -220,18 +237,30 @@ public class ThesisDetailsActivity extends AppCompatActivity implements Firebase
     private void initializeSelectThesisBillingButton() {
 
         ImageButton setThesisBillingButton = findViewById(R.id.thesisBillingEditButton);
+
+        LinkedHashMap<String, String> enumMap = new LinkedHashMap<>();
+
+        for(BillingStateEnum state : BillingStateEnum.values()) {
+            enumMap.put(BillingStateEnum.getLocalizedString(context, state.name()), state.name());
+        }
         setThesisBillingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 PopupMenu popupMenu = new PopupMenu(context, setThesisBillingButton);
-                popupMenu.getMenuInflater().inflate(R.menu.select_billing_menu, popupMenu.getMenu());
-                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                Menu menu = popupMenu.getMenu();
 
+                for(String key : enumMap.keySet()) {
+                    menu.add(key);
+                }
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @SuppressLint("NotifyDataSetChanged")
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
-                        String itemTitle = item.getTitle().toString().toLowerCase();
-                        thesis.setBillingState(itemTitle);
+                        String itemTitle = item.getTitle().toString();
+                        String enumString = enumMap.get(itemTitle);
+                        thesis.setBillingState(enumString);
                         firebaseFirestoreDao.updateThesis(thesis.getThesisId(), thesis);
+                        thesisDetailsBillingTextView.setText(getString(R.string.thesis_billing_string_placeholder, BillingStateEnum.getLocalizedString(context, thesis.getBillingState())));
                         return true;
                     }
                 });

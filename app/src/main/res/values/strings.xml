@@ -50,14 +50,6 @@
     <string name="tender_topic_label">Topic announcement</string>
     <string name="select_second_supervisor">2nd Supervisors</string>
     <string name="set_second_supervisor">Select as second supervisor</string>
-
-    <string name="thesis_state_open">Open</string>
-    <string name="thesis_state_consultation">Consultation</string>
-    <string name="thesis_state_registered">Registered</string>
-    <string name="thesis_state_submitted">Submitted</string>
-    <string name="thesis_state_colloquium">Colloquium</string>
-    <string name="thesis_state_completed">Completed</string>
-    <string name="thesis_state_canceled">Canceled</string>
     <string name="topic_tender_label">Tender new topic →</string>
     <string name="topic_tender_text_label">Topic</string>
     <string name="thesis_overview_label">Supervision overview</string>
@@ -68,6 +60,16 @@
     <string name="thesis_overview_billing_label">Billing: </string>
     <string name="thesis_overview_supervision_primary_label">Primary</string>
     <string name="thesis_overview_supervision_secondary_label">Secondary</string>
+    <string name="expose_download_message">Expose successfully downloaded and saved to downloads folder</string>
+    <string name="no_expose_saved">No expose saved</string>
+
+    <string name="thesis_state_open">Open</string>
+    <string name="thesis_state_consultation">Consultation</string>
+    <string name="thesis_state_registered">Registered</string>
+    <string name="thesis_state_submitted">Submitted</string>
+    <string name="thesis_state_colloquium">Colloquium</string>
+    <string name="thesis_state_completed">Completed</string>
+    <string name="thesis_state_canceled">Canceled</string>
 
     <string name="billing_state_open">Open</string>
     <string name="billing_state_billed">Billed</string>
@@ -86,7 +88,4 @@
     <string name="studyprogram_computerscience">Computer Science</string>
     <string name="studyprogram_history">History</string>
     <string name="studyprogram_mathematics">Mathematics</string>
-
-
-
 </resources>

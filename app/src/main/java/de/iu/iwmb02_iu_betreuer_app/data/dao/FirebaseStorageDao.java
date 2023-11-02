@@ -21,7 +21,7 @@ public class FirebaseStorageDao implements FileStorageDao{
     private static FirebaseStorageDao instance;
     private static final String TAG = "FirebaseStorageDao";
     private static final long MAX_DOWNLOADSIZE = 1024 * 1024;
-
+    private final FirebaseStorage storage;
     private final StorageReference storageRef;
 
     public static FirebaseStorageDao getInstance() {
@@ -32,7 +32,7 @@ public class FirebaseStorageDao implements FileStorageDao{
     }
 
     private FirebaseStorageDao() {
-        FirebaseStorage storage = FirebaseStorage.getInstance();
+        storage = FirebaseStorage.getInstance();
         storageRef = storage.getReference();
     }
 
@@ -82,5 +82,22 @@ public class FirebaseStorageDao implements FileStorageDao{
             }
         });
 
+    }
+
+    @Override
+    public void downloadExpose(String downloadUri, Callback<byte[]> callback) {
+        StorageReference exposeRef = storage.getReferenceFromUrl(downloadUri);
+        exposeRef.getBytes(MAX_DOWNLOADSIZE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+            @Override
+            public void onSuccess(byte[] bytes) {
+                Log.d(TAG, "PDF successfully downloaded");
+                callback.onCallback(bytes);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.e(TAG, "Error while downloading PDF ", e);
+            }
+        });
     }
 }

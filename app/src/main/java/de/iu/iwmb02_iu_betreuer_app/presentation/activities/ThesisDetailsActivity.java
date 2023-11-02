@@ -8,20 +8,22 @@ import androidx.appcompat.widget.Toolbar;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.OpenableColumns;
+import android.os.Environment;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
@@ -46,6 +48,8 @@ public class ThesisDetailsActivity extends AppCompatActivity implements Firebase
     private Student student;
     private Supervisor primarySupervisor;
     private Supervisor secondarySupervisor;
+    private String exposeTitle;
+    private String exposeDownloadUri;
     private TextView thesisDetailsStudentNameTextView;
     private TextView thesisDetailsStudentStudyProgramTextView;
     private TextView thesisDetailsStudentEmailTextView;
@@ -55,6 +59,7 @@ public class ThesisDetailsActivity extends AppCompatActivity implements Firebase
     private TextView thesisDetailsBillingTextView;
     private TextView thesisDetailsPrimarySupervisorTextView;
     private TextView thesisDetailsSecondarySupervisorTextView;
+    private ImageButton exposeDownloadButton;
     private MaterialToolbar toolbar;
 
     @Override
@@ -75,6 +80,7 @@ public class ThesisDetailsActivity extends AppCompatActivity implements Firebase
         thesisDetailsBillingTextView = findViewById(R.id.thesisDetailsBillingTextView);
         thesisDetailsPrimarySupervisorTextView = findViewById(R.id.thesisDetailsPrimarySupervisorTextView);
         thesisDetailsSecondarySupervisorTextView = findViewById(R.id.thesisDetailsSecondarySupervisorTextView);
+        exposeDownloadButton = findViewById(R.id.exposeDownloadButton);
         toolbar = findViewById(R.id.materialToolbar);
 
         getThesisFromIntentExtra();
@@ -141,32 +147,27 @@ public class ThesisDetailsActivity extends AppCompatActivity implements Firebase
     }
 
     private void getExpose() {
-        if (thesis.getExposeDownloadUri().isEmpty()) {
+        exposeDownloadUri = thesis.getExposeDownloadUri();
+        exposeTitle = thesis.getExposeTitle();
+        if (exposeDownloadUri.isEmpty()) {
             thesisDetailsExposeTextView.setText(getString(R.string.expose_string_placeholder, getString(R.string.empty)));
         } else {
-            thesisDetailsExposeTextView.setText(getString(R.string.expose_string_placeholder, thesis.getExposeTitle()));
+            exposeTitle = thesis.getExposeTitle();
+            thesisDetailsExposeTextView.setText(getString(R.string.expose_string_placeholder, exposeTitle));
         }
-    }
-
-    private String getFileName(Uri uri) {
-        String result = null;
-        if (uri.getScheme().equals("content")) {
-            try (Cursor cursor = getContentResolver().query(uri, null, null, null, null)) {
-                if (cursor != null && cursor.moveToFirst()) {
-                    int columnIndex = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME);
-                    if (columnIndex != -1) {
-                        result = cursor.getString(columnIndex);
-                    }
-                }
-            }
-        }
-        if (result == null) {
-            result = uri.getLastPathSegment();
-        }
-        return result;
     }
 
     private void setOnClickListeners() {
+        exposeDownloadButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(exposeDownloadUri.isEmpty()){
+                    Toast.makeText(context,R.string.no_expose_saved,Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                downloadExpose();
+            }
+        });
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
@@ -176,6 +177,24 @@ public class ThesisDetailsActivity extends AppCompatActivity implements Firebase
                     return true;
                 }
                 return false;
+            }
+        });
+    }
+
+    private void downloadExpose() {
+        firebaseStorageDao.downloadExpose(exposeDownloadUri, new Callback<byte[]>() {
+            @Override
+            public void onCallback(byte[] bytes) {
+                File downloadDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);;
+                File data = new File(downloadDir, exposeTitle);
+                try {
+                    FileOutputStream fos = new FileOutputStream(data);
+                    fos.write(bytes);
+                    Log.d(TAG, "Download completed");
+                } catch (IOException e) {
+                    Log.e(TAG, "Writing PDF file failed", e);
+                }
+                Toast.makeText(context,R.string.expose_download_message,Toast.LENGTH_LONG).show();
             }
         });
     }

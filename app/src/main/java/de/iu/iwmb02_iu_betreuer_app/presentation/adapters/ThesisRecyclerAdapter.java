@@ -9,8 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
-import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import java.util.ArrayList;
 
 import de.iu.iwmb02_iu_betreuer_app.R;
 import de.iu.iwmb02_iu_betreuer_app.data.BillingStateEnum;
@@ -21,13 +20,14 @@ import de.iu.iwmb02_iu_betreuer_app.model.Thesis;
 import de.iu.iwmb02_iu_betreuer_app.presentation.activities.ActivityStarter;
 import de.iu.iwmb02_iu_betreuer_app.util.Callback;
 
-public class ThesisRecyclerAdapter extends FirestoreRecyclerAdapter<Thesis, ThesisRecyclerAdapter.ThesisViewHolder> {
+public class ThesisRecyclerAdapter extends RecyclerView.Adapter<ThesisRecyclerAdapter.ThesisViewHolder> {
 
     private  final FirebaseFirestoreDao firebaseFirestoreDao;
+    private final ArrayList<Thesis> theses;
     private String mode;
-    public ThesisRecyclerAdapter(@NonNull FirestoreRecyclerOptions<Thesis> options) {
-        super(options);
+    public ThesisRecyclerAdapter(ArrayList<Thesis> theses) {
         firebaseFirestoreDao = FirebaseFirestoreDao.getInstance();
+        this.theses = theses;
     }
 
     @NonNull
@@ -38,7 +38,8 @@ public class ThesisRecyclerAdapter extends FirestoreRecyclerAdapter<Thesis, Thes
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull ThesisViewHolder holder, int position, @NonNull Thesis thesis) {
+    public void onBindViewHolder(@NonNull ThesisViewHolder holder, int position) {
+        Thesis thesis = theses.get(position);
         Context holderContext = holder.itemView.getContext();
         holder.thesisTitleTextView.setText(holderContext.getString(R.string.topic_string_placeholder,thesis.getTitle()));
 
@@ -53,11 +54,8 @@ public class ThesisRecyclerAdapter extends FirestoreRecyclerAdapter<Thesis, Thes
             });
         }
 
-
         holder.thesisStateTextView.setText(holderContext.getString(R.string.thesis_state_string_placeholder,ThesisStateEnum.getLocalizedString(holderContext,thesis.getThesisState())));
         holder.thesisBillingTextView.setText(holderContext.getString(R.string.thesis_billing_string_placeholder,BillingStateEnum.getLocalizedString(holderContext,thesis.getBillingState())));
-
-
 
 
         holder.itemThesisConstraintView.setOnClickListener(new View.OnClickListener() {
@@ -68,6 +66,11 @@ public class ThesisRecyclerAdapter extends FirestoreRecyclerAdapter<Thesis, Thes
         });
 
 
+    }
+
+    @Override
+    public int getItemCount() {
+        return theses.size();
     }
 
     public class ThesisViewHolder extends RecyclerView.ViewHolder{

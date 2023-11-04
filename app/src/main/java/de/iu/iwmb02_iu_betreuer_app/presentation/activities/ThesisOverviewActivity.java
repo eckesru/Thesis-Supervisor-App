@@ -19,17 +19,25 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
-import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.Tasks;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.chip.Chip;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import de.iu.iwmb02_iu_betreuer_app.R;
 import de.iu.iwmb02_iu_betreuer_app.data.dao.FirebaseFirestoreDao;
 import de.iu.iwmb02_iu_betreuer_app.model.Thesis;
 import de.iu.iwmb02_iu_betreuer_app.model.User;
 import de.iu.iwmb02_iu_betreuer_app.presentation.adapters.ThesisRecyclerAdapter;
+import de.iu.iwmb02_iu_betreuer_app.util.Callback;
 
 public class ThesisOverviewActivity extends AppCompatActivity implements FirebaseAuth.AuthStateListener{
     private static final String TAG = "ThesisOverviewActivity";
@@ -37,7 +45,6 @@ public class ThesisOverviewActivity extends AppCompatActivity implements Firebas
     private FirebaseAuth auth;
     private FirebaseFirestoreDao firebaseFirestoreDao;
     private RecyclerView thesisOverviewRecyclerView;
-    private ThesisRecyclerAdapter thesisRecyclerAdapter;
     private TextView txtHiUser;
     private User user;
     private MaterialToolbar toolbar;
@@ -59,19 +66,27 @@ public class ThesisOverviewActivity extends AppCompatActivity implements Firebas
         toolbar = findViewById(R.id.materialToolbar);
         topicTenderButton = findViewById(R.id.topicTenderButton);
 
-        thesisRecyclerAdapter = getSupervisorRecyclerAdapter("");
-        thesisOverviewRecyclerView.setAdapter(thesisRecyclerAdapter);
-        thesisOverviewRecyclerView.setItemAnimator(null);
-
         initializeChips();
 
         chipGroups = findViewById(R.id.chipFilterConstraintLayout);
         setDefaultFilters();
 
         toolbar = findViewById(R.id.materialToolbar);
-        setOnClickListeners();
 
         handleUserGreeting();
+
+        setOnClickListeners();
+        setRecyclerAdapter();
+    }
+
+    private void setRecyclerAdapter() {
+        getThesisRecyclerAdapter(getThesisQueries(), new Callback<ThesisRecyclerAdapter>() {
+            @Override
+            public void onCallback(ThesisRecyclerAdapter thesisRecyclerAdapter) {
+                thesisOverviewRecyclerView.setAdapter(thesisRecyclerAdapter);
+                thesisOverviewRecyclerView.setItemAnimator(null);
+            }
+        });
     }
 
 
@@ -147,31 +162,50 @@ public class ThesisOverviewActivity extends AppCompatActivity implements Firebas
     protected void onStart() {
         super.onStart();
         auth.addAuthStateListener(this);
-        thesisRecyclerAdapter.startListening();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        thesisRecyclerAdapter.stopListening();
         auth.removeAuthStateListener(this);
     }
 
-    private ThesisRecyclerAdapter getSupervisorRecyclerAdapter(String filterOption){
-        FirestoreRecyclerOptions<Thesis> options = getFirestoreRecyclerOptions(getThesisQuery(filterOption));
-        return new ThesisRecyclerAdapter(options);
+    public void getThesisRecyclerAdapter(ArrayList<Query> queries, Callback<ThesisRecyclerAdapter> callback) {
+        ArrayList<Task<QuerySnapshot>> tasks = new ArrayList<>();
+
+        for (Query q : queries) {
+            tasks.add(q.get());
+        }
+
+        Tasks.whenAllSuccess(tasks).addOnSuccessListener(new OnSuccessListener<List<Object>>() {
+            @Override
+            public void onSuccess(List<Object> objects) {
+                ArrayList<Thesis> theses = new ArrayList<>();
+
+                for (Object obj : objects) {
+                    if (obj instanceof QuerySnapshot) {
+                        QuerySnapshot querySnapshot = (QuerySnapshot) obj;
+                        for (QueryDocumentSnapshot document : querySnapshot) {
+                            if (document.exists()) {
+                                Thesis thesis = document.toObject(Thesis.class);
+                                theses.add(thesis);
+                            }
+                        }
+                    }
+                }
+
+                callback.onCallback(new ThesisRecyclerAdapter(theses));
+            }
+        });
     }
 
-    private FirestoreRecyclerOptions<Thesis> getFirestoreRecyclerOptions(Query query){
-        return new FirestoreRecyclerOptions.Builder<Thesis>()
-                .setQuery(query, Thesis.class)
-                .build();
-    }
-
-    private Query getThesisQuery(String filterOption){
-        Query query = firebaseFirestoreDao.getThesesCollectionRef();
-
-        return query;
+    private ArrayList<Query> getThesisQueries(){
+        String userId = user.getUserId();
+        System.out.println(userId);
+        ArrayList<Query> queries = new ArrayList<>();
+        queries.add(firebaseFirestoreDao.getThesesCollectionRef().whereEqualTo("primarySupervisorId", userId)) ;
+        queries.add(firebaseFirestoreDao.getThesesCollectionRef().whereEqualTo("secondarySupervisorId", userId)) ;
+        return queries;
     }
 
 
@@ -191,5 +225,4 @@ public class ThesisOverviewActivity extends AppCompatActivity implements Firebas
         Toast.makeText(context, getString(R.string.logged_out), Toast.LENGTH_SHORT).show();
         this.finish();
     }
-
 }

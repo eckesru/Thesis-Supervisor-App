@@ -76,7 +76,6 @@ public class ThesisOverviewActivity extends AppCompatActivity implements Firebas
         handleUserGreeting();
 
         setOnClickListeners();
-        setRecyclerAdapter();
     }
 
     private void setRecyclerAdapter() {
@@ -161,6 +160,7 @@ public class ThesisOverviewActivity extends AppCompatActivity implements Firebas
     @Override
     protected void onStart() {
         super.onStart();
+        setRecyclerAdapter();
         auth.addAuthStateListener(this);
     }
 

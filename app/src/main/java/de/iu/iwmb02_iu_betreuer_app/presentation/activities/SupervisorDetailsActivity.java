@@ -74,12 +74,12 @@ public class SupervisorDetailsActivity extends AppCompatActivity implements Fire
         displaySupervisorProfileImage();
         fillSupervisorTextViews();
 
-        handlemode();
+        handleMode();
 
     }
 
 
-    private void handlemode() {
+    private void handleMode() {
         Intent intent = getIntent();
         if(intent.hasExtra("MODE") && intent.hasExtra("THESIS_OBJECT")) {
             mode = intent.getStringExtra("MODE");

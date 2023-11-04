@@ -89,12 +89,14 @@ public class Thesis implements Serializable {
         return exposeTitle;
     }
 
+    public void setExposeTitle(String exposeTitle) {
+        this.exposeTitle = exposeTitle;
+    }
     public String getExposeDownloadUri() {
         return exposeDownloadUri;
     }
-
-    public void setExposeId(String exposeId) {
-        this.exposeDownloadUri = exposeId;
+    public void setExposeDownloadUri(String exposeDownloadUri) {
+        this.exposeDownloadUri = exposeDownloadUri;
     }
 
     @NonNull

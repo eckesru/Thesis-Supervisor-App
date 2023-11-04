@@ -43,6 +43,13 @@ public class ActivityStarter {
         context.startActivity(intent);
     }
 
+    public static void startThesisRequestActivity(Context context, String mode, Thesis thesis){
+        Intent intent = new Intent(context, ThesisRequestActivity.class);
+        intent.putExtra("MODE", mode);
+        intent.putExtra("THESIS_OBJECT", thesis);
+        context.startActivity(intent);
+    }
+
     public static void startThesisOverviewActivity(Context context, User user) {
         Intent intent = new Intent(context, ThesisOverviewActivity.class);
         intent.putExtra("user", user);

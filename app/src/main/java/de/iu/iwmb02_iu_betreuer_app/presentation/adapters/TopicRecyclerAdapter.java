@@ -21,7 +21,7 @@ import de.iu.iwmb02_iu_betreuer_app.util.Callback;
 
 public class TopicRecyclerAdapter extends FirestoreRecyclerAdapter<Thesis, TopicRecyclerAdapter.TopicViewHolder> {
     private  final FirebaseFirestoreDao firebaseFirestoreDao;
-    private String mode;
+    private final String  mode = "THESIS_FROM_TOPIC";
     public TopicRecyclerAdapter(@NonNull FirestoreRecyclerOptions<Thesis> options) {
         super(options);
         firebaseFirestoreDao = FirebaseFirestoreDao.getInstance();
@@ -50,7 +50,7 @@ public class TopicRecyclerAdapter extends FirestoreRecyclerAdapter<Thesis, Topic
         holder.itemTopicConstraintView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ActivityStarter.startThesisDetailsActivity(holderContext,thesis, mode);
+                ActivityStarter.startThesisRequestActivity(holderContext, mode, thesis);
             }
         });
 

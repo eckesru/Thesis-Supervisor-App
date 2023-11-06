@@ -29,6 +29,15 @@ public class ActivityStarter {
         context.startActivity(intent);
     }
 
+    public static void startSupervisorBoardActivity(Context context, Thesis thesis, String mode){
+        Intent intent = new Intent(context, SupervisorBoardActivity.class);
+        intent.putExtra("MODE", mode);
+        intent.putExtra("THESIS_OBJECT", thesis);
+        context.startActivity(intent);
+    }
+
+
+
     public static void startSupervisorDetailsActivity(Context context, User user, String mode, Thesis thesis){
         Intent intent = new Intent(context, SupervisorDetailsActivity.class);
         intent.putExtra("user", user);

@@ -184,12 +184,7 @@ public class ThesisDetailsActivity extends AppCompatActivity implements Firebase
                     }
                 });
 
-                alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int whichButton) {
-
-                    }
-                });
-
+                alert.setNegativeButton("Cancel", null);
                 alert.show();
             }
         });
@@ -248,10 +243,7 @@ public class ThesisDetailsActivity extends AppCompatActivity implements Firebase
     }
 
     public void setSecondarySupervisorOnClick(View view) {
-        Intent intent = new Intent(this, SupervisorBoardActivity.class);
-        intent.putExtra("MODE", "SELECT_SECONDARY_SUPERVISOR");
-        intent.putExtra("THESIS_OBJECT", thesis);
-        startActivity(intent);
+        ActivityStarter.startSupervisorBoardActivity(context,thesis,"SELECT_SECONDARY_SUPERVISOR");
     }
 
 

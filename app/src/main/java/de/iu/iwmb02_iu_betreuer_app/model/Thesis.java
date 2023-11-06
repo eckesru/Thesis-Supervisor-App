@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import com.google.firebase.firestore.DocumentId;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class Thesis implements Serializable {
     @DocumentId
@@ -97,6 +98,19 @@ public class Thesis implements Serializable {
     }
     public void setExposeDownloadUri(String exposeDownloadUri) {
         this.exposeDownloadUri = exposeDownloadUri;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Thesis thesis = (Thesis) o;
+        return thesisId.equals(thesis.thesisId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(thesisId);
     }
 
     @NonNull

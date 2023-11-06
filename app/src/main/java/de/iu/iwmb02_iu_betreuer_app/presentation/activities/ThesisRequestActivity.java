@@ -161,7 +161,7 @@ public class ThesisRequestActivity extends AppCompatActivity implements Firebase
             public void onClick(View view) {
                 validateThesisData();
                 if(isValidThesisData){
-                    if(mode.equals("THESIS_FROM_TOPIC")){
+                    if(mode != null && mode.equals("THESIS_FROM_TOPIC")){
                         updateExistingThesis();
                     }else{
                         createNewThesis();

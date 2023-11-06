@@ -62,7 +62,7 @@ public class ActivityStarter {
     public static void startThesisOverviewActivity(Context context, User user) {
         Intent intent = new Intent(context, ThesisOverviewActivity.class);
         intent.putExtra("user", user);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         context.startActivity(intent);
     }
 
@@ -70,7 +70,7 @@ public class ActivityStarter {
         Intent intent = new Intent(context, ThesisDetailsActivity.class);
         intent.putExtra("thesis", thesis);
         if(mode != null) {
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         }
         context.startActivity(intent);
     }
@@ -84,7 +84,7 @@ public class ActivityStarter {
     public static void startSuccessThesisSubmittedActivity(Context context, Thesis thesis) {
         Intent intent = new Intent(context, SuccessThesisSubmittedActivity.class);
         intent.putExtra("thesis", thesis);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         context.startActivity(intent);
     }
 

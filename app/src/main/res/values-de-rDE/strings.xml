@@ -52,8 +52,8 @@
     <string name="thesis_overview_supervision_label">Betreuung: </string>
     <string name="thesis_overview_state_label">Status: </string>
     <string name="thesis_overview_billing_label">Abrechnung: </string>
-    <string name="thesis_overview_supervision_primary_label">Betreuer:in</string>
-    <string name="thesis_overview_supervision_secondary_label">Zweitgutachter:in</string>
+    <string name="thesis_overview_supervision_primary_label">Primär</string>
+    <string name="thesis_overview_supervision_secondary_label">Sekundär</string>
     <string name="missing_topic_title_message">Bitte geben sie einen Titel für das Thema ein</string>
     <string name="empty">[leer]</string>
     <string name="topic_created_message">Neues Thema erstellt</string>

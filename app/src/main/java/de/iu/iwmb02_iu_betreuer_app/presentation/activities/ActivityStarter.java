@@ -70,7 +70,7 @@ public class ActivityStarter {
         Intent intent = new Intent(context, ThesisDetailsActivity.class);
         intent.putExtra("thesis", thesis);
         if(mode != null) {
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         }
         context.startActivity(intent);
     }

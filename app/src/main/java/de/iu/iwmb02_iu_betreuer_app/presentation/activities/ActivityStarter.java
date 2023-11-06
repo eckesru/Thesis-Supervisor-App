@@ -62,6 +62,7 @@ public class ActivityStarter {
     public static void startThesisOverviewActivity(Context context, User user) {
         Intent intent = new Intent(context, ThesisOverviewActivity.class);
         intent.putExtra("user", user);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         context.startActivity(intent);
     }
 
@@ -83,6 +84,7 @@ public class ActivityStarter {
     public static void startSuccessThesisSubmittedActivity(Context context, Thesis thesis) {
         Intent intent = new Intent(context, SuccessThesisSubmittedActivity.class);
         intent.putExtra("thesis", thesis);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         context.startActivity(intent);
     }
 

@@ -31,6 +31,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
@@ -271,22 +272,24 @@ public class ThesisOverviewActivity extends AppCompatActivity implements Firebas
     }
 
     private ArrayList<Thesis> getPrefilteredTheses() {
-        ArrayList<Thesis> prefilteredTheses = new ArrayList<>();
+        HashSet<Thesis> uniqueTheses = new HashSet<>();
 
         if(chipPrimarySupervisor.isChecked()){
             for(Thesis thesis : theses){
                 if(thesis.getPrimarySupervisorId().equals(user.getUserId())){
-                    prefilteredTheses.add(thesis);
+                    uniqueTheses.add(thesis);
                 }
             }
         }
         if(chipSecondarySupervisor.isChecked()){
             for(Thesis thesis : theses){
                 if(thesis.getSecondarySupervisorId().equals(user.getUserId())){
-                    prefilteredTheses.add(thesis);
+                    uniqueTheses.add(thesis);
                 }
             }
         }
+        ArrayList<Thesis> prefilteredTheses = new ArrayList<>(uniqueTheses);
+
         return prefilteredTheses;
     }
 

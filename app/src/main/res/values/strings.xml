@@ -86,9 +86,17 @@
     <string name="studyfield_design_media">Design &amp; Media</string>
     <string name="studyfield_business_management">Business administration &amp; Management</string>
     <string name="studyfield_personell_law">Personnel &amp; Law</string>
+    <string name="studyfield_architecture">Architecture</string>
+    <string name="studyfield_computersciences_softwaredevelopment">Computer sciences &amp; Software Development</string>
+    <string name="studyfield_marketing_communication">Marketing &amp; Communication</string>
+    <string name="studyfield_projectmanagement">Projectmanagement</string>
 
     <string name="studyprogram_computerscience">Computer Science</string>
     <string name="studyprogram_history">History</string>
     <string name="studyprogram_mathematics">Mathematics</string>
+    <string name="studyprogram_architecture">Architecture</string>
+    <string name="studyprogram_marketing">Marketing</string>
+    <string name="studyprogram_psychology">Psychology</string>
+
 
 </resources>

@@ -2,12 +2,12 @@ package de.iu.iwmb02_iu_betreuer_app.presentation.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.ImageView;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
@@ -17,7 +17,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import de.iu.iwmb02_iu_betreuer_app.R;
 import de.iu.iwmb02_iu_betreuer_app.data.dao.FirebaseFirestoreDao;
 import de.iu.iwmb02_iu_betreuer_app.data.dao.UserDao;
-import de.iu.iwmb02_iu_betreuer_app.development.FirestoreTools;
 import de.iu.iwmb02_iu_betreuer_app.model.Student;
 import de.iu.iwmb02_iu_betreuer_app.model.Supervisor;
 import de.iu.iwmb02_iu_betreuer_app.model.Thesis;
@@ -30,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements FirebaseAuth.Auth
     private final Context context = MainActivity.this;
     private FirebaseAuth auth;
     private FirebaseFirestoreDao firebaseFirestoreDao;
-    private ImageView logoutImageView;
+    private MaterialToolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,12 +40,16 @@ public class MainActivity extends AppCompatActivity implements FirebaseAuth.Auth
         firebaseFirestoreDao = FirebaseFirestoreDao.getInstance();
 
         //TODO: Delete - Just for development
-        FirestoreTools tools = new FirestoreTools();
+        //FirestoreTools tools = new FirestoreTools();
         //tools.deleteAllDBs();
+        //tools.deleteUserDB();
+        //tools.deleteSupervisorDB();
+        //tools.deleteStudentsDB();
         //tools.populateDatabasesWithSampleData();
 
-        MaterialToolbar toolbar = findViewById(R.id.materialToolbar);
-        toolbar.inflateMenu(R.menu.empty_menu);
+        toolbar = findViewById(R.id.materialToolbar);
+        toolbar.inflateMenu(R.menu.logout_menu);
+        setItemClickListener();
 
         UserDao userDao = FirebaseFirestoreDao.getInstance();
         if(auth.getCurrentUser() != null) {
@@ -84,13 +87,15 @@ public class MainActivity extends AppCompatActivity implements FirebaseAuth.Auth
     }
 
     private void setItemClickListener() {
-        logoutImageView.setOnClickListener(new ImageView.OnClickListener() {
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
-            public void onClick(View view) {
-                int id = view.getId();
+            public boolean onMenuItemClick(MenuItem item) {
+                int id = item.getItemId();
                 if (id == R.id.menuItem_logout) {
                     logOutUser();
+                    return true;
                 }
+                return false;
             }
         });
     }

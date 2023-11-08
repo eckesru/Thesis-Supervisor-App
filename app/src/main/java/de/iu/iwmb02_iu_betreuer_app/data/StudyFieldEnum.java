@@ -5,12 +5,16 @@ import android.content.Context;
 import de.iu.iwmb02_iu_betreuer_app.R;
 
 public enum StudyFieldEnum {
-    engineeringsciences(R.string.studyfield_engineeringsciences),
-    planning_controlling(R.string.studyfield_planning_controlling),
+    architecture(R.string.studyfield_architecture),
+    business_management(R.string.studyfield_business_management),
+    computersciences_softwaredevelopment(R.string.studyfield_computersciences_softwaredevelopment),
     datascience_ai(R.string.studyfield_datascience_ai),
     design_media(R.string.studyfield_design_media),
-    business_management(R.string.studyfield_business_management),
-    personell_law(R.string.studyfield_personell_law);
+    engineeringsciences(R.string.studyfield_engineeringsciences),
+    marketing_communication(R.string.studyfield_marketing_communication),
+    personell_law(R.string.studyfield_personell_law),
+    planning_controlling(R.string.studyfield_planning_controlling),
+    projectmanagement(R.string.studyfield_projectmanagement);
 
     private final int stringResId;
 

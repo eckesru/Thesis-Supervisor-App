@@ -75,7 +75,7 @@
     <string name ="thesis_state_canceled">Abgebrochen</string>
 
     <string name ="billing_state_open">Offen</string>
-    <string name ="billing_state_billed">Verrechnet</string>
+    <string name ="billing_state_billed">Berechnet</string>
     <string name ="billing_state_settled">Abgeschlossen</string>
 
     <string name="language_german">Deutsch</string>

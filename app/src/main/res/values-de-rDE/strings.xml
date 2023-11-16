@@ -60,7 +60,7 @@
     <string name="supervisor_details_label">Betreuerprofil</string>
     <string name="tender_topic_label">Themenausschreibung</string>
     <string name="select_second_supervisor">Zweitgutachter:innen</string>
-    <string name="set_second_supervisor">Als Zweitgutachter:in auswählen</string>
+    <string name="set_second_supervisor">Zweitgutachter:in auswählen</string>
     <string name="expose_download_message">Expose erfolgreich heruntergeladen und im Downloads-Ordner gespeichert</string>
     <string name="no_expose_saved">Kein expose gespeichert</string>
     <string name="missing_thesis_title_message">Der Titel der Abschlussarbeit darf nicht leer sein</string>

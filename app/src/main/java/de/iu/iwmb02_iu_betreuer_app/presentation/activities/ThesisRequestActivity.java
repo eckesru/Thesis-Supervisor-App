@@ -182,7 +182,7 @@ public class ThesisRequestActivity extends AppCompatActivity implements Firebase
                 thesis.setExposeTitle(exposeTitle);
                 thesis.setExposeDownloadUri(downloadUri.toString());
                 firebaseFirestoreDao.updateThesis(thesis.getThesisId(),thesis);
-                Toast.makeText(ThesisRequestActivity.this, "Thesis request submitted", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ThesisRequestActivity.this, R.string.thesis_request_submitted, Toast.LENGTH_SHORT).show();
                 ActivityStarter.startSuccessThesisSubmittedActivity(context,thesis);
                 ThesisRequestActivity.this.finish();
             }
@@ -203,7 +203,7 @@ public class ThesisRequestActivity extends AppCompatActivity implements Firebase
                         exposeTitle,
                         downloadUri.toString());
                 firebaseFirestoreDao.saveNewThesis(thesis);
-                Toast.makeText(ThesisRequestActivity.this, "Thesis request submitted", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ThesisRequestActivity.this, R.string.thesis_request_submitted, Toast.LENGTH_SHORT).show();
                 ActivityStarter.startSuccessThesisSubmittedActivity(context,thesis);
                 ThesisRequestActivity.this.finish();
             }
@@ -235,7 +235,7 @@ public class ThesisRequestActivity extends AppCompatActivity implements Firebase
                             exposeFilePathTextView.setText(exposeTitle);
                         }
                     } else {
-                        Toast.makeText(ThesisRequestActivity.this, "No PDF selected", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ThesisRequestActivity.this, R.string.no_pdf_selected, Toast.LENGTH_SHORT).show();
                     }
                 });
     }

@@ -64,6 +64,8 @@
     <string name="no_expose_saved">No expose saved</string>
     <string name="missing_thesis_title_message">Thesis title can´t be empty</string>
     <string name="missing_expose_message">Please upload  an expose to submit</string>
+    <string name="thesis_request_submitted">Thesis request submitted</string>
+    <string name="no_pdf_selected">No PDF selected</string>
 
     <string name="thesis_state_open">Open</string>
     <string name="thesis_state_consultation">Consultation</string>
@@ -97,6 +99,4 @@
     <string name="studyprogram_architecture">Architecture</string>
     <string name="studyprogram_marketing">Marketing</string>
     <string name="studyprogram_psychology">Psychology</string>
-
-
 </resources>

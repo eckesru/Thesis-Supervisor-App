@@ -65,6 +65,8 @@
     <string name="no_expose_saved">Kein expose gespeichert</string>
     <string name="missing_thesis_title_message">Der Titel der Abschlussarbeit darf nicht leer sein</string>
     <string name="missing_expose_message">Bitte lade ein Expose hoch um fortzufahren</string>
+    <string name="thesis_request_submitted">Abschlussarbeitsanfrage erstellt</string>
+    <string name="no_pdf_selected">Kein PDF ausgewählt</string>
 
     <string name ="thesis_state_open">Offen</string>
     <string name ="thesis_state_consultation">In Abstimmung</string>
@@ -98,6 +100,4 @@
     <string name="studyprogram_architecture">Architektur</string>
     <string name="studyprogram_marketing">Marketing</string>
     <string name="studyprogram_psychology">Psychologie</string>
-
-
 </resources>

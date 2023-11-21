@@ -13,6 +13,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.OpenableColumns;
+import android.text.InputType;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -102,6 +103,7 @@ public class ThesisRequestActivity extends AppCompatActivity implements Firebase
                 thesisTitleEditText.setFocusable(false);
                 thesisTitleEditText.setFocusableInTouchMode(false);
                 thesisTitleEditText.setClickable(false);
+                thesisTitleEditText.setInputType(InputType.TYPE_NULL);
 
                 firebaseFirestoreDao.getSupervisor(thesis.getPrimarySupervisorId(), new Callback<Supervisor>() {
                     @Override

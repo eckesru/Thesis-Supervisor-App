@@ -61,10 +61,10 @@
     <string name="tender_topic_label">Themenausschreibung</string>
     <string name="select_second_supervisor">Zweitgutachter:innen</string>
     <string name="set_second_supervisor">Zweitgutachter:in auswählen</string>
-    <string name="expose_download_message">Expose erfolgreich heruntergeladen und im Downloads-Ordner gespeichert</string>
-    <string name="no_expose_saved">Kein expose gespeichert</string>
+    <string name="expose_download_message">Exposé erfolgreich heruntergeladen und im Downloads-Ordner gespeichert</string>
+    <string name="no_expose_saved">Kein Exposé gespeichert</string>
     <string name="missing_thesis_title_message">Der Titel der Abschlussarbeit darf nicht leer sein</string>
-    <string name="missing_expose_message">Bitte lade ein Expose hoch um fortzufahren</string>
+    <string name="missing_expose_message">Bitte lade ein Exposé hoch um fortzufahren</string>
     <string name="thesis_request_submitted">Abschlussarbeitsanfrage erstellt</string>
     <string name="no_pdf_selected">Kein PDF ausgewählt</string>
 

@@ -1,10 +1,10 @@
 # IU Betreuer-App
 
-IU Betreuer-App is mobile application to aid supervisors and students in the handling of final theses.
-This Application was developed as part of the Android Mobile Software Engineering-Course (IWMB02) at IU International University of Applied Sciences.. 
+IU Betreuer-App is a mobile application to aid supervisors and students in the handling of final theses.
+This Application was developed as part of the Android Mobile Software Engineering-Course (IWMB02) at IU International University of Applied Sciences.
 <br/>
 
-Utilizes:
+Utilizes additionally:
 * Firebase Authentication 
 * Firebase UI
 * Firebase Firestore

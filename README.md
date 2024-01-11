@@ -1,6 +1,6 @@
-# IU Betreuer-App
+# IU Supervisor-App
 
-IU Betreuer-App is a mobile application to aid supervisors and students in the handling of final theses.
+IU Supervisor-App is a mobile application to aid supervisors and students in the handling of final theses.
 This Application was developed as part of the Android Mobile Software Engineering-Course (IWMB02) at IU International University of Applied Sciences.
 <br/>
 

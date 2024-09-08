@@ -1,6 +1,6 @@
-# IU Supervisor App
+# Thesis Supervisor App
 
-IU Supervisor App is a mobile application to aid supervisors and students in the handling of final theses.
+Thesis Supervisor App is a mobile application to aid supervisors and students in the handling of final theses.
 This Application was developed as part of the Android Mobile Software Engineering-Course (IWMB02) at IU International University of Applied Sciences.
 <br/>
 
@@ -11,9 +11,8 @@ Utilizes additionally:
 * Firebase Storage
 <br/>
 
-
-<img src="https://github.com/ffeusthuber/IWMB02_IU_Betreuer_App/assets/124203089/3918e60b-2088-4ec9-97b4-7695ccf7db1f" width="300">
-<img src="https://github.com/ffeusthuber/IWMB02_IU_Betreuer_App/assets/124203089/3af249a2-9eef-44de-be6e-2316839a5a23" width="300">
+<img src="https://github.com/user-attachments/assets/1eb275f6-319a-443c-802d-aebd52f502e1" width="300">
+<img src="https://github.com/user-attachments/assets/14459a9a-8d8b-45a3-b70f-13663844a8d0" width="300">
 <br/>
-<img src="https://github.com/ffeusthuber/IWMB02_IU_Betreuer_App/assets/124203089/f861dcaa-45f7-4a25-94ad-b9ea011e7550" width="300">
-<img src="https://github.com/ffeusthuber/IWMB02_IU_Betreuer_App/assets/124203089/82800b5c-8ca9-4784-bde7-15a54e9270b1" width="300">
+<img src="https://github.com/user-attachments/assets/d5f904d5-2262-4a9a-835f-9605c9901660" width="300">
+<img src="https://github.com/user-attachments/assets/d7e5f9ac-c789-45bb-8f04-7545e71ccc18" width="300">
